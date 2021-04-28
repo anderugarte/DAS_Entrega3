@@ -4,43 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/white"
-    tools:context=".MainActivity">
+    android:background="@drawable/fondoinicio"
+    tools:context=".Principal.MainActivity">
 
     <Button
         android:id="@+id/bR"
-        android:layout_width="203dp"
-        android:layout_height="65dp"
-        android:text="Registrarse"
-        android:textSize="18sp"
+        android:layout_width="236dp"
+        android:layout_height="64dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/khand_light"
+        android:text="@string/registrarse"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bIS"
-        app:layout_constraintVertical_bias="0.281" />
+        app:layout_constraintVertical_bias="0.188" />
 
     <ImageView
         android:id="@+id/iLogo"
-        android:layout_width="326dp"
-        android:layout_height="291dp"
+        android:layout_width="311dp"
+        android:layout_height="273dp"
+        android:contentDescription="@string/logo_de_la_aplicacion"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.106"
+        app:layout_constraintVertical_bias="0.115"
         app:srcCompat="@drawable/logoext" />
 
     <Button
         android:id="@+id/bIS"
-        android:layout_width="203dp"
-        android:layout_height="65dp"
-        android:text="Iniciar Sesión"
-        android:textSize="18sp"
+        android:layout_width="236dp"
+        android:layout_height="64dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/khand_light"
+        android:text="@string/iniciar_sesion"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iLogo"
-        app:layout_constraintVertical_bias="0.239" />
+        app:layout_constraintVertical_bias="0.302" />
 </androidx.constraintlayout.widget.ConstraintLayout>
