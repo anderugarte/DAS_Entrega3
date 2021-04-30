@@ -5,4 +5,5 @@
     <string name="logo_de_la_aplicacion">Logo de la Aplicacion</string>
     <string name="contrasena">Contraseña</string>
     <string name="nombre_de_usuario">Nombre de Usuario</string>
+    <string name="no_tiene_cuenta_aun">¿No tiene cuenta aún?</string>
 </resources>

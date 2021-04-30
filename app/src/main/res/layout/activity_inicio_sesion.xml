@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".GestionDeUsuarios.InicioSesion">
 
+    <Button
+        android:id="@+id/bNTCA"
+        android:layout_width="210dp"
+        android:layout_height="89dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/khand_light"
+        android:text="@string/no_tiene_cuenta_aun"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etC"
+        app:layout_constraintVertical_bias="0.153" />
+
     <EditText
         android:id="@+id/etC"
         android:layout_width="wrap_content"
@@ -65,4 +81,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNU"
         app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
