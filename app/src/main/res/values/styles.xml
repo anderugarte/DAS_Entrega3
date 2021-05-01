@@ -4,7 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@android:color/darker_gray</item>
         <item name="colorPrimaryDark">@color/cardview_dark_background</item>
-        <item name="colorAccent">@android:color/white</item>
+        <item name="colorAccent">@android:color/black</item>
     </style>
 
     <!--Tema de InicioSesion-->

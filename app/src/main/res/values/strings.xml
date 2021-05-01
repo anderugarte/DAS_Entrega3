@@ -6,4 +6,7 @@
     <string name="contrasena">Contraseña</string>
     <string name="nombre_de_usuario">Nombre de Usuario</string>
     <string name="no_tiene_cuenta_aun">¿No tiene cuenta aún?</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="fecha_de_nacimiento">Fecha de Nacimiento</string>
 </resources>
