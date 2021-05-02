@@ -10,4 +10,9 @@
     <string name="apellidos">Apellidos</string>
     <string name="fecha_de_nacimiento">Fecha de Nacimiento</string>
     <string name="ya_tengo_cuenta">Ya tengo cuenta</string>
+    <string name="registrarme">Registrarme</string>
+    <string name="jugar_contra_la_ia">Jugar contra la IA</string>
+    <string name="opciones">Opciones</string>
+    <string name="jugar_online">Jugar Online</string>
+    <string name="jugar_2_jugadores">Jugar 2 jugadores</string>
 </resources>

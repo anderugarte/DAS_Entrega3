@@ -8,6 +8,7 @@ import android.text.AutoText;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.das_entregagrupal.Principal.MenuPrincipal;
 import com.example.das_entregagrupal.R;
 
 public class InicioSesion extends AppCompatActivity {
@@ -33,7 +34,9 @@ public class InicioSesion extends AppCompatActivity {
         bIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent mp = new Intent (getBaseContext(), MenuPrincipal.class);
+                startActivity(mp);
+                finish();
             }
         });
 

@@ -28,7 +28,7 @@
         android:layout_height="69dp"
         android:backgroundTint="#000000"
         android:fontFamily="@font/khand_light"
-        android:text="INICIAR SESIÓN"
+        android:text="@string/iniciar_sesion"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
