@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/logoext" />
 
     <Button
-        android:id="@+id/bPerfil3"
+        android:id="@+id/bAyuda"
         android:layout_width="207dp"
         android:layout_height="50dp"
         android:backgroundTint="#000000"
