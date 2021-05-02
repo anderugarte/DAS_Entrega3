@@ -8,20 +8,35 @@
     tools:context=".GestionDeUsuarios.Registro">
 
     <Button
-        android:id="@+id/bIniciarSesion"
-        android:layout_width="236dp"
-        android:layout_height="64dp"
+        android:id="@+id/bRegistro2"
+        android:layout_width="172dp"
+        android:layout_height="60dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/khand_light"
+        android:text="Registrarme"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.745"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCumpleanos"
+        app:layout_constraintVertical_bias="0.126" />
+
+    <Button
+        android:id="@+id/bYTC"
+        android:layout_width="194dp"
+        android:layout_height="56dp"
         android:backgroundTint="#000000"
         android:fontFamily="@font/khand_light"
         android:text="Ya tengo cuenta"
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.775"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCumpleanos"
-        app:layout_constraintVertical_bias="0.109" />
+        app:layout_constraintEnd_toEndOf="@+id/bRegistro2"
+        app:layout_constraintStart_toStartOf="@+id/bRegistro2"
+        app:layout_constraintTop_toBottomOf="@+id/bRegistro2"
+        app:layout_constraintVertical_bias="0.268" />
 
     <EditText
         android:id="@+id/etNombre"

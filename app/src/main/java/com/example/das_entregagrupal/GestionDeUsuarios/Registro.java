@@ -19,7 +19,7 @@ public class Registro extends AppCompatActivity {
         setContentView(R.layout.activity_registro);
 
         EditText etCumple = (EditText) findViewById(R.id.etCumpleanos);
-        Button bInicSes = (Button) findViewById(R.id.bIniciarSesion);
+        Button bInicSes = (Button) findViewById(R.id.bYTC);
 
         // Al pulsar este EditText, desplegaremos un dialogo donde se podra seleccionar la fecha de nacimientop del usuario
         etCumple.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +39,15 @@ public class Registro extends AppCompatActivity {
                 Intent is = new Intent (getBaseContext(), InicioSesion.class);
                 startActivity(is);
                 finish();
+            }
+        });
+
+        Button bRegistro = (Button) findViewById(R.id.bRegistro);
+
+        bRegistro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }

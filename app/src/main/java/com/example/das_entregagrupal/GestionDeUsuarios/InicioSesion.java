@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.AutoText;
 import android.view.View;
 import android.widget.Button;
 
@@ -24,6 +25,15 @@ public class InicioSesion extends AppCompatActivity {
                 Intent r = new Intent (getBaseContext(), Registro.class);
                 startActivity(r);
                 finish();
+            }
+        });
+
+        Button bIniciarSesion = (Button) findViewById(R.id.bIniciarSesion);
+
+        bIniciarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
