@@ -15,4 +15,7 @@
     <string name="opciones">Opciones</string>
     <string name="jugar_online">Jugar Online</string>
     <string name="jugar_2_jugadores">Jugar 2 jugadores</string>
+    <string name="ayuda">Ayuda</string>
+    <string name="mi_perfil">Mi Perfil</string>
+    <string name="mis_mejores_puntuaciones">Mis Mejores Puntuaciones</string>
 </resources>
