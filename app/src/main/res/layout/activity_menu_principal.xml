@@ -69,8 +69,8 @@
 
     <ImageView
         android:id="@+id/ivSlogan"
-        android:layout_width="335dp"
-        android:layout_height="96dp"
+        android:layout_width="348dp"
+        android:layout_height="105dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
