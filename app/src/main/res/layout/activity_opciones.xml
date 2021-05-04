@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondoopciones"
-    tools:context=".Principal.Opciones">
+    tools:context=".Complementos.Opciones">
 
     <Button
         android:id="@+id/bPersonalizacion"

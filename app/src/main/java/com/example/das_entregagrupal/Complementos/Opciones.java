@@ -1,4 +1,4 @@
-package com.example.das_entregagrupal.Principal;
+package com.example.das_entregagrupal.Complementos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,7 +38,8 @@ public class Opciones extends AppCompatActivity {
         bPers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Intent p = new Intent (getBaseContext(), Personalizacion.class);
+                startActivity(p);
             }
         });
 

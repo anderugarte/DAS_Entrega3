@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Principal.Personalizacion">
+    android:background="@drawable/fondopersonalizacion"
+    tools:context=".Complementos.Personalizacion">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
