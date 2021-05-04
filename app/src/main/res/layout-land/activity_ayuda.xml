@@ -9,18 +9,18 @@
 
     <TextView
         android:id="@+id/tAyuda"
-        android:layout_width="518dp"
-        android:layout_height="238dp"
+        android:layout_width="500dp"
+        android:layout_height="186dp"
         android:fontFamily="@font/khand_light"
-        android:text="Ayuda"
+        android:scrollbars="vertical"
+        android:text="@string/texto_ayuda"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iLogoAyuda"
-        app:layout_constraintVertical_bias="0.313" />
+        app:layout_constraintVertical_bias="0.103" />
 
     <ImageView
         android:id="@+id/iLogoAyuda"

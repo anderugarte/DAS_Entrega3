@@ -18,6 +18,7 @@ public class Opciones extends AppCompatActivity {
 
         Button bMiPerfil = (Button) findViewById(R.id.bPerfil);
         Button bMMPunt = (Button) findViewById(R.id.bMMPuntuciaones);
+        Button bPers = (Button) findViewById(R.id.bPersonalizacion);
         Button bAyuda = (Button) findViewById(R.id.bAyuda);
 
         bMiPerfil.setOnClickListener(new View.OnClickListener() {
@@ -31,6 +32,13 @@ public class Opciones extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+            }
+        });
+
+        bPers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
             }
         });
 

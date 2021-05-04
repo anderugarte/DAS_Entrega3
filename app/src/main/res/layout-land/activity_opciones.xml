@@ -32,7 +32,23 @@
         app:layout_constraintHorizontal_bias="0.772"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.196" />
+        app:layout_constraintVertical_bias="0.144" />
+
+    <Button
+        android:id="@+id/bPersonalizacion"
+        android:layout_width="207dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/khand_light"
+        android:text="@string/personalizacion"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.772"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bMMPuntuciaones"
+        app:layout_constraintVertical_bias="0.058" />
 
     <Button
         android:id="@+id/bAyuda"
@@ -47,8 +63,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.772"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bMMPuntuciaones"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintTop_toBottomOf="@+id/bPersonalizacion"
+        app:layout_constraintVertical_bias="0.105" />
 
     <Button
         android:id="@+id/bMMPuntuciaones"
@@ -64,5 +80,6 @@
         app:layout_constraintHorizontal_bias="0.772"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bPerfil"
-        app:layout_constraintVertical_bias="0.172" />
+        app:layout_constraintVertical_bias="0.035" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
