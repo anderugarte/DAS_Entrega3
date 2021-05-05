@@ -15,8 +15,8 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
+import com.example.das_entregagrupal.BaseDeDatos.ConexionRegistro;
 import com.example.das_entregagrupal.Complementos.ClaseDialogoFecha;
-import com.example.das_entregagrupal.Principal.ClaseDialogoFecha;
 import com.example.das_entregagrupal.R;
 
 public class Registro extends AppCompatActivity {
