@@ -34,8 +34,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etApellidos"
-        app:layout_constraintVertical_bias="0.065" />
+        app:layout_constraintTop_toBottomOf="@+id/etNombre"
+        app:layout_constraintVertical_bias="0.084" />
+
+    <EditText
+        android:id="@+id/etNombreUsuario"
+        android:layout_width="280dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:fontFamily="@font/khand_light"
+        android:inputType="textPersonName"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNombreUsuario"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/bRegistro"
@@ -48,10 +63,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.368"
-        app:layout_constraintStart_toEndOf="@+id/etNombreUsuario"
-        app:layout_constraintTop_toBottomOf="@+id/etCumpleanos"
-        app:layout_constraintVertical_bias="0.04" />
+        app:layout_constraintHorizontal_bias="0.196"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNombreUsuario"
+        app:layout_constraintVertical_bias="0.236" />
 
     <EditText
         android:id="@+id/etNombre"
@@ -84,21 +99,6 @@
         app:layout_constraintVertical_bias="0.092" />
 
     <EditText
-        android:id="@+id/etNombreUsuario"
-        android:layout_width="280dp"
-        android:layout_height="41dp"
-        android:ems="10"
-        android:fontFamily="@font/khand_light"
-        android:inputType="textPersonName"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.095"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNombreUsuario"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
         android:id="@+id/etCumpleanos"
         android:layout_width="280dp"
         android:layout_height="41dp"
@@ -113,51 +113,7 @@
         app:layout_constraintHorizontal_bias="0.802"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCumpleanos"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/bYTC"
-        android:layout_width="194dp"
-        android:layout_height="56dp"
-        android:backgroundTint="#000000"
-        android:fontFamily="@font/khand_light"
-        android:text="@string/ya_tengo_cuenta"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.359"
-        app:layout_constraintStart_toEndOf="@+id/etNombreUsuario"
-        app:layout_constraintTop_toBottomOf="@+id/bRegistro"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/etApellidos"
-        android:layout_width="280dp"
-        android:layout_height="41dp"
-        android:ems="10"
-        android:fontFamily="@font/khand_light"
-        android:inputType="textPersonName"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.095"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvApellidos"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/etContrasena"
-        android:layout_width="279dp"
-        android:layout_height="41dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvContrasenia"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.004" />
 
     <TextView
         android:id="@+id/tvCumpleanos"
@@ -172,21 +128,35 @@
         app:layout_constraintHorizontal_bias="0.652"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etContrasena"
-        app:layout_constraintVertical_bias="0.025" />
+        app:layout_constraintVertical_bias="0.08" />
 
-    <TextView
-        android:id="@+id/tvApellidos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/bYTC"
+        android:layout_width="196dp"
+        android:layout_height="63dp"
+        android:backgroundTint="#000000"
         android:fontFamily="@font/khand_light"
-        android:text="@string/apellidos"
-        android:textColor="#000000"
+        android:text="@string/ya_tengo_cuenta"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintHorizontal_bias="0.399"
+        app:layout_constraintStart_toEndOf="@+id/bRegistro"
+        app:layout_constraintTop_toBottomOf="@+id/etCumpleanos"
+        app:layout_constraintVertical_bias="0.246" />
+
+    <EditText
+        android:id="@+id/etContrasena"
+        android:layout_width="279dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNombre"
-        app:layout_constraintVertical_bias="0.021" />
+        app:layout_constraintTop_toBottomOf="@+id/tvContrasenia"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
