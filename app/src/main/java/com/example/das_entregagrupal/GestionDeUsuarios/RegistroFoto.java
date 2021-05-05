@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -37,7 +38,7 @@ public class RegistroFoto extends AppCompatActivity {
 
     ImageView fp;
     Boolean cambiado = false;
-    String user,nomb,pass,date;
+    String username,nomb,pass,date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +57,10 @@ public class RegistroFoto extends AppCompatActivity {
         // Recibimos el nombre de usuario del usuario que se ha registrado al igual que el resto de sus datos
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            user = extras.getString("Usuario");
-            nomb = extras.getString("Nombre");
-            pass = extras.getString("Password");
-            date = extras.getString("Cumple");
+            username = extras.getString("username");
+            nomb = extras.getString("nomb");
+            pass = extras.getString("pass");
+            date = extras.getString("date");
         }
 
         // Gestionar sacar una foto con la camara
@@ -77,6 +78,7 @@ public class RegistroFoto extends AppCompatActivity {
             }
         });
 
+        // Gestionar el resgistro
         bRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,10 +95,10 @@ public class RegistroFoto extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             // Crear cuenta sin foto de perfil
-                            gestionarRegistroFoto(user, nomb, pass, date, fp.toString());
+                            gestionarRegistroFoto(username, nomb, pass, date, fp.toString());
 
                             Intent mp = new Intent(getBaseContext(), MenuPrincipal.class);
-                            mp.putExtra("Usuario",user);
+                            mp.putExtra("username",username);
                             startActivity(mp);
                             finish();
                         }
@@ -113,7 +115,7 @@ public class RegistroFoto extends AppCompatActivity {
 
                 } else {
                     // Crear cuenta con foto de perfil
-                    gestionarRegistroFoto(user, nomb, pass, date, fp.toString());
+                    gestionarRegistroFoto(username, nomb, pass, date, fp.toString());
                 }
             }
         });
@@ -122,7 +124,7 @@ public class RegistroFoto extends AppCompatActivity {
 
     private void gestionarRegistroFoto(String user, String nomb, String pass, String date, String foto) {
 
-        Data resultadosRF = new Data.Builder()
+        Data datos = new Data.Builder()
                 .putString("username",user)
                 .putString("nombre",nomb)
                 .putString("password",pass)
@@ -130,23 +132,27 @@ public class RegistroFoto extends AppCompatActivity {
                 .putString("fotoperfil",foto)
                 .build();
 
-        OneTimeWorkRequest trabajoPuntualRF = new OneTimeWorkRequest.Builder(ConexionRegistroFoto.class)
-                .setInputData(resultadosRF)
+        OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionRegistroFoto.class)
+                .setInputData(datos)
                 .build();
 
-        WorkManager.getInstance(getApplicationContext()).getWorkInfoByIdLiveData(trabajoPuntualRF.getId())
+        WorkManager.getInstance(getApplicationContext()).getWorkInfoByIdLiveData(otwr.getId())
                 .observe(this, new Observer<WorkInfo>() {
                     @Override
-                    public void onChanged(WorkInfo status) {
-                        if (status != null && status.getState().isFinished()) {
-                            if (status.getOutputData().getString("resultado").equals("true")) {
+                    public void onChanged(WorkInfo workInfo) {
+                        if (workInfo != null && workInfo.getState().isFinished()) {
+                            Log.i("hola", "hola " + workInfo.getOutputData().getString("result"));
+                            if (workInfo.getOutputData().getString("result").equals("true")) {
+                                Log.i("hola", "onChanged: registro correcto");
                                 // Registro correcto
                                 Intent mp = new Intent (getBaseContext(), MenuPrincipal.class);
-                                mp.putExtra("Usuario", user);
+                                mp.putExtra("username", user);
                                 startActivity(mp);
                                 finish();
                             } else {
                                 // Registro incorrecto
+                                Log.i("hola", "onChanged: registro INcorrecto");
+
                                 int tiempo= Toast.LENGTH_SHORT;
                                 Toast aviso = Toast.makeText(getApplicationContext(), "Error", tiempo);
                                 aviso.setGravity(Gravity.BOTTOM| Gravity.CENTER, 0, 0);
@@ -155,7 +161,7 @@ public class RegistroFoto extends AppCompatActivity {
                         }
                     }
                 });
-        WorkManager.getInstance(getApplicationContext()).enqueue(trabajoPuntualRF);
+        WorkManager.getInstance(getApplicationContext()).enqueue(otwr);
 
     }
 
@@ -177,7 +183,7 @@ public class RegistroFoto extends AppCompatActivity {
             byte[] fototransformada = stream.toByteArray();
             String fotoen64 = Base64.encodeToString(fototransformada,Base64.DEFAULT);
             Uri.Builder builder = new Uri.Builder()
-                    .appendQueryParameter("identificador", user)
+                    .appendQueryParameter("identificador", username)
                     .appendQueryParameter("imagen", fotoen64);
             String parametrosURL = builder.build().getEncodedQuery();
             try {

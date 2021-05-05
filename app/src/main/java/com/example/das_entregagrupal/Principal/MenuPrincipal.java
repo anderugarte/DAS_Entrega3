@@ -33,7 +33,7 @@ public class MenuPrincipal extends AppCompatActivity {
         // Recibimos el nombre de usuario del usuario que se ha registrado al igual que el resto de sus datos
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            user = extras.getString("Usuario");
+            user = extras.getString("username");
         }
 
         bJContraIA.setOnClickListener(new View.OnClickListener() {

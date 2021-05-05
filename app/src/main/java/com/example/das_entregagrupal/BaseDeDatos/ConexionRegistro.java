@@ -28,9 +28,9 @@ public class ConexionRegistro extends Worker {
     @NonNull
     @Override
     public Result doWork() {
-        String txtUsuario = getInputData().getString("usuario");
+        String username = getInputData().getString("username");
 
-        String direccion = "http://ec2-54-167-31-169.compute-1.amazonaws.com/igonzalez274/WEB/existeUsuario.php";
+        String direccion = "http://ec2-54-167-31-169.compute-1.amazonaws.com/igonzalez274/WEB/existeUsernameE3.php";
         String result = "";
         Data resultados = null;
         HttpURLConnection urlConnection = null;
@@ -44,7 +44,7 @@ public class ConexionRegistro extends Worker {
             urlConnection.setDoOutput(true);
 
             JSONObject parametrosJSON = new JSONObject();
-            parametrosJSON.put("usuario", txtUsuario);
+            parametrosJSON.put("username", username);
 
             urlConnection.setRequestProperty("Content-Type","application/json");
             PrintWriter out = new PrintWriter(urlConnection.getOutputStream());
@@ -63,7 +63,7 @@ public class ConexionRegistro extends Worker {
                 inputStream.close();
 
                 resultados = new Data.Builder()
-                        .putString("resultado", result)
+                        .putString("result", result)
                         .build();
 
             }

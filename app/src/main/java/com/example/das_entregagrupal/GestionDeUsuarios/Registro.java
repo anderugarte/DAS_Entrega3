@@ -75,18 +75,18 @@ public class Registro extends AppCompatActivity {
                     toast.show();
                 } else {
                     if (comprobarSiExiste()) {
-                        // devuelve true si ya existe -> mostrar toast
+                        // Devuelve true si ya existe -> mostrar toast
                         String text = "Nombre de usuario ya en uso";
                         Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
                         toast.show();
                     } else {
-                        // devuelve false si se puede registrar -> Intent foto
+                        // Devuelve false si se puede registrar -> Intent foto
                         Intent iFoto = new Intent(getBaseContext(), RegistroFoto.class);
-                        iFoto.putExtra("Usuario", etUsuario.getText().toString());
-                        iFoto.putExtra("Nombre", etNombre.getText().toString());
-                        iFoto.putExtra("Cumple", etCumple.getText().toString());
-                        iFoto.putExtra("Password", etCumple.getText().toString());
+                        iFoto.putExtra("username", etUsuario.getText().toString());
+                        iFoto.putExtra("nomb", etNombre.getText().toString());
+                        iFoto.putExtra("pass", etCumple.getText().toString());
+                        iFoto.putExtra("date", etCumple.getText().toString());
                         startActivity(iFoto);
                     }
                 }
@@ -102,7 +102,7 @@ public class Registro extends AppCompatActivity {
     }
 
     private boolean comprobarSiExiste() {
-        Data datos = new Data.Builder().putString("Usuario", etUsuario.getText().toString()).build();
+        Data datos = new Data.Builder().putString("username", etUsuario.getText().toString()).build();
         OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionRegistro.class)
                 .setInputData(datos).build();
         WorkManager.getInstance(this).getWorkInfoByIdLiveData(otwr.getId())
@@ -110,11 +110,12 @@ public class Registro extends AppCompatActivity {
                     @Override
                     public void onChanged(WorkInfo workInfo) {
                         if (workInfo != null && workInfo.getState().isFinished()) {
-                            if (workInfo.getOutputData().getString("result").equals("existe")) {
-                                existe = true;
-                            } else {
+                            if (workInfo.getOutputData().getString("result").equals("noexiste")) {
                                 // Ese nombre de usuario no esta en uso, se puede registrar
                                 existe = false;
+                            } else {
+                                // Ese nombre de usuario esta en uso, no se puede registrar
+                                existe = true;
                             }
                         }
                     }
