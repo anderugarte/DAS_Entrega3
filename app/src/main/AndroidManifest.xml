@@ -15,6 +15,7 @@
         <activity android:name=".Complementos.Opciones" />
         <activity android:name=".Principal.MenuPrincipal" />
         <activity android:name=".GestionDeUsuarios.Registro" />
+        <activity android:name=".GestionDeUsuarios.RegistroFoto" />
         <activity android:name=".GestionDeUsuarios.InicioSesion" />
         <activity android:name=".Principal.MainActivity">
             <intent-filter>

@@ -16,6 +16,7 @@ public class MenuPrincipal extends AppCompatActivity {
 
     private AlertDialog.Builder alertDialogBuilder;
     private Context context;
+    private String user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,12 @@ public class MenuPrincipal extends AppCompatActivity {
         Button bJ2Jugadores = (Button) findViewById(R.id.bJ2J);
         Button bJOnline = (Button) findViewById(R.id.bJO);
         Button bOpciones = (Button) findViewById(R.id.bO);
+
+        // Recibimos el nombre de usuario del usuario que se ha registrado al igual que el resto de sus datos
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            user = extras.getString("Usuario");
+        }
 
         bJContraIA.setOnClickListener(new View.OnClickListener() {
             @Override

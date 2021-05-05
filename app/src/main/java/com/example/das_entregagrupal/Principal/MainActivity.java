@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.example.das_entregagrupal.GestionDeUsuarios.InicioSesion;
 import com.example.das_entregagrupal.GestionDeUsuarios.Registro;
+import com.example.das_entregagrupal.GestionDeUsuarios.RegistroFoto;
 import com.example.das_entregagrupal.R;
 
 public class MainActivity extends AppCompatActivity {

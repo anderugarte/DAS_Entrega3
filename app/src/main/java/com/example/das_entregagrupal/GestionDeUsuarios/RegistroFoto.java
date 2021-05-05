@@ -142,7 +142,7 @@ public class RegistroFoto extends AppCompatActivity {
                             if (status.getOutputData().getString("resultado").equals("true")) {
                                 // Registro correcto
                                 Intent mp = new Intent (getBaseContext(), MenuPrincipal.class);
-                                mp.putExtra("username", user);
+                                mp.putExtra("Usuario", user);
                                 startActivity(mp);
                                 finish();
                             } else {
