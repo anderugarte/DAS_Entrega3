@@ -42,6 +42,7 @@ public class ConexionRegistro extends Worker {
             urlConnection.setReadTimeout(5000);
             urlConnection.setRequestMethod("POST");
             urlConnection.setDoOutput(true);
+
             JSONObject parametrosJSON = new JSONObject();
             parametrosJSON.put("usuario", txtUsuario);
 

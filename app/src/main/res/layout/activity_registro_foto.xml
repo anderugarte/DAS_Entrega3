@@ -4,6 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondoregistrofoto"
     tools:context=".GestionDeUsuarios.RegistroFoto">
 
+    <Button
+        android:id="@+id/bTFoto"
+        android:layout_width="212dp"
+        android:layout_height="59dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/khand_light"
+        android:text="@string/tomar_foto"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iFotoPerfil"
+        app:layout_constraintVertical_bias="0.079" />
+
+    <Button
+        android:id="@+id/bSIGaleria"
+        android:layout_width="213dp"
+        android:layout_height="83dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/khand_light"
+        android:text="@string/seleccionar_imagen_de_la_galeria"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bTFoto"
+        app:layout_constraintVertical_bias="0.055" />
+
+    <Button
+        android:id="@+id/bRegis"
+        android:layout_width="212dp"
+        android:layout_height="59dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/khand_light"
+        android:text="@string/registrarme"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bSIGaleria"
+        app:layout_constraintVertical_bias="0.147" />
+
+    <ImageView
+        android:id="@+id/iFotoPerfil"
+        android:layout_width="318dp"
+        android:layout_height="399dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.138"
+        app:srcCompat="@drawable/perfil" />
 </androidx.constraintlayout.widget.ConstraintLayout>

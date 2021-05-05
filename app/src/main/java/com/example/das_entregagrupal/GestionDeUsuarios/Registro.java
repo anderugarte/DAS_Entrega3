@@ -87,6 +87,7 @@ public class Registro extends AppCompatActivity {
                         iFoto.putExtra("Nombre", etNombre.getText().toString());
                         iFoto.putExtra("Cumple", etCumple.getText().toString());
                         iFoto.putExtra("Password", etCumple.getText().toString());
+                        startActivity(iFoto);
                     }
                 }
             }
