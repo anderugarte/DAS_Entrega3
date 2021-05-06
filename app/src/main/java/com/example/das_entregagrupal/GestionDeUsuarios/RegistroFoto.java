@@ -30,6 +30,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -62,6 +63,10 @@ public class RegistroFoto extends AppCompatActivity {
             pass = extras.getString("pass");
             date = extras.getString("date");
         }
+
+        // Modificar el campo de la fecha para introducirla en la base de datos
+        String[] d = date.split(" / ");
+        date = d[2] + "-" + d[1] + "-" + d[0];
 
         // Gestionar sacar una foto con la camara
         bTomarFoto.setOnClickListener(new View.OnClickListener() {
@@ -141,9 +146,7 @@ public class RegistroFoto extends AppCompatActivity {
                     @Override
                     public void onChanged(WorkInfo workInfo) {
                         if (workInfo != null && workInfo.getState().isFinished()) {
-                            Log.i("hola", "hola " + workInfo.getOutputData().getString("result"));
                             if (workInfo.getOutputData().getString("result").equals("true")) {
-                                Log.i("hola", "onChanged: registro correcto");
                                 // Registro correcto
                                 Intent mp = new Intent (getBaseContext(), MenuPrincipal.class);
                                 mp.putExtra("username", user);
@@ -151,7 +154,6 @@ public class RegistroFoto extends AppCompatActivity {
                                 finish();
                             } else {
                                 // Registro incorrecto
-                                Log.i("hola", "onChanged: registro INcorrecto");
 
                                 int tiempo= Toast.LENGTH_SHORT;
                                 Toast aviso = Toast.makeText(getApplicationContext(), "Error", tiempo);
@@ -161,8 +163,7 @@ public class RegistroFoto extends AppCompatActivity {
                         }
                     }
                 });
-        WorkManager.getInstance(getApplicationContext()).enqueue(otwr);
-
+        WorkManager.getInstance(this).enqueue(otwr);
     }
 
     @Override

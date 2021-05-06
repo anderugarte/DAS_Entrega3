@@ -37,7 +37,7 @@ public class ClaseDialogoFecha extends DialogFragment implements DatePickerDialo
     // Ahora establecemos la fecha seleccionada por el usuario en el EditText
     @Override
     public void onDateSet(DatePicker datePicker, int anyo, int mes, int dia) {
-        final String selectedDate = anyo + "-" + twoDigits(mes+1) + "-" + twoDigits(dia);
+        final String selectedDate = twoDigits(dia) + " / " + twoDigits(mes + 1) + " / " + anyo;
         cumple.setText(selectedDate);
     }
 

@@ -2,6 +2,7 @@ package com.example.das_entregagrupal.GestionDeUsuarios;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -66,30 +67,22 @@ public class Registro extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (etNombre.getText().toString().equals("") ||
-                        etUsuario.getText().toString().equals("") ||
-                        etContrasena.getText().toString().equals("") ||
-                        etCumple.getText().toString().equals("")) {
+                    etUsuario.getText().toString().equals("") ||
+                    etContrasena.getText().toString().equals("") ||
+                    etCumple.getText().toString().equals("")) {
                     String text = "Rellena todos los campos";
                     Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
                     toast.show();
+                } else if (etContrasena.getText().toString().length() < 5) {
+                    String text = "Contraseña demasiado corta";
+                    Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
+                    toast.show();
                 } else {
-                    if (comprobarSiExiste()) {
-                        // Devuelve true si ya existe -> mostrar toast
-                        String text = "Nombre de usuario ya en uso";
-                        Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
-                        toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
-                        toast.show();
-                    } else {
-                        // Devuelve false si se puede registrar -> Intent foto
-                        Intent iFoto = new Intent(getBaseContext(), RegistroFoto.class);
-                        iFoto.putExtra("username", etUsuario.getText().toString());
-                        iFoto.putExtra("nomb", etNombre.getText().toString());
-                        iFoto.putExtra("pass", etCumple.getText().toString());
-                        iFoto.putExtra("date", etCumple.getText().toString());
-                        startActivity(iFoto);
-                    }
+                    comprobarSiExiste();
                 }
+
             }
         });
     }
@@ -101,25 +94,36 @@ public class Registro extends AppCompatActivity {
         dialogoCumpleanos.show(getSupportFragmentManager(),"cumple");
     }
 
-    private boolean comprobarSiExiste() {
+    private void comprobarSiExiste() {
         Data datos = new Data.Builder().putString("username", etUsuario.getText().toString()).build();
         OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionRegistro.class)
                 .setInputData(datos).build();
-        WorkManager.getInstance(this).getWorkInfoByIdLiveData(otwr.getId())
+        WorkManager.getInstance(getBaseContext()).getWorkInfoByIdLiveData(otwr.getId())
                 .observe(this, new Observer<WorkInfo>() {
                     @Override
                     public void onChanged(WorkInfo workInfo) {
                         if (workInfo != null && workInfo.getState().isFinished()) {
+                            Log.i("hola", workInfo.getOutputData().getString("result"));
                             if (workInfo.getOutputData().getString("result").equals("noexiste")) {
                                 // Ese nombre de usuario no esta en uso, se puede registrar
-                                existe = false;
+                                // Intent foto
+                                Intent iFoto = new Intent(getBaseContext(), RegistroFoto.class);
+                                iFoto.putExtra("username", etUsuario.getText().toString());
+                                iFoto.putExtra("nomb", etNombre.getText().toString());
+                                iFoto.putExtra("pass", etCumple.getText().toString());
+                                iFoto.putExtra("date", etCumple.getText().toString());
+                                startActivity(iFoto);
                             } else {
                                 // Ese nombre de usuario esta en uso, no se puede registrar
-                                existe = true;
+                                // Mostrar toast
+                                String text = "Nombre de usuario ya en uso";
+                                Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
+                                toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
+                                toast.show();
                             }
                         }
                     }
                 });
-        return existe;
+        WorkManager.getInstance(getBaseContext()).enqueue(otwr);
     }
 }
