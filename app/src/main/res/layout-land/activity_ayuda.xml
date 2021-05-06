@@ -4,13 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondoayuda"
+    android:background="@drawable/fondoayudaland"
     tools:context=".Complementos.Ayuda">
+
+    <ImageButton
+        android:id="@+id/bAtras"
+        android:layout_width="50dp"
+        android:layout_height="43dp"
+        android:background="#00FFFFFF"
+        android:tint="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/abc_vector_test" />
 
     <TextView
         android:id="@+id/tAyuda"
-        android:layout_width="500dp"
-        android:layout_height="186dp"
+        android:layout_width="412dp"
+        android:layout_height="234dp"
         android:fontFamily="@font/khand_light"
         android:scrollbars="vertical"
         android:text="@string/texto_ayuda"
@@ -18,19 +32,20 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.763"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iLogoAyuda"
-        app:layout_constraintVertical_bias="0.103" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iLogoAyuda"
-        android:layout_width="171dp"
-        android:layout_height="88dp"
+        android:layout_width="186dp"
+        android:layout_height="168dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.055"
+        app:layout_constraintVertical_bias="0.497"
         app:srcCompat="@drawable/logoext" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

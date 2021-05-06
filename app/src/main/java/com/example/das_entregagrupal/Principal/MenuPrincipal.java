@@ -8,7 +8,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
+import com.example.das_entregagrupal.Complementos.Ayuda;
 import com.example.das_entregagrupal.Complementos.Opciones;
 import com.example.das_entregagrupal.R;
 
@@ -29,6 +31,7 @@ public class MenuPrincipal extends AppCompatActivity {
         Button bJ2Jugadores = (Button) findViewById(R.id.bJ2J);
         Button bJOnline = (Button) findViewById(R.id.bJO);
         Button bOpciones = (Button) findViewById(R.id.bO);
+        ImageButton iAyuda = (ImageButton) findViewById(R.id.iAyuda);
 
         // Recibimos el nombre de usuario del usuario que se ha registrado al igual que el resto de sus datos
         Bundle extras = getIntent().getExtras();
@@ -62,6 +65,14 @@ public class MenuPrincipal extends AppCompatActivity {
             public void onClick(View v) {
                 Intent o = new Intent (getBaseContext(), Opciones.class);
                 startActivity(o);
+            }
+        });
+
+        iAyuda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent a = new Intent (getBaseContext(), Ayuda.class);
+                startActivity(a);
             }
         });
 
