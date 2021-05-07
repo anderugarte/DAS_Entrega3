@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.das_entregagrupal">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,8 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        android:usesCleartextTraffic="true">
-        <activity android:name=".Complementos.Personalizacion"></activity>
+        <activity android:name=".Principal.Partida"></activity>
+        <activity android:name=".Complementos.Personalizacion" />
         <activity android:name=".Complementos.Ayuda" />
         <activity android:name=".Complementos.Opciones" />
         <activity android:name=".Principal.MenuPrincipal" />

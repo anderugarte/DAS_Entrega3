@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondopartida"
+    tools:context=".Principal.Partida">
+
+    <Button
+        android:id="@+id/bRendirse"
+        android:layout_width="171dp"
+        android:layout_height="61dp"
+        android:backgroundTint="#00FFFFFF"
+        android:fontFamily="@font/khand_light"
+        android:text="@string/rendirse"
+        android:textColor="#000000"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tJugador2"
+        android:layout_width="143dp"
+        android:layout_height="40dp"
+        android:fontFamily="@font/khand_light"
+        android:gravity="clip_horizontal|center|left"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/bRendirse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tVS"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tJugador1"
+        android:layout_width="143dp"
+        android:layout_height="40dp"
+        android:fontFamily="@font/khand_light"
+        android:gravity="clip_horizontal|center|right"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/bRendirse"
+        app:layout_constraintEnd_toStartOf="@+id/tVS"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tVS"
+        android:layout_width="47dp"
+        android:layout_height="43dp"
+        android:fontFamily="@font/khand_light"
+        android:gravity="clip_horizontal|center"
+        android:text="@string/vs"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/bRendirse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

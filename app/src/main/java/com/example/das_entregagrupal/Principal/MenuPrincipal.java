@@ -42,7 +42,10 @@ public class MenuPrincipal extends AppCompatActivity {
         bJContraIA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent jIA = new Intent (getBaseContext(), Partida.class);
+                jIA.putExtra("jugador1",user);
+                jIA.putExtra("jugador2","Ordenador");
+                startActivity(jIA);
             }
         });
 
@@ -80,7 +83,6 @@ public class MenuPrincipal extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-
         alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("Bichötes: Conecta 4");
         alertDialogBuilder.setMessage("¿Desea cerrar la sesión?")
