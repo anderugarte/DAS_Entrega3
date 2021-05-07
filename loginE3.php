@@ -15,12 +15,13 @@ echo 'Error de conexion: ' . mysqli_connect_error();
 exit();
 }
 
-#Exitosa -> primero coger los parametros de los edittext
+#Exitosa
 $parametros = json_decode(file_get_contents('php://input'), true);
-$username = $parametros["username"];
+$username = $parametros['username'];
+$password = $parametros['password'];
 
-#Ejecutar sentencia SQL para comprobar si ya existe ese nombre de usuario
-$resultado = mysqli_query($con, "SELECT Username FROM Usuarios WHERE Username='$username'");
+#Ejecutar sentencia SQL
+$resultado = mysqli_query($con, "SELECT (Password) FROM Usuarios WHERE Username ='$username'");
 
 # Comprobar si se ha ejecutado correctamente
 if (!$resultado) {
@@ -31,13 +32,11 @@ if (!$resultado) {
 $fila = mysqli_fetch_row($resultado);
 
 
-// Comprobar si existe un usuario con ese username
-if (strlen($fila[0])==0) { 
-    echo 'noexiste'; // no existe
+if(password_verify($password, $fila[0])) {
+    echo 'logOK';
 } else {
-    echo 'existe'; // existe
+   echo 'logError';
 }
 
-
-
 ?>
+

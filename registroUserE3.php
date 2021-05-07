@@ -23,7 +23,7 @@ $cumple = $parametros['cumple'];
 $image = $parametros['foto'];
 
 #Hash password
-$password = password_hash($contraseña, PASSWORD_DEFAULT);
+$password = password_hash($contraseña, PASSWORD_BCRYPT);
 
 # Sentencia SQL
 $sql = "INSERT INTO Usuarios VALUES (?,?,?,?,?)";
