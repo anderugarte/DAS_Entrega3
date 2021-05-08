@@ -23,4 +23,6 @@
     <string name="tomar_foto">Tomar Foto</string>
     <string name="vs">VS</string>
     <string name="rendirse">Rendirse</string>
+    <string name="jugar">Jugar</string>
+    <string name="cancelar">Cancelar</string>
 </resources>
