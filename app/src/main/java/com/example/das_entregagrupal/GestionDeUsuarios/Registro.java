@@ -103,7 +103,6 @@ public class Registro extends AppCompatActivity {
                     @Override
                     public void onChanged(WorkInfo workInfo) {
                         if (workInfo != null && workInfo.getState().isFinished()) {
-                            Log.i("hola", workInfo.getOutputData().getString("result"));
                             if (workInfo.getOutputData().getString("result").equals("noexiste")) {
                                 // Ese nombre de usuario no esta en uso, se puede registrar
                                 // Intent foto

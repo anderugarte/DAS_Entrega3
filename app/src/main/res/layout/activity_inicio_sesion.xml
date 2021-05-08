@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:fontFamily="@font/khand_light"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
