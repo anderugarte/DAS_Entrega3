@@ -29,8 +29,8 @@ public class Ayuda extends AppCompatActivity {
         bAtras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mp = new Intent (getBaseContext(), MenuPrincipal.class);
-                startActivity(mp);
+                Intent o = new Intent (getBaseContext(), Opciones.class);
+                startActivity(o);
                 finish();
             }
         });
