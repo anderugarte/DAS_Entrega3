@@ -1,4 +1,4 @@
-package com.example.das_entregagrupal;
+package com.example.das_entregagrupal.Complementos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 
 import com.example.das_entregagrupal.Complementos.Opciones;
 import com.example.das_entregagrupal.Complementos.Personalizacion;
+import com.example.das_entregagrupal.R;
 
 public class MiPerfil extends AppCompatActivity {
 
