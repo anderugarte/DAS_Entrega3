@@ -75,8 +75,11 @@ public class InicioSesion extends AppCompatActivity {
     }
 
 //    private void iniciarSesion() {
-//        Data datos = new Data.Builder().putString("username", username.getText().toString())
-//                .putString("password", password.getText().toString()).build();
+//        Data datos = new Data.Builder()
+//                .putString("username", username.getText().toString())
+//                .putString("password", password.getText().toString())
+//                .build();
+
 //        OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionLogin.class)
 //                .setInputData(datos).build();
 //        WorkManager.getInstance(getBaseContext()).getWorkInfoByIdLiveData(otwr.getId())
