@@ -41,6 +41,7 @@
         android:layout_width="279dp"
         android:layout_height="42dp"
         android:ems="10"
+        android:fontFamily="@font/khand_light"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -168,4 +169,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etCumpleanosMP"
         app:layout_constraintVertical_bias="0.191" />
+
+    <ImageButton
+        android:id="@+id/iCambiarFoto"
+        android:layout_width="39dp"
+        android:layout_height="41dp"
+        android:backgroundTint="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.822"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iFotoDePerfil"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@android:drawable/ic_popup_sync" />
 </androidx.constraintlayout.widget.ConstraintLayout>

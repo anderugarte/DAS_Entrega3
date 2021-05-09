@@ -110,22 +110,13 @@ public class MenuPrincipal extends AppCompatActivity {
         LayoutInflater inflater = this.getLayoutInflater();
         View v = inflater.inflate(R.layout.dialogo_jugador2, null);
         builder.setView(v);
+        builder.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
 
         TextView j1 = (TextView) v.findViewById(R.id.tJugadorUno);
         EditText j2 = (EditText) v.findViewById(R.id.etJugadorDos);
-        Button bCancel = (Button) v.findViewById(R.id.bCancelarJugar);
         Button bJugar = (Button) v.findViewById(R.id.bJugar);
 
         j1.setText(user.toString());
-
-        bCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent mp = new Intent (getBaseContext(), MenuPrincipal.class);
-                startActivity(mp);
-                finish();
-            }
-        });
 
         bJugar.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -8,6 +8,19 @@
     tools:context=".Complementos.MiPerfil">
 
     <ImageButton
+        android:id="@+id/iCambiarFoto"
+        android:layout_width="38dp"
+        android:layout_height="40dp"
+        android:backgroundTint="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/iFotoDePerfil"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.989"
+        app:srcCompat="@android:drawable/ic_popup_sync" />
+
+    <ImageButton
         android:id="@+id/bAtras3"
         android:layout_width="50dp"
         android:layout_height="43dp"
@@ -28,13 +41,13 @@
         android:fontFamily="@font/khand_light"
         android:text="@string/nombre_de_usuario"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.67"
+        app:layout_constraintHorizontal_bias="0.64"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintVertical_bias="0.044" />
 
     <TextView
         android:id="@+id/tvNombreMP"
@@ -43,10 +56,10 @@
         android:fontFamily="@font/khand_light"
         android:text="@string/nombre"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.576"
+        app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNombreUsuarioMP"
         app:layout_constraintVertical_bias="0.0" />
@@ -54,7 +67,7 @@
     <EditText
         android:id="@+id/etNombreUsuarioMP"
         android:layout_width="281dp"
-        android:layout_height="36dp"
+        android:layout_height="43dp"
         android:ems="10"
         android:fontFamily="@font/khand_light"
         android:inputType="textPersonName"
@@ -73,10 +86,10 @@
         android:fontFamily="@font/khand_light"
         android:text="@string/contrasena"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.601"
+        app:layout_constraintHorizontal_bias="0.587"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNombreMP"
         app:layout_constraintVertical_bias="0.0" />
@@ -84,8 +97,9 @@
     <EditText
         android:id="@+id/etContrasenaMP"
         android:layout_width="279dp"
-        android:layout_height="38dp"
+        android:layout_height="42dp"
         android:ems="10"
+        android:fontFamily="@font/khand_light"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -101,10 +115,10 @@
         android:fontFamily="@font/khand_light"
         android:text="@string/fecha_de_nacimiento"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.69"
+        app:layout_constraintHorizontal_bias="0.655"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etContrasenaMP"
         app:layout_constraintVertical_bias="0.0" />
@@ -127,8 +141,8 @@
 
     <EditText
         android:id="@+id/etCumpleanosMP"
-        android:layout_width="279dp"
-        android:layout_height="36dp"
+        android:layout_width="278dp"
+        android:layout_height="40dp"
         android:clickable="true"
         android:ems="10"
         android:focusable="false"
@@ -137,7 +151,7 @@
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.847"
+        app:layout_constraintHorizontal_bias="0.845"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCumpleanosMP"
         app:layout_constraintVertical_bias="0.0" />
@@ -145,7 +159,7 @@
     <EditText
         android:id="@+id/etNombreMP"
         android:layout_width="279dp"
-        android:layout_height="38dp"
+        android:layout_height="43dp"
         android:ems="10"
         android:fontFamily="@font/khand_light"
         android:inputType="textPersonName"
