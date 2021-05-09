@@ -1,6 +1,7 @@
 package com.example.das_entregagrupal.Complementos;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.Data;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -71,7 +72,9 @@ public class MiPerfil extends AppCompatActivity {
 
     }
 
-    // Se empleara este metodo para actualixar las credenciales del usuario
+    // Se empleara este metodo para actualizar las credenciales del usuario
     private void updateUser(String u, String n, String p, String c) {
+//        Data datos = new Data.Builder().putString("username", u)
+//                .putString("nombre", n).putString("password", )
     }
 }

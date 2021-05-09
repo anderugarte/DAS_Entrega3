@@ -19,7 +19,7 @@ import java.net.URL;
 
 public class ConexionRegistro extends Worker {
 
-    // Tarea para comprobar si el usuario existe en la base de datos con el php existeUsuario.php
+    // Tarea para comprobar si el usuario existe en la base de datos con el php existeUsernameE3.php
 
     public ConexionRegistro(@NonNull Context pcontext, @NonNull WorkerParameters workerParams) {
         super(pcontext, workerParams);

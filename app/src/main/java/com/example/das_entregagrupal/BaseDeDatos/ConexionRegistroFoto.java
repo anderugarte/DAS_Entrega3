@@ -20,7 +20,7 @@ import java.net.URL;
 
 public class ConexionRegistroFoto extends Worker {
 
-    // Tarea para realizar el insert de un Usuario en la base de datos con el php registro.php
+    // Tarea para realizar el insert de un Usuario en la base de datos con el php registroUserE3.php
 
     public ConexionRegistroFoto(@NonNull Context pcontext, @NonNull WorkerParameters workerParams) {
         super(pcontext, workerParams);
