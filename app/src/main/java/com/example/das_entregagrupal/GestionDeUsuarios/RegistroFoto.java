@@ -1,21 +1,24 @@
 package com.example.das_entregagrupal.GestionDeUsuarios;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.Observer;
 import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -41,19 +44,23 @@ public class RegistroFoto extends AppCompatActivity {
     Boolean cambiado = false;
     String username,nomb,pass,date;
 
+    private static final int CODIGO_PERMISOS_CAMERA = 1;
+    private static final int CODIGO_PERMISOS_GALERIA = 2;
+    private static final String[] CAMERA_PERMISO = {Manifest.permission.CAMERA};
+    private static final String[] GALERIA_PERMISO = {Manifest.permission.READ_EXTERNAL_STORAGE};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_foto);
 
+        // Establecemos la foto de perfil por defecto
         fp = (ImageView) findViewById(R.id.iFotoPerfil);
+        fp.setImageResource(R.drawable.perfil);
 
         Button bTomarFoto = (Button) findViewById(R.id.bTFoto);
         Button bTomarGaleria = (Button) findViewById(R.id.bSIGaleria);
         Button bRegistrarse = (Button) findViewById(R.id.bRegis);
-
-        // Establecemos la foto de perfil por defecto
-        fp.setImageResource(R.drawable.perfil);
 
         // Recibimos el nombre de usuario del usuario que se ha registrado al igual que el resto de sus datos
         Bundle extras = getIntent().getExtras();
@@ -71,15 +78,27 @@ public class RegistroFoto extends AppCompatActivity {
         // Gestionar sacar una foto con la camara
         bTomarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {dispatchTakePictureIntent();}
+            public void onClick(View v) {
+                // Se comprobara si el usuario ha concedido los permisos necesarios
+                if (!comprobarPermisosCamara()){
+
+                } else {
+                    dispatchTakePictureIntent();
+                }
+            }
         });
 
         // Gestionar recoger una foto de la galeria
         bTomarGaleria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent elIntentGal = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(elIntentGal, 9999);
+                // Se comprobara si el usuario ha concedido los permisos necesarios
+                if (!comprobarPermisosGaleria()){
+
+                } else {
+                    Intent elIntentGal = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(elIntentGal, 9999);
+                }
             }
         });
 
@@ -127,6 +146,7 @@ public class RegistroFoto extends AppCompatActivity {
 
     }
 
+    // Este metodo gestionara el registro de un nuevo usuario
     private void gestionarRegistroFoto(String user, String nomb, String pass, String date, String foto) {
 
         Data datos = new Data.Builder()
@@ -212,6 +232,70 @@ public class RegistroFoto extends AppCompatActivity {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(takePictureIntent, 8888);
+        }
+    }
+
+    // Este metodo comprobara si el usuario ha concedido los permisos de la camara
+    private boolean comprobarPermisosCamara() {
+        try {
+            int permiso = ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+            if (permiso != PackageManager.PERMISSION_GRANTED) {
+                // Forzamos los permisos
+                ActivityCompat.requestPermissions(this,CAMERA_PERMISO,CODIGO_PERMISOS_CAMERA);
+            } else {
+                // El usuario ya ha concedido los permisos
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    // Este metodo comprobara si el usuario ha concedido los permisos del acceso a la galeria
+    private boolean comprobarPermisosGaleria() {
+        try {
+            int permisoG = ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+            if (permisoG != PackageManager.PERMISSION_GRANTED) {
+                // Forzamos los permisos
+                ActivityCompat.requestPermissions(this,GALERIA_PERMISO,CODIGO_PERMISOS_GALERIA);
+            } else {
+                // El usuario ya ha concedido los permisos
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    // Sobreescribiremos este metodo para saber si el usuario ha aceptado o denegado los permisos
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case CODIGO_PERMISOS_CAMERA:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Permiso concedido
+                    dispatchTakePictureIntent();
+                } else {
+                    // Permiso denegado
+                    int tiempo= Toast.LENGTH_SHORT;
+                    Toast aviso = Toast.makeText(getApplicationContext(), "Debes conceder los permisos de cámara", tiempo);
+                    aviso.setGravity(Gravity.BOTTOM| Gravity.CENTER, 0, 0);
+                    aviso.show();
+                }
+            case CODIGO_PERMISOS_GALERIA:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Permiso concedido
+                    Intent elIntentGal = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(elIntentGal, 9999);
+                } else {
+                    // Permiso denegado
+                    int tiempo= Toast.LENGTH_SHORT;
+                    Toast aviso = Toast.makeText(getApplicationContext(), "Debes conceder los permisos de la galería", tiempo);
+                    aviso.setGravity(Gravity.BOTTOM| Gravity.CENTER, 0, 0);
+                    aviso.show();
+                } break;
         }
     }
 
