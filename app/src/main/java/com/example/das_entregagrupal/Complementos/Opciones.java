@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.das_entregagrupal.MiPerfil;
 import com.example.das_entregagrupal.R;
 
 public class Opciones extends AppCompatActivity {
+
+    private String user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +24,18 @@ public class Opciones extends AppCompatActivity {
         Button bPers = (Button) findViewById(R.id.bPersonalizacion);
         Button bAyuda = (Button) findViewById(R.id.bAyuda);
 
+        // Recibimos el nombre de usuario del usuario que se ha registrado al igual que el resto de sus datos
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            user = extras.getString("username");
+        }
+
         bMiPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent mip = new Intent (getBaseContext(), MiPerfil.class);
+                mip.putExtra("username",user);
+                startActivity(mip);
             }
         });
 

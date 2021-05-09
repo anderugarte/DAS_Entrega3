@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Principal.Partida"></activity>
+        <activity android:name=".MiPerfil"></activity>
+        <activity android:name=".Principal.Partida" />
         <activity android:name=".Complementos.Personalizacion" />
         <activity android:name=".Complementos.Ayuda" />
         <activity android:name=".Complementos.Opciones" />

@@ -73,6 +73,7 @@ public class MenuPrincipal extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent o = new Intent (getBaseContext(), Opciones.class);
+                o.putExtra("username",user);
                 startActivity(o);
             }
         });

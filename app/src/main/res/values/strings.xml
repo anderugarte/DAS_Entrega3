@@ -25,4 +25,5 @@
     <string name="rendirse">Rendirse</string>
     <string name="jugar">Jugar</string>
     <string name="cancelar">Cancelar</string>
+    <string name="aplicar_cambios">Aplicar Cambios</string>
 </resources>

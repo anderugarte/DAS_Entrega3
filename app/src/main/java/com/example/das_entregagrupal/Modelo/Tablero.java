@@ -34,7 +34,7 @@ public class Tablero {
             }
             return true;
         } else {
-            JOptionPane.showMessageDialog(null, "Columna llena.");
+//            JOptionPane.showMessageDialog(null, "Columna llena.");
             return false;
         }
     }
@@ -225,11 +225,11 @@ public class Tablero {
         }
         this.matriz.get(i).buscarCasilla(aleat).cambiarEstado('P');
         if (idioma == "Espanol") {
-            JOptionPane.showMessageDialog(null, "¡Vaya! Alguien ha bloqueado la casilla (" + (7 - (aleat + 1)) + ", "
-                    + (i + 1) + " ). Espero que no os haya molestado.");
+//            JOptionPane.showMessageDialog(null, "¡Vaya! Alguien ha bloqueado la casilla (" + (7 - (aleat + 1)) + ", "
+//                    + (i + 1) + " ). Espero que no os haya molestado.");
         } else {
-            JOptionPane.showMessageDialog(null, "¡Damn! Someone has blocked the (" + (7 - (aleat + 1)) + ", " + (i + 1)
-                    + " ) square. Hope it hasn't bothered you.");
+//            JOptionPane.showMessageDialog(null, "¡Damn! Someone has blocked the (" + (7 - (aleat + 1)) + ", " + (i + 1)
+//                    + " ) square. Hope it hasn't bothered you.");
         }
 
     }
