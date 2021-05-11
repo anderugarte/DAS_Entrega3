@@ -38,6 +38,6 @@ if (strlen($fila[0])==0) {
     echo 'existe'; // existe
 }
 
-
+mysqli_close($con);
 
 ?>

@@ -18,23 +18,20 @@ exit();
 $parametros = json_decode(file_get_contents('php://input'), true);
 $username = $parametros['username'];
 $nombre = $parametros['nombre'];
-$password = $parametros['password'];
+$password = $password['password'];
 $cumple = $parametros['cumple'];
-$image = $parametros['foto'];
-
-#Hash password
-$passwordHash = password_hash($password, PASSWORD_DEFAULT);
+$iamge = $parametros['foto'];
 
 # Sentencia SQL
-$sql = "INSERT INTO Usuarios VALUES (?,?,?,?,?)";
-$stmt = mysqli_prepare($con,$sql);
-mysqli_stmt_bind_param($stmt,"sssss",$username,$nombre,$passwordHash,$cumple,$image);
-mysqli_stmt_execute($stmt);
+$sql = "UPDATE Usuarios SET Username = $username, Nombre = $nombre, Password = $password, Cumple = $cumple, Foto = $image WHERE Username = $username";
 
-# Comprobar si se ha ejecutado correctamente
-if (mysqli_stmt_errno($stmt)!=0) {
-echo 'Error de sentencia: ' . mysqli_stmt_error($stmt);
-} else { echo 'true'; }
+#Ejecutar sentencia SQL para hacer UPDATE
+if (mysqli_query($con, $sql)) {
+    echo "done";
+} else {
+    echo "fail" . mysqli_error($con);
+}
+ mysqli_close($con);
 
-mysqli_close($con);
+
 ?>

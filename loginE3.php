@@ -18,25 +18,30 @@ exit();
 #Exitosa
 $parametros = json_decode(file_get_contents('php://input'), true);
 $username = $parametros['username'];
-$password = $parametros['password'];
+$password = $parametros["password"];
 
 #Ejecutar sentencia SQL
-$resultado = mysqli_query($con, "SELECT (Password) FROM Usuarios WHERE Username ='$username'");
+$resultado = mysqli_query($con, "SELECT Password FROM Usuarios WHERE Username ='$username'");
 
 # Comprobar si se ha ejecutado correctamente
 if (!$resultado) {
     echo 'Ha ocurrido algún error: ' . mysqli_error($con);
-}
-
-#Acceder al resultado
-$fila = mysqli_fetch_row($resultado);
-
-
-if(password_verify($password, $fila[0])) {
-    echo 'logOK';
 } else {
-   echo 'logError';
+    #Acceder al resultado
+    $fila = mysqli_fetch_row($resultado);
+    $hash = $fila[0];
+
+    if (password_verify($password, $hash)) {
+        echo 'logOK';
+    } else {
+        echo 'password introducida: ' . $password ."\n";
+        echo 'password DB: ' . $hash;
+
+    }
+
 }
+
+mysqli_close($con);
 
 ?>
 
