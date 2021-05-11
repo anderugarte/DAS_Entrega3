@@ -26,4 +26,7 @@
     <string name="jugar">Jugar</string>
     <string name="cancelar">Cancelar</string>
     <string name="aplicar_cambios">Aplicar Cambios</string>
+    <string name="modo_facil">Modo Fácil</string>
+    <string name="modo_dificil">Modo Difícil</string>
+    <string name="selecciona_la_dificultad">Selecciona la dificultad</string>
 </resources>

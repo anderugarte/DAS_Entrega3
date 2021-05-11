@@ -81,6 +81,7 @@ public class MiPerfil extends AppCompatActivity {
         // Configuracion de los botones
         Button bModificar = (Button) findViewById(R.id.bModificar);
 
+        // Modificar los datos del usuario
         bModificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,6 +113,7 @@ public class MiPerfil extends AppCompatActivity {
 
     }
 
+    // Se genara un dialogo para modificar la foto de perfil del usuario
     public AlertDialog createDialogoCF() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -123,6 +125,7 @@ public class MiPerfil extends AppCompatActivity {
         Button bTFoto = (Button) v.findViewById(R.id.bTomarFoto);
         Button bSGaleria = (Button) v.findViewById(R.id.bSeleccionarGaleria);
 
+        // El usuario desea tomar una foto con su camara
         bTFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,9 +136,11 @@ public class MiPerfil extends AppCompatActivity {
             }
         });
 
+        // El usuario desea seleccionar una foto de su galeria
         bSGaleria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Se comprobara si el usuario ha concedido los permisos necesarios
                 if (comprobarPermisosGaleria()){
                     Intent elIntentGal = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(elIntentGal, 9999);
@@ -173,6 +178,7 @@ public class MiPerfil extends AppCompatActivity {
                                 startActivity(o1);
                                 finish();
                             } else {
+                                // Ha sucedio un error
                                 String text = "Ha ocurrido un error";
                                 Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
                                 toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);

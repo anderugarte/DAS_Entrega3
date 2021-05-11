@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ import com.example.das_entregagrupal.R;
 public class MenuPrincipal extends AppCompatActivity {
 
     private AlertDialog.Builder alertDialogBuilder;
+    Boolean estadoF, estadoD = false;
     private Context context;
     private String user;
 
@@ -44,17 +46,16 @@ public class MenuPrincipal extends AppCompatActivity {
             user = extras.getString("username");
         }
 
+        // Jugar contra la IA
         bJContraIA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Iniciar partida contra la IA
-                Intent jIA = new Intent (getBaseContext(), Partida.class);
-                jIA.putExtra("jugador1",user);
-                jIA.putExtra("jugador2","Ordenador");
-                startActivity(jIA);
+                // El usuario debe seleccionar la dificultad de la IA
+                createDialogoIA().show();
             }
         });
 
+        // Jugar 2 jugadores
         bJ2Jugadores.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +63,7 @@ public class MenuPrincipal extends AppCompatActivity {
             }
         });
 
+        // Jugar online
         bJOnline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +71,7 @@ public class MenuPrincipal extends AppCompatActivity {
             }
         });
 
+        // Acceder al menu de opciones
         bOpciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +81,7 @@ public class MenuPrincipal extends AppCompatActivity {
             }
         });
 
+        // Acceder al manual de ayuda
         iAyuda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +92,8 @@ public class MenuPrincipal extends AppCompatActivity {
 
     }
 
+    // Cuando el usuario pulse el boton "Atras" de su dispositivo movil,
+    // le preguntaremos si desea cerrar sesion.
     @Override
     public void onBackPressed(){
         alertDialogBuilder = new AlertDialog.Builder(this);
@@ -104,6 +110,7 @@ public class MenuPrincipal extends AppCompatActivity {
                 .setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel()).create().show();
     }
 
+    // Dialogo que gestiona la introduccion del nombre del segundo jugador
     public AlertDialog createDialogo2J() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -137,6 +144,46 @@ public class MenuPrincipal extends AppCompatActivity {
         });
 
         return builder.create();
+
+    }
+
+    // Dialogo que gestiona la eleccion de dificultad de la IA
+    private AlertDialog createDialogoIA() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View v = inflater.inflate(R.layout.dialogo_dificultad, null);
+        builder.setView(v);
+        builder.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
+
+        RadioButton facil = (RadioButton) findViewById(R.id.rbFacil);
+        estadoF = facil.isChecked();
+        RadioButton dificil = (RadioButton) findViewById(R.id.rbDificil);
+        estadoD = dificil.isChecked();
+        Button bJugarDifi = (Button) v.findViewById(R.id.bJugarDifi);
+
+        bJugarDifi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Comprobamos la dificultad seleccionada
+                if (estadoF) {
+                    // Iniciar partida contra la IA en modo facil
+                    Intent jIA = new Intent (getBaseContext(), Partida.class);
+                    jIA.putExtra("jugador1",user);
+                    jIA.putExtra("jugador2","Ordenador");
+                    startActivity(jIA);
+                } else if (estadoD) {
+                    // Iniciar partida contra la IA en modo dificil
+                    Intent jIA = new Intent (getBaseContext(), Partida.class);
+                    jIA.putExtra("jugador1",user);
+                    jIA.putExtra("jugador2","Ordenador");
+                    startActivity(jIA);
+                }
+            }
+        });
+
+        return builder.create();
+
     }
 
 }
