@@ -80,9 +80,7 @@ public class RegistroFoto extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Se comprobara si el usuario ha concedido los permisos necesarios
-                if (!comprobarPermisosCamara()){
-
-                } else {
+                if (comprobarPermisosCamara()){
                     dispatchTakePictureIntent();
                 }
             }
@@ -93,9 +91,7 @@ public class RegistroFoto extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Se comprobara si el usuario ha concedido los permisos necesarios
-                if (!comprobarPermisosGaleria()){
-
-                } else {
+                if (comprobarPermisosGaleria()){
                     Intent elIntentGal = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(elIntentGal, 9999);
                 }
@@ -272,6 +268,7 @@ public class RegistroFoto extends AppCompatActivity {
     // Sobreescribiremos este metodo para saber si el usuario ha aceptado o denegado los permisos
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case CODIGO_PERMISOS_CAMERA:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -283,7 +280,7 @@ public class RegistroFoto extends AppCompatActivity {
                     Toast aviso = Toast.makeText(getApplicationContext(), "Debes conceder los permisos de cámara", tiempo);
                     aviso.setGravity(Gravity.BOTTOM| Gravity.CENTER, 0, 0);
                     aviso.show();
-                }
+                } break;
             case CODIGO_PERMISOS_GALERIA:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // Permiso concedido
