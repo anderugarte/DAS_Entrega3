@@ -31,7 +31,7 @@ public class ConexionLogin extends Worker {
         String username = getInputData().getString("username");
         String password = getInputData().getString("password");
 
-        String direccion = "http://ec2-54-167-31-169.compute-1.amazonaws.com/igonzalez274/WEB/loginE3.php";
+        String direccion = "http://ec2-54-167-31-169.compute-1.amazonaws.com/igonzalez274/WEB/Entrega3/loginE3.php";
         String result = "";
         Data resultados = null;
         HttpURLConnection urlConnection = null;
