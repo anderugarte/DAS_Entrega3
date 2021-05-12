@@ -25,7 +25,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.das_entregagrupal.BaseDeDatos.ConexionRegistroFoto;
+import com.example.das_entregagrupal.BaseDeDatos.ConexionRegistro;
 import com.example.das_entregagrupal.Principal.MenuPrincipal;
 import com.example.das_entregagrupal.R;
 
@@ -33,7 +33,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
-import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -153,7 +152,7 @@ public class RegistroFoto extends AppCompatActivity {
                 .putString("fotoperfil",foto)
                 .build();
 
-        OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionRegistroFoto.class)
+        OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionRegistro.class)
                 .setInputData(datos)
                 .build();
 

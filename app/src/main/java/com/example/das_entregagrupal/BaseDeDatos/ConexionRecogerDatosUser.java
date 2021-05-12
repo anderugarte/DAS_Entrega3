@@ -9,6 +9,8 @@ import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -18,11 +20,11 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ConexionRegistro extends Worker {
+public class ConexionRecogerDatosUser extends Worker {
 
-    // Tarea para realizar el insert de un Usuario en la base de datos con el php registroUserE3.php
+    // Tarea para recoger los datos de un Usuario en la base de datos con el php recogerDatosUserE3.php
 
-    public ConexionRegistro(@NonNull Context pcontext, @NonNull WorkerParameters workerParams) {
+    public ConexionRecogerDatosUser(@NonNull Context pcontext, @NonNull WorkerParameters workerParams) {
         super(pcontext, workerParams);
     }
 
@@ -30,13 +32,8 @@ public class ConexionRegistro extends Worker {
     @Override
     public Result doWork() {
         String username = getInputData().getString("username");
-        String nombre = getInputData().getString("nombre");
-        String password = getInputData().getString("password");
-        String cumple = getInputData().getString("cumpleanos");
-        String foto = getInputData().getString("fotoperfil");
 
-
-        String direccion = "http://ec2-54-167-31-169.compute-1.amazonaws.com/igonzalez274/WEB/Entrega3/registroUserE3.php";
+        String direccion = "http://ec2-54-167-31-169.compute-1.amazonaws.com/igonzalez274/WEB/Entrega3/recogerDatosUserE3.php";
         String result = "";
         Data resultados = null;
         HttpURLConnection urlConnection = null;
@@ -49,10 +46,6 @@ public class ConexionRegistro extends Worker {
             urlConnection.setDoOutput(true);
             JSONObject parametrosJSON = new JSONObject();
             parametrosJSON.put("username", username);
-            parametrosJSON.put("nombre", nombre);
-            parametrosJSON.put("password",password);
-            parametrosJSON.put("cumple", cumple);
-            parametrosJSON.put("foto", foto);
             urlConnection.setRequestProperty("Content-Type","application/json");
             PrintWriter out = new PrintWriter(urlConnection.getOutputStream());
             out.print(parametrosJSON.toJSONString());
@@ -69,13 +62,24 @@ public class ConexionRegistro extends Worker {
                 }
                 inputStream.close();
 
+                JSONParser parser = new JSONParser();
+                JSONObject json = (JSONObject) parser.parse(result);
+
+                String userDB = (String) json.get("username");
+                String nombre = (String) json.get("nombre");
+                String cumple = (String) json.get("cumple");
+                String foto = (String) json.get("foto");
+
                 resultados = new Data.Builder()
-                        .putString("result", result)
+                        .putString("username", userDB)
+                        .putString("nombre", nombre)
+                        .putString("cumple", cumple)
+                        .putString("foto", foto)
                         .build();
 
             }
 
-        } catch (IOException e) {
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
         return ListenableWorker.Result.success(resultados);

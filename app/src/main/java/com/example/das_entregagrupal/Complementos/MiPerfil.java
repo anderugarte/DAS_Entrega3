@@ -27,12 +27,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.das_entregagrupal.BaseDeDatos.ConexionRegistro;
+import com.example.das_entregagrupal.BaseDeDatos.ConexionExisteUsuario;
 import com.example.das_entregagrupal.BaseDeDatos.ConexionUpdateUser;
-import com.example.das_entregagrupal.Complementos.Opciones;
-import com.example.das_entregagrupal.Complementos.Personalizacion;
-import com.example.das_entregagrupal.GestionDeUsuarios.RegistroFoto;
-import com.example.das_entregagrupal.Principal.MenuPrincipal;
 import com.example.das_entregagrupal.R;
 
 import java.io.ByteArrayOutputStream;
@@ -77,6 +73,9 @@ public class MiPerfil extends AppCompatActivity {
 
         // Poner el nombre de usuario en el campo correspondiente
         nombreUsuarioMP.setText(user);
+
+        // Recoger los datos de la BD
+        recogerDatos();
 
         // Configuracion de los botones
         Button bModificar = (Button) findViewById(R.id.bModificar);
@@ -198,7 +197,7 @@ public class MiPerfil extends AppCompatActivity {
                 .putString("username", nombreUsuarioMP.getText().toString())
                 .build();
 
-        OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionRegistro.class)
+        OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionExisteUsuario.class)
                 .setInputData(datos).build();
 
         WorkManager.getInstance(getBaseContext()).getWorkInfoByIdLiveData(otwr.getId())
@@ -211,7 +210,7 @@ public class MiPerfil extends AppCompatActivity {
                                 // Intent foto
                                 updateUser();
                             } else {
-                                // Ese nombre de usuario está en uso, pero puede ser el mismo usuario
+                                // Ese nombre de usuario está en uso, pero es el mismo usuario
                                 if (nombreUsuarioMP.getText().toString().equals(user)) {
                                     // Es el mismo usuario
                                     updateUser();
@@ -227,6 +226,34 @@ public class MiPerfil extends AppCompatActivity {
                     }
                 });
         WorkManager.getInstance(getBaseContext()).enqueue(otwr);
+    }
+
+    private void recogerDatos() {
+
+        Data datos = new Data.Builder()
+                .putString("username", nombreUsuarioMP.getText().toString())
+                .build();
+
+        OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionExisteUsuario.class)
+                .setInputData(datos).build();
+
+        WorkManager.getInstance(getBaseContext()).getWorkInfoByIdLiveData(otwr.getId())
+                .observe(this, new Observer<WorkInfo>() {
+                    @Override
+                    public void onChanged(WorkInfo workInfo) {
+                        if (workInfo != null && workInfo.getState().isFinished()) {
+                            if (workInfo.getOutputData().getString("username").equals(user)) {
+                                // Se han recogido correctamente los datos
+                                // -> Asignamos los valores a los EditText
+                                nombreMP.setText(workInfo.getOutputData().getString("nombre"));
+                                cumpleanosMP.setText(workInfo.getOutputData().getString("cumple"));
+//                                foto.setImageURI(); asignarle la foto de workInfo.getOutputData().getString("foto")
+                            }
+                        }
+                    }
+                });
+        WorkManager.getInstance(getBaseContext()).enqueue(otwr);
+
     }
 
     @Override

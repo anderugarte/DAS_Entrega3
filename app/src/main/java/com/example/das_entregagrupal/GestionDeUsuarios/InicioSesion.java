@@ -9,8 +9,6 @@ import androidx.work.WorkManager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.AutoText;
-import android.text.Editable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -19,7 +17,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.das_entregagrupal.BaseDeDatos.ConexionLogin;
-import com.example.das_entregagrupal.BaseDeDatos.ConexionRegistro;
+import com.example.das_entregagrupal.BaseDeDatos.ConexionExisteUsuario;
 import com.example.das_entregagrupal.Principal.MenuPrincipal;
 import com.example.das_entregagrupal.R;
 
@@ -51,21 +49,57 @@ public class InicioSesion extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (username.getText().toString().equals("")) {
+                    // Si el campo del usuario está vacio aparecerá un Toast avisando
                     String text = "Nombre de usuario vacío";
                     Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
                     toast.show();
                 } else if (password.getText().toString().equals("")) {
+                    // Si el campo de la contraseña está vacio aparecerá un Toast avisando
                     String text = "Contraseña vacía";
                     Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
                     toast.show();
                 } else {
-                    // INICIAR SESIÓN
-                    iniciarSesion();
+                    // Primero comprobamos si existe ese usuario en la BD
+                    // Si existe se hara el inicio de sesión
+                    // Si no aparecerá un Toast
+                    comprobarSiExisteUsuario();
                 }
+
+
             }
         });
+
+    }
+
+    private void comprobarSiExisteUsuario() {
+        Data datos = new Data.Builder()
+                .putString("username", username.getText().toString())
+                .build();
+
+        OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionExisteUsuario.class)
+                .setInputData(datos).build();
+
+        WorkManager.getInstance(getBaseContext()).getWorkInfoByIdLiveData(otwr.getId())
+                .observe(this, new Observer<WorkInfo>() {
+                    @Override
+                    public void onChanged(WorkInfo workInfo) {
+                        if (workInfo != null && workInfo.getState().isFinished()) {
+                            if (workInfo.getOutputData().getString("result").equals("existe")) {
+                                // INICIAR SESIÓN
+                                iniciarSesion();
+                            } else {
+                                String text = "No existe ese usuario";
+                                Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
+                                toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
+                                toast.show();
+                            }
+                        }
+
+                    }
+                });
+        WorkManager.getInstance(getBaseContext()).enqueue(otwr);
 
     }
 
@@ -77,6 +111,7 @@ public class InicioSesion extends AppCompatActivity {
 
         OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionLogin.class)
                 .setInputData(datos).build();
+
         WorkManager.getInstance(getBaseContext()).getWorkInfoByIdLiveData(otwr.getId())
                 .observe(this, new Observer<WorkInfo>() {
                     @Override
@@ -90,7 +125,7 @@ public class InicioSesion extends AppCompatActivity {
                                 startActivity(mp);
                                 finish();
                             } else {
-                                String text = "Usuario o contraseña incorrectos";
+                                String text = "Contraseña incorrecta";
                                 Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
                                 toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
                                 toast.show();

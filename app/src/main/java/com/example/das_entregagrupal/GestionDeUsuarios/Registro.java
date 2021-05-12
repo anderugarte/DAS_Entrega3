@@ -2,7 +2,6 @@ package com.example.das_entregagrupal.GestionDeUsuarios;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +15,7 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
-import com.example.das_entregagrupal.BaseDeDatos.ConexionRegistro;
+import com.example.das_entregagrupal.BaseDeDatos.ConexionExisteUsuario;
 import com.example.das_entregagrupal.Complementos.ClaseDialogoFecha;
 import com.example.das_entregagrupal.R;
 
@@ -96,7 +95,7 @@ public class Registro extends AppCompatActivity {
 
     private void comprobarSiExiste() {
         Data datos = new Data.Builder().putString("username", etUsuario.getText().toString()).build();
-        OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionRegistro.class)
+        OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionExisteUsuario.class)
                 .setInputData(datos).build();
         WorkManager.getInstance(getBaseContext()).getWorkInfoByIdLiveData(otwr.getId())
                 .observe(this, new Observer<WorkInfo>() {
