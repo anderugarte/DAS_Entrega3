@@ -114,7 +114,7 @@ public class RegistroFoto extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             // Crear cuenta sin foto de perfil
-                            gestionarRegistroFoto(username, nomb, pass, date, fp.toString());
+                            gestionarRegistroFoto();
 
                             Intent mp = new Intent(getBaseContext(), MenuPrincipal.class);
                             mp.putExtra("username",username);
@@ -134,7 +134,7 @@ public class RegistroFoto extends AppCompatActivity {
 
                 } else {
                     // Crear cuenta con foto de perfil
-                    gestionarRegistroFoto(username, nomb, pass, date, fp.toString());
+                    gestionarRegistroFoto();
                 }
             }
         });
@@ -142,14 +142,14 @@ public class RegistroFoto extends AppCompatActivity {
     }
 
     // Este metodo gestionara el registro de un nuevo usuario
-    private void gestionarRegistroFoto(String user, String nomb, String pass, String date, String foto) {
+    private void gestionarRegistroFoto() {
 
         Data datos = new Data.Builder()
-                .putString("username",user)
+                .putString("username",username)
                 .putString("nombre",nomb)
                 .putString("password",pass)
                 .putString("cumpleanos",date)
-                .putString("fotoperfil",foto)
+                .putString("fotoperfil",fp.toString())
                 .build();
 
         OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionRegistro.class)
@@ -164,12 +164,11 @@ public class RegistroFoto extends AppCompatActivity {
                             if (workInfo.getOutputData().getString("result").equals("true")) {
                                 // Registro correcto
                                 Intent mp = new Intent (getBaseContext(), MenuPrincipal.class);
-                                mp.putExtra("username", user);
+                                mp.putExtra("username", username);
                                 startActivity(mp);
                                 finish();
                             } else {
                                 // Registro incorrecto
-
                                 int tiempo= Toast.LENGTH_SHORT;
                                 Toast aviso = Toast.makeText(getApplicationContext(), "Error", tiempo);
                                 aviso.setGravity(Gravity.BOTTOM| Gravity.CENTER, 0, 0);

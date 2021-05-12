@@ -108,7 +108,7 @@ public class Registro extends AppCompatActivity {
                                 Intent iFoto = new Intent(getBaseContext(), RegistroFoto.class);
                                 iFoto.putExtra("username", etUsuario.getText().toString());
                                 iFoto.putExtra("nomb", etNombre.getText().toString());
-                                iFoto.putExtra("pass", etCumple.getText().toString());
+                                iFoto.putExtra("pass", etContrasena.getText().toString());
                                 iFoto.putExtra("date", etCumple.getText().toString());
                                 startActivity(iFoto);
                             } else {
