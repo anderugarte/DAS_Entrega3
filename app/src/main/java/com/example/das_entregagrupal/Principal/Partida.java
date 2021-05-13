@@ -15,7 +15,7 @@ import com.example.das_entregagrupal.R;
 public class Partida extends AppCompatActivity {
 
     private AlertDialog.Builder alertDialogBuilder;
-    private String jugador1, jugador2;
+    private String jugador1, jugador2, dificultad;
     private Context context;
 
     @Override
@@ -34,6 +34,7 @@ public class Partida extends AppCompatActivity {
         if (extras != null) {
             jugador1 = extras.getString("jugador1");
             jugador2 = extras.getString("jugador2");
+            dificultad = extras.getString("dificultad");
         }
 
         // Escribimos los datos de los jugadores

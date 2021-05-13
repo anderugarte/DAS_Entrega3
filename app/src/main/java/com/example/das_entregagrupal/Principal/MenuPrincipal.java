@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,9 +25,11 @@ import com.example.das_entregagrupal.R;
 public class MenuPrincipal extends AppCompatActivity {
 
     private AlertDialog.Builder alertDialogBuilder;
-    Boolean estadoF, estadoD = false;
+    private Boolean estadoF, estadoD = false;
     private Context context;
     private String user;
+
+    private RadioButton facil, dificil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,29 +160,31 @@ public class MenuPrincipal extends AppCompatActivity {
         builder.setView(v);
         builder.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
 
-        RadioButton facil = (RadioButton) findViewById(R.id.rbFacil);
-        estadoF = facil.isChecked();
-        RadioButton dificil = (RadioButton) findViewById(R.id.rbDificil);
-        estadoD = dificil.isChecked();
+        facil = (RadioButton) v.findViewById(R.id.rbFacil);
+        dificil = (RadioButton) v.findViewById(R.id.rbDificil);
         Button bJugarDifi = (Button) v.findViewById(R.id.bJugarDifi);
 
         bJugarDifi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 // Comprobamos la dificultad seleccionada
-                if (estadoF) {
-                    // Iniciar partida contra la IA en modo facil
-                    Intent jIA = new Intent (getBaseContext(), Partida.class);
-                    jIA.putExtra("jugador1",user);
-                    jIA.putExtra("jugador2","Ordenador");
-                    startActivity(jIA);
-                } else if (estadoD) {
-                    // Iniciar partida contra la IA en modo dificil
-                    Intent jIA = new Intent (getBaseContext(), Partida.class);
-                    jIA.putExtra("jugador1",user);
-                    jIA.putExtra("jugador2","Ordenador");
-                    startActivity(jIA);
+                if (facil.isChecked()){
+                    Intent p = new Intent(getBaseContext(), Partida.class);
+                    p.putExtra("jugador1", user.toString());
+                    p.putExtra("jugador2", "Ordenador");
+                    p.putExtra("dificultad","facil");
+                    startActivity(p);
+                    finish();
+                } else if (dificil.isChecked()) {
+                    Intent p = new Intent(getBaseContext(), Partida.class);
+                    p.putExtra("jugador1", user.toString());
+                    p.putExtra("jugador2", "Ordenador");
+                    p.putExtra("dificultad","dificil");
+                    startActivity(p);
+                    finish();
                 }
+
             }
         });
 

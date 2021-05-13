@@ -7,13 +7,13 @@
 
     <TextView
         android:id="@+id/tDificultad"
-        android:layout_width="185dp"
-        android:layout_height="35dp"
+        android:layout_width="238dp"
+        android:layout_height="37dp"
         android:fontFamily="@font/khand_light"
         android:gravity="center"
         android:text="@string/selecciona_la_dificultad"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,8 +22,8 @@
 
     <RadioGroup
         android:id="@+id/rGroup"
-        android:layout_width="206dp"
-        android:layout_height="31dp"
+        android:layout_width="258dp"
+        android:layout_height="40dp"
         android:layout_marginTop="25dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,24 +34,24 @@
 
         <RadioButton
             android:id="@+id/rbFacil"
-            android:checked="true"
-            android:layout_width="105dp"
+            android:layout_width="128dp"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:fontFamily="@font/khand_light"
             android:text="@string/modo_facil"
             android:textColor="#000000"
-            android:textSize="16sp" />
+            android:textSize="20sp" />
 
         <RadioButton
             android:id="@+id/rbDificil"
-            android:checked="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:checked="false"
             android:fontFamily="@font/khand_light"
             android:text="@string/modo_dificil"
             android:textColor="#000000"
-            android:textSize="16sp" />
+            android:textSize="20sp" />
     </RadioGroup>
 
     <Button
@@ -68,5 +68,5 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rGroup"
-        app:layout_constraintVertical_bias="0.033" />
+        app:layout_constraintVertical_bias="0.065" />
 </androidx.constraintlayout.widget.ConstraintLayout>
