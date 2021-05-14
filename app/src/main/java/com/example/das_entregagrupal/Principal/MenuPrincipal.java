@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -158,35 +159,28 @@ public class MenuPrincipal extends AppCompatActivity {
         LayoutInflater inflater = this.getLayoutInflater();
         View v = inflater.inflate(R.layout.dialogo_dificultad, null);
         builder.setView(v);
+        builder.setPositiveButton("Jugar", (dialog, which) -> {
+            // Comprobamos la dificultad seleccionada
+            if (facil.isChecked()){
+                Intent p = new Intent(getBaseContext(), Partida.class);
+                p.putExtra("jugador1", user.toString());
+                p.putExtra("jugador2", "Ordenador");
+                p.putExtra("dificultad","facil");
+                startActivity(p);
+                finish();
+            } else if (dificil.isChecked()) {
+                Intent p = new Intent(getBaseContext(), Partida.class);
+                p.putExtra("jugador1", user.toString());
+                p.putExtra("jugador2", "Ordenador");
+                p.putExtra("dificultad","dificil");
+                startActivity(p);
+                finish();
+            }
+        });
         builder.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
 
         facil = (RadioButton) v.findViewById(R.id.rbFacil);
         dificil = (RadioButton) v.findViewById(R.id.rbDificil);
-        Button bJugarDifi = (Button) v.findViewById(R.id.bJugarDifi);
-
-        bJugarDifi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                // Comprobamos la dificultad seleccionada
-                if (facil.isChecked()){
-                    Intent p = new Intent(getBaseContext(), Partida.class);
-                    p.putExtra("jugador1", user.toString());
-                    p.putExtra("jugador2", "Ordenador");
-                    p.putExtra("dificultad","facil");
-                    startActivity(p);
-                    finish();
-                } else if (dificil.isChecked()) {
-                    Intent p = new Intent(getBaseContext(), Partida.class);
-                    p.putExtra("jugador1", user.toString());
-                    p.putExtra("jugador2", "Ordenador");
-                    p.putExtra("dificultad","dificil");
-                    startActivity(p);
-                    finish();
-                }
-
-            }
-        });
 
         return builder.create();
 
