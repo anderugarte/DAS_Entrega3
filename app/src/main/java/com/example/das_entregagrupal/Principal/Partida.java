@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -30,7 +31,6 @@ public class Partida extends AppCompatActivity {
 
         TextView j1 = (TextView) findViewById(R.id.tJugador1);
         TextView j2 = (TextView) findViewById(R.id.tJugador2);
-        Button bRendir = (Button) findViewById(R.id.bRendirse);
 
         // Recibimos los nombres de los jugadores
         Bundle extras = getIntent().getExtras();
@@ -45,6 +45,7 @@ public class Partida extends AppCompatActivity {
         j2.setText(jugador2);
 
         // Pulsando este boton se finalizara la partida
+        Button bRendir = (Button) findViewById(R.id.bRendirse);
         bRendir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +72,18 @@ public class Partida extends AppCompatActivity {
                 createDialogoAyudaEnPartida().show();
             }
         });
+
+        //
+        Button bCmplm = (Button) findViewById(R.id.bComeplomo);
+        bCmplm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        ImageView iComeplomo = (ImageView) findViewById(R.id.iconCmplm);
+        TextView numC = (TextView) findViewById(R.id.numComeplomos);
 
     }
 

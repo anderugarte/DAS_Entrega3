@@ -7,13 +7,28 @@
     android:background="@drawable/fondopartida"
     tools:context=".Principal.Partida">
 
+    <TextView
+        android:id="@+id/tTurno"
+        android:layout_width="226dp"
+        android:layout_height="33dp"
+        android:fontFamily="@font/khand_light"
+        android:gravity="center"
+        android:text="¡Es tu turno !"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.171" />
+
     <Button
         android:id="@+id/bComeplomo"
-        android:layout_width="199dp"
-        android:layout_height="61dp"
+        android:layout_width="90dp"
+        android:layout_height="65dp"
         android:backgroundTint="#00FFFFFF"
         android:fontFamily="@font/khand_light"
-        android:text="Usar Comeplomo"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -97,5 +112,49 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.007"
         app:srcCompat="@android:drawable/ic_menu_help" />
+
+    <ImageView
+        android:id="@+id/iconCmplm"
+        android:layout_width="50dp"
+        android:layout_height="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.019"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.992"
+        app:srcCompat="@drawable/iconocomeplomo" />
+
+    <TextView
+        android:id="@+id/numComeplomos"
+        android:layout_width="29dp"
+        android:layout_height="64dp"
+        android:fontFamily="@font/khand_light"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/iconCmplm"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tNoticias"
+        android:layout_width="288dp"
+        android:layout_height="37dp"
+        android:fontFamily="@font/khand_light"
+        android:gravity="center"
+        android:text="¡Bienvenidos jugadores!"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.104" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
