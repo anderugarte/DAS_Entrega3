@@ -189,8 +189,28 @@ public class Partida extends AppCompatActivity {
             }
         });
 
+        // Gestion de comeplomos
         ImageView iComeplomo = (ImageView) findViewById(R.id.iconCmplm);
         TextView numC = (TextView) findViewById(R.id.numComeplomos);
+
+        // Gestion del turno
+//        if () {
+//            turno.setText("¡Es tu turno " + j1.getText().toString());
+//        } else {
+//            turno.setText("¡Es tu turno " + j2.getText().toString());
+//        }
+
+        // Gestion de eventos
+//        if () {
+//            evento.setTextSize(24);
+//            evento.setText("Achuuuusss! Ups, se me han volado las fichas. Vais a tener que volver a empezar...");
+//        } else if () {
+//            evento.setTextSize(24);
+//            evento.setText("Parece que alguien a abducido la comuna " + (num+1) + " entera...");
+//        } else if () {
+//            evento.setTextSize(24);
+//            evento.setText("Para vosotros jugadores. Una ficha comeplomo para los dos.");
+//        }
 
     }
 
@@ -200,6 +220,7 @@ public class Partida extends AppCompatActivity {
         LayoutInflater inflater = this.getLayoutInflater();
         View v = inflater.inflate(R.layout.dialogo_ayudaenpartida, null);
         builder.setView(v);
+        builder.setCancelable(false);
         builder.setPositiveButton("Aceptar", (dialog, which) -> dialog.cancel());
         return builder.create();
 

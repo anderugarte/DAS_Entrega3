@@ -12,7 +12,7 @@
         android:layout_height="162dp"
         android:fontFamily="@font/khand_light"
         android:scrollbars="vertical"
-        android:text="Texto con la ayuda"
+        android:text="@string/ayuda_en_partida"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
