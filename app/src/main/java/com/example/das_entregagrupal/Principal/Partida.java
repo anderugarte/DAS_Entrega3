@@ -29,6 +29,9 @@ public class Partida extends AppCompatActivity {
 
         context = this;
 
+        ImageView i8 = findViewById(R.id.imageView8);
+        i8.setImageResource(R.drawable.perfil);
+
         TextView j1 = (TextView) findViewById(R.id.tJugador1);
         TextView j2 = (TextView) findViewById(R.id.tJugador2);
 
