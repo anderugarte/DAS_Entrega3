@@ -142,7 +142,7 @@
     <EditText
         android:id="@+id/etCumpleanosMP"
         android:layout_width="278dp"
-        android:layout_height="40dp"
+        android:layout_height="43dp"
         android:clickable="true"
         android:ems="10"
         android:focusable="false"

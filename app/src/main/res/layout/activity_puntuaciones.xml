@@ -12,7 +12,7 @@
         android:layout_width="81dp"
         android:layout_height="62dp"
         android:fontFamily="@font/khand_light"
-        android:gravity="center"
+        android:gravity="center|left"
         android:text="0"
         android:textColor="#000000"
         android:textSize="34sp"
@@ -28,7 +28,7 @@
         android:layout_width="81dp"
         android:layout_height="62dp"
         android:fontFamily="@font/khand_light"
-        android:gravity="center"
+        android:gravity="center|left"
         android:text="0"
         android:textColor="#000000"
         android:textSize="34sp"
@@ -44,7 +44,7 @@
         android:layout_width="81dp"
         android:layout_height="62dp"
         android:fontFamily="@font/khand_light"
-        android:gravity="center"
+        android:gravity="center|left"
         android:text="0"
         android:textColor="#000000"
         android:textSize="34sp"
@@ -60,7 +60,7 @@
         android:layout_width="81dp"
         android:layout_height="62dp"
         android:fontFamily="@font/khand_light"
-        android:gravity="center"
+        android:gravity="center|left"
         android:text="0"
         android:textColor="#000000"
         android:textSize="34sp"
@@ -76,7 +76,7 @@
         android:layout_width="81dp"
         android:layout_height="62dp"
         android:fontFamily="@font/khand_light"
-        android:gravity="center"
+        android:gravity="center|left"
         android:text="0"
         android:textColor="#000000"
         android:textSize="34sp"
@@ -103,7 +103,7 @@
 
     <TextView
         android:id="@+id/tPrimero"
-        android:layout_width="175dp"
+        android:layout_width="131dp"
         android:layout_height="62dp"
         android:fontFamily="@font/khand_light"
         android:gravity="center|left"
@@ -112,14 +112,14 @@
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.622"
+        app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tMPuntos"
         app:layout_constraintVertical_bias="0.328" />
 
     <TextView
         android:id="@+id/tCuarto"
-        android:layout_width="175dp"
+        android:layout_width="131dp"
         android:layout_height="62dp"
         android:fontFamily="@font/khand_light"
         android:gravity="center|left"
@@ -128,15 +128,15 @@
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.622"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tMPuntos"
         app:layout_constraintVertical_bias="0.701" />
 
     <TextView
         android:id="@+id/tSegundo"
-        android:layout_width="175dp"
-        android:layout_height="62dp"
+        android:layout_width="131dp"
+        android:layout_height="60dp"
         android:fontFamily="@font/khand_light"
         android:gravity="center|left"
         android:text=" Segundo"
@@ -144,15 +144,15 @@
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.622"
+        app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tMPuntos"
-        app:layout_constraintVertical_bias="0.452" />
+        app:layout_constraintVertical_bias="0.453" />
 
     <TextView
         android:id="@+id/tQuinto"
-        android:layout_width="175dp"
-        android:layout_height="62dp"
+        android:layout_width="131dp"
+        android:layout_height="61dp"
         android:fontFamily="@font/khand_light"
         android:gravity="center|left"
         android:text=" Quinto"
@@ -160,15 +160,15 @@
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.622"
+        app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tMPuntos"
-        app:layout_constraintVertical_bias="0.825" />
+        app:layout_constraintVertical_bias="0.824" />
 
     <TextView
         android:id="@+id/tTercero"
-        android:layout_width="175dp"
-        android:layout_height="62dp"
+        android:layout_width="131dp"
+        android:layout_height="63dp"
         android:fontFamily="@font/khand_light"
         android:gravity="center|left"
         android:text=" Tercero"
@@ -176,10 +176,10 @@
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.622"
+        app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tMPuntos"
-        app:layout_constraintVertical_bias="0.577" />
+        app:layout_constraintVertical_bias="0.576" />
 
     <TextView
         android:id="@+id/dos"

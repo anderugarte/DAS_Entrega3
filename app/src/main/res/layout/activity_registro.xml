@@ -41,8 +41,8 @@
 
     <EditText
         android:id="@+id/etNombre"
-        android:layout_width="280dp"
-        android:layout_height="41dp"
+        android:layout_width="278dp"
+        android:layout_height="46dp"
         android:ems="10"
         android:fontFamily="@font/khand_light"
         android:inputType="textPersonName"
@@ -87,7 +87,7 @@
     <EditText
         android:id="@+id/etCumpleanos"
         android:layout_width="280dp"
-        android:layout_height="41dp"
+        android:layout_height="45dp"
         android:clickable="true"
         android:ems="10"
         android:focusable="false"
@@ -103,8 +103,8 @@
 
     <EditText
         android:id="@+id/etNombreUsuario"
-        android:layout_width="280dp"
-        android:layout_height="41dp"
+        android:layout_width="277dp"
+        android:layout_height="46dp"
         android:ems="10"
         android:fontFamily="@font/khand_light"
         android:inputType="textPersonName"
