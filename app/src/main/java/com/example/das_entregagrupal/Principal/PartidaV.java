@@ -11,14 +11,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.das_entregagrupal.R;
 
-import org.w3c.dom.Text;
-
-public class Partida extends AppCompatActivity {
+public class PartidaV extends AppCompatActivity {
 
     private AlertDialog.Builder alertDialogBuilder;
     private String jugador1, jugador2, dificultad;
@@ -214,6 +211,7 @@ public class Partida extends AppCompatActivity {
 //            evento.setTextSize(24);
 //            evento.setText("Para vosotros jugadores. Una ficha comeplomo para los dos.");
 //        }
+        PartidaV.getPartida();
 
     }
 
