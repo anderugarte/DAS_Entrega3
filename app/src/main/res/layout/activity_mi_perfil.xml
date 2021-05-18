@@ -7,6 +7,21 @@
     android:background="@drawable/fondomiperfil"
     tools:context=".Complementos.MiPerfil">
 
+    <TextView
+        android:id="@+id/tvCambiarContrasena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:fontFamily="@font/khand_light"
+        android:text="@string/quieres_cambiar_tu_contrasena"
+        android:textColor="#2196F3"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/bModificar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCumpleanosMP"
+        app:layout_constraintVertical_bias="0.435" />
+
     <ImageButton
         android:id="@+id/bAtras3"
         android:layout_width="50dp"
@@ -37,20 +52,6 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/etContrasenaMP"
-        android:layout_width="279dp"
-        android:layout_height="42dp"
-        android:ems="10"
-        android:fontFamily="@font/khand_light"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvContrasenia2"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
         android:id="@+id/etNombreMP"
         android:layout_width="280dp"
         android:layout_height="47dp"
@@ -63,21 +64,6 @@
         app:layout_constraintHorizontal_bias="0.396"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNombreMP"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/tvContrasenia2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/khand_light"
-        android:text="@string/contrasena"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.164"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNombreMP"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -107,7 +93,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.221"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etContrasenaMP"
+        app:layout_constraintTop_toBottomOf="@+id/etNombreMP"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
@@ -169,7 +155,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etCumpleanosMP"
-        app:layout_constraintVertical_bias="0.737" />
+        app:layout_constraintVertical_bias="0.879" />
 
     <ImageButton
         android:id="@+id/iCambiarFoto"
@@ -183,4 +169,5 @@
         app:layout_constraintTop_toBottomOf="@+id/iFotoDePerfil"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/ic_popup_sync" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

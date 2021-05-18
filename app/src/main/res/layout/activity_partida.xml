@@ -7,6 +7,22 @@
     android:background="@drawable/fondopartida"
     tools:context=".Principal.PartidaV">
 
+    <TextView
+        android:id="@+id/tBichotes"
+        android:layout_width="144dp"
+        android:layout_height="47dp"
+        android:fontFamily="@font/khand_light"
+        android:gravity="center|left"
+        android:text="Bichötes"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.013" />
+
     <Button
         android:id="@+id/bComeplomo"
         android:layout_width="90dp"

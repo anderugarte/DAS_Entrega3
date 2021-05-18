@@ -25,6 +25,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.das_entregagrupal.BaseDeDatos.ConexionExisteUsuario;
@@ -51,9 +52,10 @@ public class MiPerfil extends AppCompatActivity {
 
     EditText nombreUsuarioMP;
     EditText nombreMP;
-    EditText contrasenaMP;
     EditText cumpleanosMP;
     ImageView foto;
+
+    TextView contrasenaMP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +64,10 @@ public class MiPerfil extends AppCompatActivity {
 
         nombreUsuarioMP = (EditText) findViewById(R.id.etNombreUsuarioMP);
         nombreMP = (EditText) findViewById(R.id.etNombreMP);
-        contrasenaMP = (EditText) findViewById(R.id.etContrasenaMP);
         cumpleanosMP = (EditText) findViewById(R.id.etCumpleanosMP);
         foto = (ImageView) findViewById(R.id.iFotoDePerfil);
+
+        contrasenaMP = (TextView) findViewById(R.id.tvCambiarContrasena);
 
         // Recibimos el nombre de usuario del usuario
         Bundle extras = getIntent().getExtras();
@@ -80,6 +83,14 @@ public class MiPerfil extends AppCompatActivity {
 
         // Configuracion de los botones
         Button bModificar = (Button) findViewById(R.id.bModificar);
+
+        // Cambiar la contraseña del usuario
+        contrasenaMP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         // Modificar los datos del usuario
         bModificar.setOnClickListener(new View.OnClickListener() {

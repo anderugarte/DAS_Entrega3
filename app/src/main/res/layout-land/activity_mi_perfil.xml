@@ -7,6 +7,22 @@
     android:background="@drawable/fondomiperfilland"
     tools:context=".Complementos.MiPerfil">
 
+    <TextView
+        android:id="@+id/tvCambiarContrasena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:fontFamily="@font/khand_light"
+        android:text="@string/quieres_cambiar_tu_contrasena"
+        android:textColor="#2196F3"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/bModificar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.836"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCumpleanosMP"
+        app:layout_constraintVertical_bias="0.458" />
+
     <ImageButton
         android:id="@+id/iCambiarFoto"
         android:layout_width="38dp"
@@ -80,35 +96,6 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/tvContrasenia2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/khand_light"
-        android:text="@string/contrasena"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.587"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNombreMP"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/etContrasenaMP"
-        android:layout_width="279dp"
-        android:layout_height="42dp"
-        android:ems="10"
-        android:fontFamily="@font/khand_light"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.847"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvContrasenia2"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
         android:id="@+id/tvCumpleanosMP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -120,23 +107,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.655"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etContrasenaMP"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/bModificar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#000000"
-        android:fontFamily="@font/khand_light"
-        android:text="@string/aplicar_cambios"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.788"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCumpleanosMP"
+        app:layout_constraintTop_toBottomOf="@+id/etNombreMP"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
@@ -154,7 +125,23 @@
         app:layout_constraintHorizontal_bias="0.845"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCumpleanosMP"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.005" />
+
+    <Button
+        android:id="@+id/bModificar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/khand_light"
+        android:text="@string/aplicar_cambios"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.786"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCumpleanosMP"
+        app:layout_constraintVertical_bias="0.572" />
 
     <EditText
         android:id="@+id/etNombreMP"
