@@ -48,7 +48,7 @@
         app:layout_constraintHorizontal_bias="0.266"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tRanking"
-        app:layout_constraintVertical_bias="0.081" />
+        app:layout_constraintVertical_bias="0.187" />
 
     <TextView
         android:id="@+id/tSegundo"
@@ -63,7 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.113"
         app:layout_constraintStart_toEndOf="@+id/dos"
-        app:layout_constraintTop_toBottomOf="@+id/tPrimero"
+        app:layout_constraintTop_toBottomOf="@+id/uno"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -75,12 +75,10 @@
         android:text="0"
         android:textColor="#000000"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tSegundo"
-        app:layout_constraintTop_toBottomOf="@+id/ptosNum1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/tSegundo" />
 
     <TextView
         android:id="@+id/cinco"
@@ -106,12 +104,10 @@
         android:text="0"
         android:textColor="#000000"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tQuinto"
-        app:layout_constraintTop_toBottomOf="@+id/ptosNum4"
-        app:layout_constraintVertical_bias="0.008" />
+        app:layout_constraintTop_toBottomOf="@+id/tCuarto" />
 
     <TextView
         android:id="@+id/ptosNum1"
@@ -122,12 +118,10 @@
         android:text="0"
         android:textColor="#000000"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tPrimero"
-        app:layout_constraintTop_toBottomOf="@+id/tRanking"
-        app:layout_constraintVertical_bias="0.081" />
+        app:layout_constraintTop_toTopOf="@+id/tPrimero" />
 
     <TextView
         android:id="@+id/tCuarto"
@@ -142,7 +136,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.113"
         app:layout_constraintStart_toEndOf="@+id/cuatro"
-        app:layout_constraintTop_toBottomOf="@+id/tTercero"
+        app:layout_constraintTop_toTopOf="@+id/cuatro"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -169,12 +163,10 @@
         android:text=" Quinto"
         android:textColor="#000000"
         android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.113"
         app:layout_constraintStart_toEndOf="@+id/cinco"
-        app:layout_constraintTop_toBottomOf="@+id/tCuarto"
-        app:layout_constraintVertical_bias="0.008" />
+        app:layout_constraintTop_toTopOf="@+id/cinco" />
 
     <TextView
         android:id="@+id/cuatro"
@@ -200,12 +192,10 @@
         android:text="0"
         android:textColor="#000000"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tTercero"
-        app:layout_constraintTop_toBottomOf="@+id/ptosNum2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/tSegundo" />
 
     <TextView
         android:id="@+id/tres"
@@ -231,12 +221,10 @@
         android:text="0"
         android:textColor="#000000"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tCuarto"
-        app:layout_constraintTop_toBottomOf="@+id/ptosNum3"
-        app:layout_constraintVertical_bias="0.005" />
+        app:layout_constraintTop_toTopOf="@+id/tCuarto" />
 
     <TextView
         android:id="@+id/tPrimero"
@@ -251,8 +239,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.113"
         app:layout_constraintStart_toEndOf="@+id/uno"
-        app:layout_constraintTop_toBottomOf="@+id/tRanking"
-        app:layout_constraintVertical_bias="0.081" />
+        app:layout_constraintTop_toTopOf="@+id/uno"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tTercero"
@@ -267,7 +255,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.113"
         app:layout_constraintStart_toEndOf="@+id/tres"
-        app:layout_constraintTop_toBottomOf="@+id/tSegundo"
+        app:layout_constraintTop_toBottomOf="@+id/dos"
         app:layout_constraintVertical_bias="0.004" />
 
     <TextView
@@ -337,4 +325,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.067"
         app:srcCompat="@drawable/logo" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
