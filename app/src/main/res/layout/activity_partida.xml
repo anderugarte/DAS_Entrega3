@@ -47,12 +47,10 @@
         android:gravity="clip_horizontal|center|left"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/bRendirse"
+        app:layout_constraintBottom_toBottomOf="@+id/tVS"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/tVS"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toEndOf="@+id/tVS" />
 
     <TextView
         android:id="@+id/tJugador1"
@@ -62,26 +60,25 @@
         android:gravity="clip_horizontal|center|right"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/bRendirse"
+        app:layout_constraintBottom_toBottomOf="@+id/tVS"
         app:layout_constraintEnd_toStartOf="@+id/tVS"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tVS"
         android:layout_width="47dp"
         android:layout_height="43dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/khand_light"
         android:gravity="clip_horizontal|center"
         android:text="@string/vs"
         android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/bRendirse"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/bAyudaPartida"
@@ -665,11 +662,12 @@
         android:id="@+id/imageView"
         android:layout_width="285dp"
         android:layout_height="59dp"
-        app:layout_constraintBottom_toTopOf="@+id/tVS"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tTurno"
-        app:layout_constraintVertical_bias="0.935"
+        app:layout_constraintTop_toBottomOf="@+id/i41"
+        app:layout_constraintVertical_bias="0.135"
         app:srcCompat="@drawable/logoslo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

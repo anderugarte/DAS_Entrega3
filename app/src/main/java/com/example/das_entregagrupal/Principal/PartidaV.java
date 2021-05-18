@@ -211,7 +211,7 @@ public class PartidaV extends AppCompatActivity {
 //            evento.setTextSize(24);
 //            evento.setText("Para vosotros jugadores. Una ficha comeplomo para los dos.");
 //        }
-        // PartidaV.getPartida();
+//        PartidaV.getPartida();
 
     }
 

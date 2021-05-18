@@ -28,6 +28,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.das_entregagrupal.BaseDeDatos.ConexionExisteUsuario;
+import com.example.das_entregagrupal.BaseDeDatos.ConexionRecogerDatosUser;
 import com.example.das_entregagrupal.BaseDeDatos.ConexionUpdateUser;
 import com.example.das_entregagrupal.R;
 
@@ -234,7 +235,7 @@ public class MiPerfil extends AppCompatActivity {
                 .putString("username", nombreUsuarioMP.getText().toString())
                 .build();
 
-        OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionExisteUsuario.class)
+        OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionRecogerDatosUser.class)
                 .setInputData(datos).build();
 
         WorkManager.getInstance(getBaseContext()).getWorkInfoByIdLiveData(otwr.getId())
@@ -247,7 +248,7 @@ public class MiPerfil extends AppCompatActivity {
                                 // -> Asignamos los valores a los EditText
                                 nombreMP.setText(workInfo.getOutputData().getString("nombre"));
                                 cumpleanosMP.setText(workInfo.getOutputData().getString("cumple"));
-//                                foto.setImageURI(); asignarle la foto de workInfo.getOutputData().getString("foto")
+                                foto.setImageURI(Uri.parse(workInfo.getOutputData().getString("foto")));
                             }
                         }
                     }
