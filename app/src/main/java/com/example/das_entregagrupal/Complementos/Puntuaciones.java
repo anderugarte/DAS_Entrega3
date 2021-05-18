@@ -2,8 +2,10 @@ package com.example.das_entregagrupal.Complementos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -66,10 +68,20 @@ public class Puntuaciones extends AppCompatActivity {
         // Solicitar la ayuda
         bAyuda.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
-            }
+            public void onClick(View v) {createDialogoAyuda().show();}
         });
+
+    }
+
+    private AlertDialog createDialogoAyuda() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View v = inflater.inflate(R.layout.dialogo_ayudapuntuaciones, null);
+        builder.setView(v);
+        builder.setPositiveButton("Aceptar", (dialog, which) -> dialog.cancel());
+
+        return builder.create();
 
     }
 }
