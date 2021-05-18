@@ -112,8 +112,8 @@
 
     <EditText
         android:id="@+id/etCumpleanosMP"
-        android:layout_width="280dp"
-        android:layout_height="41dp"
+        android:layout_width="278dp"
+        android:layout_height="48dp"
         android:clickable="true"
         android:ems="10"
         android:focusable="false"
@@ -122,7 +122,7 @@
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.396"
+        app:layout_constraintHorizontal_bias="0.39"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCumpleanosMP"
         app:layout_constraintVertical_bias="0.0" />

@@ -142,6 +142,8 @@ public class MenuPrincipal extends AppCompatActivity {
                     Intent p = new Intent(getBaseContext(), Partida.class);
                     p.putExtra("jugador1", user.toString());
                     p.putExtra("jugador2", j2.getText().toString());
+                    p.putExtra("dificultad","null");
+                    p.putExtra("modoJuego",true);
                     startActivity(p);
                     finish();
                 }
@@ -166,6 +168,7 @@ public class MenuPrincipal extends AppCompatActivity {
                 p.putExtra("jugador1", user.toString());
                 p.putExtra("jugador2", "Ordenador");
                 p.putExtra("dificultad","facil");
+                p.putExtra("modoJuego",true);
                 startActivity(p);
                 finish();
             } else if (dificil.isChecked()) {
@@ -173,6 +176,7 @@ public class MenuPrincipal extends AppCompatActivity {
                 p.putExtra("jugador1", user.toString());
                 p.putExtra("jugador2", "Ordenador");
                 p.putExtra("dificultad","dificil");
+                p.putExtra("modoJuego",true);
                 startActivity(p);
                 finish();
             }

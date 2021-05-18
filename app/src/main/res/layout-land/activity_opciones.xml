@@ -7,6 +7,22 @@
     android:background="@drawable/fondoopciones"
     tools:context=".Complementos.Opciones">
 
+    <Button
+        android:id="@+id/bMPuntuaciones"
+        android:layout_width="207dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/khand_light"
+        android:text="@string/mis_puntuaciones"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.772"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bPerfil"
+        app:layout_constraintVertical_bias="0.069" />
+
     <ImageView
         android:id="@+id/ivLogoOpciones"
         android:layout_width="225dp"
@@ -47,8 +63,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.772"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bMMPuntuciaones"
-        app:layout_constraintVertical_bias="0.058" />
+        app:layout_constraintTop_toBottomOf="@+id/bMPuntuaciones"
+        app:layout_constraintVertical_bias="0.13" />
 
     <Button
         android:id="@+id/bAyuda"
@@ -64,22 +80,6 @@
         app:layout_constraintHorizontal_bias="0.772"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bPersonalizacion"
-        app:layout_constraintVertical_bias="0.105" />
-
-    <Button
-        android:id="@+id/bMMPuntuciaones"
-        android:layout_width="207dp"
-        android:layout_height="81dp"
-        android:backgroundTint="#000000"
-        android:fontFamily="@font/khand_light"
-        android:text="@string/mis_mejores_puntuaciones"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.772"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bPerfil"
-        app:layout_constraintVertical_bias="0.035" />
+        app:layout_constraintVertical_bias="0.189" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

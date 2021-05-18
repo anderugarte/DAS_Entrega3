@@ -19,7 +19,7 @@ public class Opciones extends AppCompatActivity {
         setContentView(R.layout.activity_opciones);
 
         Button bMiPerfil = (Button) findViewById(R.id.bPerfil);
-        Button bMMPunt = (Button) findViewById(R.id.bMMPuntuciaones);
+        Button bMPunt = (Button) findViewById(R.id.bMPuntuaciones);
         Button bPers = (Button) findViewById(R.id.bPersonalizacion);
         Button bAyuda = (Button) findViewById(R.id.bAyuda);
 
@@ -38,10 +38,12 @@ public class Opciones extends AppCompatActivity {
             }
         });
 
-        bMMPunt.setOnClickListener(new View.OnClickListener() {
+        bMPunt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent p = new Intent (getBaseContext(), Puntuaciones.class);
+                p.putExtra("username",user);
+                startActivity(p);
             }
         });
 

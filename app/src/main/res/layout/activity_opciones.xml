@@ -8,6 +8,21 @@
     tools:context=".Complementos.Opciones">
 
     <Button
+        android:id="@+id/bMPuntuaciones"
+        android:layout_width="207dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/khand_light"
+        android:text="@string/mis_puntuaciones"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bPerfil"
+        app:layout_constraintVertical_bias="0.076" />
+
+    <Button
         android:id="@+id/bPersonalizacion"
         android:layout_width="207dp"
         android:layout_height="50dp"
@@ -19,7 +34,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bMMPuntuciaones"
+        app:layout_constraintTop_toBottomOf="@+id/bMPuntuaciones"
         app:layout_constraintVertical_bias="0.112" />
 
     <ImageView
@@ -63,20 +78,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivLogoOpciones"
         app:layout_constraintVertical_bias="0.098" />
-
-    <Button
-        android:id="@+id/bMMPuntuciaones"
-        android:layout_width="207dp"
-        android:layout_height="81dp"
-        android:backgroundTint="#000000"
-        android:fontFamily="@font/khand_light"
-        android:text="@string/mis_mejores_puntuaciones"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bPerfil"
-        app:layout_constraintVertical_bias="0.068" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

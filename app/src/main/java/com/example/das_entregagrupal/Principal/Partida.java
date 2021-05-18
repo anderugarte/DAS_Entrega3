@@ -22,6 +22,7 @@ public class Partida extends AppCompatActivity {
 
     private AlertDialog.Builder alertDialogBuilder;
     private String jugador1, jugador2, dificultad;
+    private Boolean modoJuego;
     private Context context;
 
     @Override
@@ -145,6 +146,8 @@ public class Partida extends AppCompatActivity {
             jugador1 = extras.getString("jugador1");
             jugador2 = extras.getString("jugador2");
             dificultad = extras.getString("dificultad");
+            // Si el modo juego es True, la partida será contra la IA
+            modoJuego = extras.getBoolean("modoJuego");
         }
 
         // Escribimos los datos de los jugadores
