@@ -4,10 +4,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -139,7 +136,7 @@ public class MenuPrincipal extends AppCompatActivity {
                     toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
                     toast.show();
                 } else {
-                    Intent p = new Intent(getBaseContext(), Partida.class);
+                    Intent p = new Intent(getBaseContext(), PartidaV.class);
                     p.putExtra("jugador1", user.toString());
                     p.putExtra("jugador2", j2.getText().toString());
                     startActivity(p);
@@ -162,14 +159,14 @@ public class MenuPrincipal extends AppCompatActivity {
         builder.setPositiveButton("Jugar", (dialog, which) -> {
             // Comprobamos la dificultad seleccionada
             if (facil.isChecked()){
-                Intent p = new Intent(getBaseContext(), Partida.class);
+                Intent p = new Intent(getBaseContext(), PartidaV.class);
                 p.putExtra("jugador1", user.toString());
                 p.putExtra("jugador2", "Ordenador");
                 p.putExtra("dificultad","facil");
                 startActivity(p);
                 finish();
             } else if (dificil.isChecked()) {
-                Intent p = new Intent(getBaseContext(), Partida.class);
+                Intent p = new Intent(getBaseContext(), PartidaV.class);
                 p.putExtra("jugador1", user.toString());
                 p.putExtra("jugador2", "Ordenador");
                 p.putExtra("dificultad","dificil");

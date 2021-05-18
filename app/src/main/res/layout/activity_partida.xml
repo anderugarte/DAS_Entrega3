@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondopartida"
-    tools:context=".Principal.Partida">
+    tools:context=".Principal.PartidaV">
 
     <Button
         android:id="@+id/bComeplomo"
