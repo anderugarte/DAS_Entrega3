@@ -2,10 +2,10 @@ package com.example.das_entregagrupal.GestionDeUsuarios;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.work.Data;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.WorkInfo;
-import androidx.work.WorkManager;
+//import androidx.work.Data;
+//import androidx.work.OneTimeWorkRequest;
+//import androidx.work.WorkInfo;
+//import androidx.work.WorkManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -75,32 +75,32 @@ public class InicioSesion extends AppCompatActivity {
     }
 
     private void comprobarSiExisteUsuario() {
-        Data datos = new Data.Builder()
-                .putString("username", username.getText().toString())
-                .build();
-
-        OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionExisteUsuario.class)
-                .setInputData(datos).build();
-
-        WorkManager.getInstance(getBaseContext()).getWorkInfoByIdLiveData(otwr.getId())
-                .observe(this, new Observer<WorkInfo>() {
-                    @Override
-                    public void onChanged(WorkInfo workInfo) {
-                        if (workInfo != null && workInfo.getState().isFinished()) {
-                            if (workInfo.getOutputData().getString("result").equals("existe")) {
-                                // INICIAR SESIÓN
-                                iniciarSesion();
-                            } else {
-                                String text = "No existe ese usuario";
-                                Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
-                                toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
-                                toast.show();
-                            }
-                        }
-
-                    }
-                });
-        WorkManager.getInstance(getBaseContext()).enqueue(otwr);
+//        Data datos = new Data.Builder()
+//                .putString("username", username.getText().toString())
+//                .build();
+//
+//        OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionExisteUsuario.class)
+//                .setInputData(datos).build();
+//
+//        WorkManager.getInstance(getBaseContext()).getWorkInfoByIdLiveData(otwr.getId())
+//                .observe(this, new Observer<WorkInfo>() {
+//                    @Override
+//                    public void onChanged(WorkInfo workInfo) {
+//                        if (workInfo != null && workInfo.getState().isFinished()) {
+//                            if (workInfo.getOutputData().getString("result").equals("existe")) {
+//                                // INICIAR SESIÓN
+//                                iniciarSesion();
+//                            } else {
+//                                String text = "No existe ese usuario";
+//                                Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
+//                                toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
+//                                toast.show();
+//                            }
+//                        }
+//
+//                    }
+//                });
+//        WorkManager.getInstance(getBaseContext()).enqueue(otwr);
 
     }
 

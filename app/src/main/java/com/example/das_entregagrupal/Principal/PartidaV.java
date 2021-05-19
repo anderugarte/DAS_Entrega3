@@ -33,7 +33,7 @@ public class PartidaV extends AppCompatActivity {
     private boolean comeplomoOn=false;
     private int numTurno = 1;
     private int numTotal = 1;
-    private ImageView[][] casillas;
+    private ImageView[][] casillas = new ImageView[7][6];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
