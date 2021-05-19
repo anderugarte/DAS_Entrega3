@@ -3,19 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/fondodialogopuntuaciones">
 
     <TextView
         android:id="@+id/tvAPuntuaciones"
-        android:layout_width="309dp"
-        android:layout_height="192dp"
+        android:layout_width="227dp"
+        android:layout_height="151dp"
+        android:layout_marginBottom="30dp"
         android:fontFamily="@font/khand_light"
         android:gravity="center|left"
         android:text="@string/ayuda_puntuaciones"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.401" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

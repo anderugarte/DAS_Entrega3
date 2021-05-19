@@ -14,7 +14,10 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -29,10 +32,19 @@ import com.example.das_entregagrupal.BaseDeDatos.ConexionRegistro;
 import com.example.das_entregagrupal.Principal.MenuPrincipal;
 import com.example.das_entregagrupal.R;
 
+import org.json.simple.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -144,12 +156,52 @@ public class RegistroFoto extends AppCompatActivity {
     // Este metodo gestionara el registro de un nuevo usuario
     private void gestionarRegistroFoto() {
 
+//        BitmapDrawable bitmapDrawablefto = (BitmapDrawable) fp.getDrawable();
+//        Bitmap bitmapFto = bitmapDrawablefto.getBitmap();
+//        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//        bitmapFto.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//        byte[] fototransformada = stream.toByteArray();
+//        String fotoen64 = Base64.encodeToString(fototransformada,Base64.DEFAULT);
+//
+//        Uri.Builder builder = new Uri.Builder().appendQueryParameter("imagen", fotoen64);
+//        String parametrosURL = builder.build().getEncodedQuery();
+//
+//        //////////////////////////////////////////////
+//        String direccion = "http://ec2-54-167-31-169.compute-1.amazonaws.com/igonzalez274/WEB/Entrega3/registroUserE3.php";
+//        String result = "";
+//        HttpURLConnection urlConnection = null;
+//        try {
+//            URL destino = new URL(direccion);
+//            urlConnection = (HttpURLConnection) destino.openConnection();
+//            urlConnection.setConnectTimeout(5000);
+//            urlConnection.setReadTimeout(5000);
+//            urlConnection.setRequestMethod("POST");
+//            urlConnection.setDoOutput(true);
+//            JSONObject parametrosJSON = new JSONObject();
+//            parametrosJSON.put("foto", fotoen64);
+//            urlConnection.setRequestProperty("Content-Type","application/json");
+//            PrintWriter out = new PrintWriter(urlConnection.getOutputStream());
+//            out.print(parametrosJSON.toJSONString());
+//            out.close();
+//
+//            int statusCode = urlConnection.getResponseCode();
+//
+//            if (statusCode == 200) {
+//                BufferedInputStream inputStream = new BufferedInputStream(urlConnection.getInputStream());
+//                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+//                String line = "";
+//                while ((line = bufferedReader.readLine()) != null) {result += line;}
+//                inputStream.close();
+//            }
+//        } catch (IOException e) {e.printStackTrace();}
+        //////////////////////////////////////////////
+
         Data datos = new Data.Builder()
                 .putString("username",username)
                 .putString("nombre",nomb)
                 .putString("password",pass)
                 .putString("cumpleanos",date)
-                .putString("fotoperfil",fp.toString())
+                .putString("fotoperfil",fp.toString()) //parametrosURL
                 .build();
 
         OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionRegistro.class)
@@ -193,7 +245,7 @@ public class RegistroFoto extends AppCompatActivity {
             String nombrefichero = "IMG_" + timeStamp + "_";
             File imagenFich = new File(eldirectorio, nombrefichero + ".jpg");
             OutputStream os;
-            //
+            // Transformar la imagen en un array de bytes
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             laminiatura.compress(Bitmap.CompressFormat.PNG, 100, stream);
             byte[] fototransformada = stream.toByteArray();
