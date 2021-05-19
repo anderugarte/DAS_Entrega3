@@ -256,19 +256,6 @@ public class PartidaV extends AppCompatActivity {
             }
         });
 
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i("AAAA","Holaaa");
-            }
-        });
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i("AAAA","Agurrrr");
-            }
-        });
-
         // Gestion de comeplomos
         ImageView iComeplomo = (ImageView) findViewById(R.id.iconCmplm);
         TextView numC = (TextView) findViewById(R.id.numComeplomos);
@@ -308,7 +295,6 @@ public class PartidaV extends AppCompatActivity {
             b1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.i("AAAA","Holaaa");
                     if (comeplomoOn) {
                         Tablero.getTablero().colocarComeplomo(1);
                         comeplomoOn = false;
@@ -333,7 +319,6 @@ public class PartidaV extends AppCompatActivity {
             b2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.i("AAAA","Agurrrrr");
                     if (comeplomoOn) {
                         Tablero.getTablero().colocarComeplomo(2);
                         comeplomoOn = false;

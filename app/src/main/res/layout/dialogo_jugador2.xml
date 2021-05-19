@@ -8,6 +8,17 @@
     android:background="@drawable/fondodialogo2j2">
 
     <TextView
+        android:id="@+id/textView4"
+        android:layout_width="26dp"
+        android:layout_height="43dp"
+        app:layout_constraintBottom_toTopOf="@+id/etJugadorDos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tJugadorUno"
+        app:layout_constraintVertical_bias="0.03" />
+
+    <TextView
         android:id="@+id/tJugadorUno"
         android:layout_width="171dp"
         android:layout_height="73dp"
@@ -19,7 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024" />
+        app:layout_constraintVertical_bias="0.148" />
 
     <EditText
         android:id="@+id/etJugadorDos"
@@ -36,6 +47,28 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tJugadorUno"
-        app:layout_constraintVertical_bias="0.174" />
+        app:layout_constraintVertical_bias="0.202" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="26dp"
+        android:layout_height="43dp"
+        app:layout_constraintBottom_toTopOf="@+id/tJugadorUno"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="247dp"
+        android:layout_height="98dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etJugadorDos"
+        app:layout_constraintVertical_bias="0.148"
+        app:srcCompat="@drawable/logoslo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
