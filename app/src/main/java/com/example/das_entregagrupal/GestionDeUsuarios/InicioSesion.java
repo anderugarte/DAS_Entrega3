@@ -64,7 +64,8 @@ public class InicioSesion extends AppCompatActivity {
                     // Primero comprobamos si existe ese usuario en la BD
                     // Si existe se hara el inicio de sesión
                     // Si no aparecerá un Toast
-                    comprobarSiExisteUsuario();
+//                    comprobarSiExisteUsuario();
+                    iniciarSesion();
                 }
 
 
@@ -104,36 +105,36 @@ public class InicioSesion extends AppCompatActivity {
     }
 
     private void iniciarSesion() {
-        Data datos = new Data.Builder()
-                .putString("username", username.getText().toString())
-                .putString("password", password.getText().toString())
-                .build();
-
-        OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionLogin.class)
-                .setInputData(datos).build();
-
-        WorkManager.getInstance(getBaseContext()).getWorkInfoByIdLiveData(otwr.getId())
-                .observe(this, new Observer<WorkInfo>() {
-                    @Override
-                    public void onChanged(WorkInfo workInfo) {
-                        if (workInfo != null && workInfo.getState().isFinished()) {
-                            Log.i("hola", workInfo.getOutputData().getString("result"));
-                            if (workInfo.getOutputData().getString("result").equals("logOK")) {
-                                // El inicio de sesion se ha realizado correctamente
-                                // Intent MenuPrincipal
+//        Data datos = new Data.Builder()
+//                .putString("username", username.getText().toString())
+//                .putString("password", password.getText().toString())
+//                .build();
+//
+//        OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionLogin.class)
+//                .setInputData(datos).build();
+//
+//        WorkManager.getInstance(getBaseContext()).getWorkInfoByIdLiveData(otwr.getId())
+//                .observe(this, new Observer<WorkInfo>() {
+//                    @Override
+//                    public void onChanged(WorkInfo workInfo) {
+//                        if (workInfo != null && workInfo.getState().isFinished()) {
+//                            Log.i("hola", workInfo.getOutputData().getString("result"));
+//                            if (workInfo.getOutputData().getString("result").equals("logOK")) {
+//                                // El inicio de sesion se ha realizado correctamente
+//                                // Intent MenuPrincipal
                                 Intent mp = new Intent(getBaseContext(), MenuPrincipal.class);
                                 mp.putExtra("username", username.getText().toString());
                                 startActivity(mp);
                                 finish();
-                            } else {
-                                String text = "Contraseña incorrecta";
-                                Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
-                                toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
-                                toast.show();
-                            }
-                        }
-                    }
-                });
-        WorkManager.getInstance(getBaseContext()).enqueue(otwr);
+//                            } else {
+//                                String text = "Contraseña incorrecta";
+//                                Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
+//                                toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
+//                                toast.show();
+//                            }
+//                        }
+//                    }
+//                });
+//        WorkManager.getInstance(getBaseContext()).enqueue(otwr);
     }
 }

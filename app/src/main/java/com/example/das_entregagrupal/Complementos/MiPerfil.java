@@ -29,8 +29,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.das_entregagrupal.BaseDeDatos.ConexionCambiarContraseña;
 import com.example.das_entregagrupal.BaseDeDatos.ConexionExisteUsuario;
 import com.example.das_entregagrupal.BaseDeDatos.ConexionRecogerDatosUser;
+import com.example.das_entregagrupal.BaseDeDatos.ConexionRegistro;
 import com.example.das_entregagrupal.BaseDeDatos.ConexionUpdateUser;
 import com.example.das_entregagrupal.GestionDeUsuarios.Registro;
 import com.example.das_entregagrupal.R;
@@ -135,6 +137,9 @@ public class MiPerfil extends AppCompatActivity {
         LayoutInflater inflater = this.getLayoutInflater();
         View v = inflater.inflate(R.layout.dialogo_cambiarcontrasena, null);
         builder.setView(v);
+        nuevaP = (EditText) v.findViewById(R.id.etNuevaPass);
+        repetirP = (EditText) v.findViewById(R.id.etRepetidaPass);
+
         builder.setPositiveButton("Modificar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -146,7 +151,7 @@ public class MiPerfil extends AppCompatActivity {
                         } else {
                             if (nuevaP.getText().toString().equals(repetirP.getText().toString())) {
                                 // Se modifica la contrasena
-
+                                cambiarContraseña();
 //                                Intent o = new Intent (getBaseContext(), Opciones.class);
 //                                o.putExtra("username",user);
 //                                startActivity(o);
@@ -162,11 +167,36 @@ public class MiPerfil extends AppCompatActivity {
                 });
         builder.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
 
-        nuevaP = (EditText) v.findViewById(R.id.etNuevaPass);
-        repetirP = (EditText) v.findViewById(R.id.etRepetidaPass);
 
         return builder.create();
 
+    }
+
+    private void cambiarContraseña() {
+
+        Data datos = new Data.Builder()
+                .putString("username", user)
+                .putString("password", nuevaP.getText().toString())
+                .build();
+
+
+        OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionCambiarContraseña.class)
+                .setInputData(datos)
+                .build();
+
+        WorkManager.getInstance(getApplicationContext()).getWorkInfoByIdLiveData(otwr.getId())
+                .observe(this, new Observer<WorkInfo>() {
+                    @Override
+                    public void onChanged(WorkInfo workInfo) {
+                        if (workInfo != null && workInfo.getState().isFinished()) {
+                            if (workInfo.getOutputData().getString("result").equals("done")) {
+                                // Se ha actualizado la contraseña en la base de datos
+
+                            }
+
+                        }
+                    }
+                });
     }
 
     // Se genara un dialogo para modificar la foto de perfil del usuario
