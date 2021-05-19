@@ -11,6 +11,7 @@ import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -31,12 +32,14 @@ import android.widget.Toast;
 import com.example.das_entregagrupal.BaseDeDatos.ConexionExisteUsuario;
 import com.example.das_entregagrupal.BaseDeDatos.ConexionRecogerDatosUser;
 import com.example.das_entregagrupal.BaseDeDatos.ConexionUpdateUser;
+import com.example.das_entregagrupal.GestionDeUsuarios.Registro;
 import com.example.das_entregagrupal.R;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.lang.reflect.Constructor;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -56,6 +59,9 @@ public class MiPerfil extends AppCompatActivity {
     ImageView foto;
 
     TextView contrasenaMP;
+
+    EditText nuevaP;
+    EditText repetirP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,9 +93,7 @@ public class MiPerfil extends AppCompatActivity {
         // Cambiar la contraseña del usuario
         contrasenaMP.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
-            }
+            public void onClick(View v) { createDialogoCC().show(); }
         });
 
         // Modificar los datos del usuario
@@ -121,6 +125,47 @@ public class MiPerfil extends AppCompatActivity {
             @Override
             public void onClick(View v) { createDialogoCF().show(); }
         });
+
+    }
+
+    // Se genara un dialogo para modificar la contraseña del usuario
+    private AlertDialog createDialogoCC() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View v = inflater.inflate(R.layout.dialogo_cambiarcontrasena, null);
+        builder.setView(v);
+        builder.setPositiveButton("Modificar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (nuevaP.getText().toString().length() < 5) {
+                            String text = "Contraseña demasiado corta";
+                            Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
+                            toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
+                            toast.show();
+                        } else {
+                            if (nuevaP.getText().toString().equals(repetirP.getText().toString())) {
+                                // Se modifica la contrasena
+
+//                                Intent o = new Intent (getBaseContext(), Opciones.class);
+//                                o.putExtra("username",user);
+//                                startActivity(o);
+//                                finish();
+                            } else {
+                                String text = "Las contraseñas no coinciden";
+                                Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
+                                toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
+                                toast.show();
+                            }
+                        }
+                    }
+                });
+        builder.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
+
+        nuevaP = (EditText) v.findViewById(R.id.etNuevaPass);
+        repetirP = (EditText) v.findViewById(R.id.etRepetidaPass);
+
+        return builder.create();
 
     }
 
@@ -256,9 +301,10 @@ public class MiPerfil extends AppCompatActivity {
                         if (workInfo != null && workInfo.getState().isFinished()) {
                             if (workInfo.getOutputData().getString("username").equals(user)) {
                                 // Se han recogido correctamente los datos
-                                // -> Asignamos los valores a los EditText
+                                // -> Asignamos los valores a los EditText e ImageView
                                 nombreMP.setText(workInfo.getOutputData().getString("nombre"));
                                 cumpleanosMP.setText(workInfo.getOutputData().getString("cumple"));
+                                String fp = workInfo.getOutputData().getString("foto");
                                 foto.setImageURI(Uri.parse(workInfo.getOutputData().getString("foto")));
                             }
                         }
