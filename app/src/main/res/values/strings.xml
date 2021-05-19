@@ -36,4 +36,6 @@
     <string name="introduzca_su_nueva_contrasena">Introduzca su nueva contraseña</string>
     <string name="repita_la_contrasena">Repita la contraseña</string>
     <string name="cerrar_sesion">Cerrar Sesión</string>
+    <string name="proximamente">¡Próximamente!</string>
+    <string name="seguimos_trabajando_en_ello_disculpen_las_molestias">Seguimos trabajando en ello... disculpen las molestias</string>
 </resources>

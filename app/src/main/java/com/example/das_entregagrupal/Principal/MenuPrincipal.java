@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +36,8 @@ public class MenuPrincipal extends AppCompatActivity {
     private EditText j2;
 
     private RadioButton facil, dificil;
+
+    private ImageView gV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,9 +80,7 @@ public class MenuPrincipal extends AppCompatActivity {
         // Jugar online
         bJOnline.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
-            }
+            public void onClick(View v) { createDialogoOnline().show(); }
         });
 
         // Acceder al menu de opciones
@@ -99,6 +101,18 @@ public class MenuPrincipal extends AppCompatActivity {
                 startActivity(a);
             }
         });
+
+    }
+
+    private AlertDialog createDialogoOnline() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View v = inflater.inflate(R.layout.dialogo_online, null);
+        builder.setView(v);
+        builder.setNegativeButton("Aceptar", (dialog, which) -> dialog.cancel());
+
+        return builder.create();
 
     }
 
@@ -219,5 +233,25 @@ public class MenuPrincipal extends AppCompatActivity {
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private AlertDialog createDialogoVictoria() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View v = inflater.inflate(R.layout.dialogo_victoria, null);
+        builder.setView(v);
+        builder.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
+        builder.setPositiveButton("Jugar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        gV = v.findViewById(R.id.iVictory);
+
+        return builder.create();
+
     }
 }
