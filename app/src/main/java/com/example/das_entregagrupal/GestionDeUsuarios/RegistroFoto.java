@@ -159,14 +159,10 @@ public class RegistroFoto extends AppCompatActivity {
 //        BitmapDrawable bitmapDrawablefto = (BitmapDrawable) fp.getDrawable();
 //        Bitmap bitmapFto = bitmapDrawablefto.getBitmap();
 //        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//        bitmapFto.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//        bitmapFto.compress(Bitmap.CompressFormat.PNG, 40, stream);
 //        byte[] fototransformada = stream.toByteArray();
-//        String fotoen64 = Base64.encodeToString(fototransformada,Base64.DEFAULT);
+//        String fotoen64 = Base64.encodeToString(fototransformada, Base64.DEFAULT);
 //
-//        Uri.Builder builder = new Uri.Builder().appendQueryParameter("imagen", fotoen64);
-//        String parametrosURL = builder.build().getEncodedQuery();
-//
-//        //////////////////////////////////////////////
 //        String direccion = "http://ec2-54-167-31-169.compute-1.amazonaws.com/igonzalez274/WEB/Entrega3/registroUserE3.php";
 //        String result = "";
 //        HttpURLConnection urlConnection = null;
@@ -178,11 +174,14 @@ public class RegistroFoto extends AppCompatActivity {
 //            urlConnection.setRequestMethod("POST");
 //            urlConnection.setDoOutput(true);
 //            JSONObject parametrosJSON = new JSONObject();
+//            parametrosJSON.put("username", username);
+//            parametrosJSON.put("nombre", nomb);
+//            parametrosJSON.put("password", pass);
+//            parametrosJSON.put("cumple", date);
 //            parametrosJSON.put("foto", fotoen64);
-//            urlConnection.setRequestProperty("Content-Type","application/json");
-//            PrintWriter out = new PrintWriter(urlConnection.getOutputStream());
-//            out.print(parametrosJSON.toJSONString());
-//            out.close();
+//            urlConnection.setRequestProperty("Content-Type", "application/json");
+//            hola(urlConnection.getOutputStream(), parametrosJSON);
+//
 //
 //            int statusCode = urlConnection.getResponseCode();
 //
@@ -190,11 +189,29 @@ public class RegistroFoto extends AppCompatActivity {
 //                BufferedInputStream inputStream = new BufferedInputStream(urlConnection.getInputStream());
 //                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
 //                String line = "";
-//                while ((line = bufferedReader.readLine()) != null) {result += line;}
+//                while ((line = bufferedReader.readLine()) != null) {
+//                    result += line;
+//                }
 //                inputStream.close();
 //            }
-//        } catch (IOException e) {e.printStackTrace();}
-        //////////////////////////////////////////////
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        //////////////////////////////////////////////
+//
+//        if (result.equals("true")) {
+//            // Registro correcto
+//            Intent mp = new Intent(getBaseContext(), MenuPrincipal.class);
+//            mp.putExtra("username", username);
+//            startActivity(mp);
+//            finish();
+//        } else {
+//            // Registro incorrecto
+//            int tiempo = Toast.LENGTH_SHORT;
+//            Toast aviso = Toast.makeText(getApplicationContext(), "Error", tiempo);
+//            aviso.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
+//            aviso.show();
+
 
         Data datos = new Data.Builder()
                 .putString("username",username)
@@ -230,6 +247,13 @@ public class RegistroFoto extends AppCompatActivity {
                     }
                 });
         WorkManager.getInstance(this).enqueue(otwr);
+
+    }
+
+    private void hola(OutputStream outputStream, JSONObject parametrosJSON) {
+        PrintWriter out = new PrintWriter(outputStream);
+        out.print(parametrosJSON.toJSONString());
+        out.close();
     }
 
     @Override
@@ -348,3 +372,4 @@ public class RegistroFoto extends AppCompatActivity {
     }
 
 }
+

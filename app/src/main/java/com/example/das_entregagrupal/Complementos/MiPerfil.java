@@ -215,7 +215,7 @@ public class MiPerfil extends AppCompatActivity {
                 .putString("nombre", nombreMP.getText().toString())
                 .putString("password", contrasenaMP.getText().toString())
                 .putString("cumple", cumpleanosMP.getText().toString())
-                .putString("foto", foto.toString())
+//                .putString("foto", )
                 .build();
 
         OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionUpdateUser.class)
