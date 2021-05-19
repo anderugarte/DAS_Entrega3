@@ -688,15 +688,18 @@
 
     <Button
         android:id="@+id/b1"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="50dp"
         android:layout_height="300dp"
         android:layout_marginStart="6dp"
         android:backgroundTint="#00FFFFFF"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/i16" />
 
     <Button
         android:id="@+id/b2"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="50dp"
         android:layout_height="300dp"
         android:layout_marginStart="56dp"
@@ -706,6 +709,7 @@
 
     <Button
         android:id="@+id/b3"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="50dp"
         android:layout_height="300dp"
         android:layout_marginStart="106dp"
@@ -715,6 +719,7 @@
 
     <Button
         android:id="@+id/b4"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="50dp"
         android:layout_height="300dp"
         android:layout_marginStart="156dp"
@@ -724,6 +729,7 @@
 
     <Button
         android:id="@+id/b5"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="50dp"
         android:layout_height="300dp"
         android:layout_marginStart="206dp"
@@ -733,6 +739,7 @@
 
     <Button
         android:id="@+id/b6"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="50dp"
         android:layout_height="300dp"
         android:layout_marginStart="256dp"
@@ -742,6 +749,7 @@
 
     <Button
         android:id="@+id/b7"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="50dp"
         android:layout_height="300dp"
         android:layout_marginStart="306dp"

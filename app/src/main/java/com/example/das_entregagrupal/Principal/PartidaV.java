@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,7 @@ public class PartidaV extends AppCompatActivity {
     private int numTurno = 1;
     private int numTotal = 1;
     private ImageView[][] casillas = new ImageView[7][6];
+    private Button b1, b2, b3, b4, b5, b6, b7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,15 @@ public class PartidaV extends AppCompatActivity {
 
 //        ImageView i8 = findViewById(R.id.imageView8);
 //        i8.setImageResource(R.drawable.perfil);
+
+        // Inicializar los selectores de columnas
+        b1 = findViewById(R.id.b1);
+        b2 = findViewById(R.id.b2);
+        b3 = findViewById(R.id.b3);
+        b4 = findViewById(R.id.b4);
+        b5 = findViewById(R.id.b5);
+        b6 = findViewById(R.id.b6);
+        b7 = findViewById(R.id.b7);
 
         // Inicializar todas las casillas (inicializar tablero)
 
@@ -245,6 +256,19 @@ public class PartidaV extends AppCompatActivity {
             }
         });
 
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("AAAA","Holaaa");
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("AAAA","Agurrrr");
+            }
+        });
+
         // Gestion de comeplomos
         ImageView iComeplomo = (ImageView) findViewById(R.id.iconCmplm);
         TextView numC = (TextView) findViewById(R.id.numComeplomos);
@@ -280,17 +304,11 @@ public class PartidaV extends AppCompatActivity {
 
     private void jugar() {
         while(!Partida.getPartida().partidaAcabada()){
-            Button b1 = findViewById(R.id.b1);
-            Button b2 = findViewById(R.id.b2);
-            Button b3 = findViewById(R.id.b3);
-            Button b4 = findViewById(R.id.b4);
-            Button b5 = findViewById(R.id.b5);
-            Button b6 = findViewById(R.id.b6);
-            Button b7 = findViewById(R.id.b7);
 
             b1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Log.i("AAAA","Holaaa");
                     if (comeplomoOn) {
                         Tablero.getTablero().colocarComeplomo(1);
                         comeplomoOn = false;
@@ -315,6 +333,7 @@ public class PartidaV extends AppCompatActivity {
             b2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Log.i("AAAA","Agurrrrr");
                     if (comeplomoOn) {
                         Tablero.getTablero().colocarComeplomo(2);
                         comeplomoOn = false;
