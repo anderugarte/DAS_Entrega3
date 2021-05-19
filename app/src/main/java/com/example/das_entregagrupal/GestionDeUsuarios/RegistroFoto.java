@@ -193,6 +193,7 @@ public class RegistroFoto extends AppCompatActivity {
             String nombrefichero = "IMG_" + timeStamp + "_";
             File imagenFich = new File(eldirectorio, nombrefichero + ".jpg");
             OutputStream os;
+            //
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             laminiatura.compress(Bitmap.CompressFormat.PNG, 100, stream);
             byte[] fototransformada = stream.toByteArray();

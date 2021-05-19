@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondopuntuaciones"
+    android:background="@drawable/fondopuntuacionesland"
     tools:context=".Complementos.Puntuaciones">
 
     <ImageButton
@@ -15,10 +15,10 @@
         android:tint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/abc_vector_test" />
 
     <ImageButton
@@ -29,10 +29,10 @@
         android:tint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.042"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.011"
+        app:layout_constraintVertical_bias="0.955"
         app:srcCompat="@android:drawable/ic_menu_help" />
 
     <TextView
@@ -42,13 +42,27 @@
         android:fontFamily="@font/bungee_shade"
         android:text="1."
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tRanking"
-        app:layout_constraintVertical_bias="0.187" />
+        app:layout_constraintVertical_bias="0.033" />
+
+    <TextView
+        android:id="@+id/ptosNum4"
+        android:layout_width="81dp"
+        android:layout_height="62dp"
+        android:fontFamily="@font/khand_light"
+        android:gravity="center|left"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.019"
+        app:layout_constraintStart_toEndOf="@+id/tCuarto"
+        app:layout_constraintTop_toTopOf="@+id/tCuarto" />
 
     <TextView
         android:id="@+id/tSegundo"
@@ -58,70 +72,13 @@
         android:gravity="center|left"
         android:text=" Segundo"
         android:textColor="#000000"
-        android:textSize="28sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintHorizontal_bias="0.171"
         app:layout_constraintStart_toEndOf="@+id/dos"
         app:layout_constraintTop_toBottomOf="@+id/uno"
         app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/ptosNum2"
-        android:layout_width="81dp"
-        android:layout_height="62dp"
-        android:fontFamily="@font/khand_light"
-        android:gravity="center|left"
-        android:text="0"
-        android:textColor="#000000"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/tSegundo"
-        app:layout_constraintTop_toTopOf="@+id/tSegundo" />
-
-    <TextView
-        android:id="@+id/cinco"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/bungee_shade"
-        android:text="5."
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.264"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cuatro"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/ptosNum5"
-        android:layout_width="81dp"
-        android:layout_height="62dp"
-        android:fontFamily="@font/khand_light"
-        android:gravity="center|left"
-        android:text="0"
-        android:textColor="#000000"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/tQuinto"
-        app:layout_constraintTop_toBottomOf="@+id/tCuarto" />
-
-    <TextView
-        android:id="@+id/ptosNum1"
-        android:layout_width="81dp"
-        android:layout_height="62dp"
-        android:fontFamily="@font/khand_light"
-        android:gravity="center|left"
-        android:text="0"
-        android:textColor="#000000"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/tPrimero"
-        app:layout_constraintTop_toTopOf="@+id/tPrimero" />
 
     <TextView
         android:id="@+id/tCuarto"
@@ -131,10 +88,10 @@
         android:gravity="center|left"
         android:text=" Cuarto"
         android:textColor="#000000"
-        android:textSize="28sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintHorizontal_bias="0.171"
         app:layout_constraintStart_toEndOf="@+id/cuatro"
         app:layout_constraintTop_toTopOf="@+id/cuatro"
         app:layout_constraintVertical_bias="0.0" />
@@ -146,27 +103,27 @@
         android:fontFamily="@font/bungee_shade"
         android:text="2."
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.264"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/uno"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/tQuinto"
-        android:layout_width="131dp"
-        android:layout_height="61dp"
+        android:id="@+id/ptosNum5"
+        android:layout_width="81dp"
+        android:layout_height="62dp"
         android:fontFamily="@font/khand_light"
         android:gravity="center|left"
-        android:text=" Quinto"
+        android:text="0"
         android:textColor="#000000"
-        android:textSize="28sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
-        app:layout_constraintStart_toEndOf="@+id/cinco"
-        app:layout_constraintTop_toTopOf="@+id/cinco" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tQuinto"
+        app:layout_constraintTop_toTopOf="@+id/tQuinto" />
 
     <TextView
         android:id="@+id/cuatro"
@@ -175,71 +132,27 @@
         android:fontFamily="@font/bungee_shade"
         android:text="4."
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tres"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/ptosNum3"
-        android:layout_width="81dp"
-        android:layout_height="62dp"
-        android:fontFamily="@font/khand_light"
-        android:gravity="center|left"
-        android:text="0"
-        android:textColor="#000000"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/tTercero"
-        app:layout_constraintTop_toTopOf="@+id/tTercero" />
-
-    <TextView
-        android:id="@+id/tres"
+        android:id="@+id/cinco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/bungee_shade"
-        android:text="3."
+        android:text="5."
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.264"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dos"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/ptosNum4"
-        android:layout_width="81dp"
-        android:layout_height="62dp"
-        android:fontFamily="@font/khand_light"
-        android:gravity="center|left"
-        android:text="0"
-        android:textColor="#000000"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/tCuarto"
-        app:layout_constraintTop_toTopOf="@+id/tCuarto" />
-
-    <TextView
-        android:id="@+id/tPrimero"
-        android:layout_width="131dp"
-        android:layout_height="62dp"
-        android:fontFamily="@font/khand_light"
-        android:gravity="center|left"
-        android:text=" Primero"
-        android:textColor="#000000"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
-        app:layout_constraintStart_toEndOf="@+id/uno"
-        app:layout_constraintTop_toTopOf="@+id/uno"
+        app:layout_constraintTop_toBottomOf="@+id/cuatro"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -250,13 +163,100 @@
         android:gravity="center|left"
         android:text=" Tercero"
         android:textColor="#000000"
-        android:textSize="28sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintHorizontal_bias="0.171"
         app:layout_constraintStart_toEndOf="@+id/tres"
         app:layout_constraintTop_toBottomOf="@+id/dos"
-        app:layout_constraintVertical_bias="0.004" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/ptosNum3"
+        android:layout_width="81dp"
+        android:layout_height="62dp"
+        android:fontFamily="@font/khand_light"
+        android:gravity="center|left"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tTercero"
+        app:layout_constraintTop_toTopOf="@+id/tTercero" />
+
+    <TextView
+        android:id="@+id/tPrimero"
+        android:layout_width="131dp"
+        android:layout_height="62dp"
+        android:fontFamily="@font/khand_light"
+        android:gravity="center|left"
+        android:text=" Primero"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintStart_toEndOf="@+id/uno"
+        app:layout_constraintTop_toTopOf="@+id/uno"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tQuinto"
+        android:layout_width="131dp"
+        android:layout_height="61dp"
+        android:fontFamily="@font/khand_light"
+        android:gravity="center|left"
+        android:text=" Quinto"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.171"
+        app:layout_constraintStart_toEndOf="@+id/cinco"
+        app:layout_constraintTop_toTopOf="@+id/cinco" />
+
+    <TextView
+        android:id="@+id/ptosNum1"
+        android:layout_width="81dp"
+        android:layout_height="62dp"
+        android:fontFamily="@font/khand_light"
+        android:gravity="center|left"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.009"
+        app:layout_constraintStart_toEndOf="@+id/tPrimero"
+        app:layout_constraintTop_toTopOf="@+id/tPrimero" />
+
+    <TextView
+        android:id="@+id/tres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bungee_shade"
+        android:text="3."
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dos"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/ptosNum2"
+        android:layout_width="81dp"
+        android:layout_height="62dp"
+        android:fontFamily="@font/khand_light"
+        android:gravity="center|left"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tSegundo"
+        app:layout_constraintTop_toTopOf="@+id/tSegundo" />
 
     <TextView
         android:id="@+id/tRanking"
@@ -268,9 +268,10 @@
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.721"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tMPuntos"
-        app:layout_constraintVertical_bias="0.077" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tMPuntos"
@@ -282,10 +283,10 @@
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.342"
+        app:layout_constraintHorizontal_bias="0.115"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.028" />
+        app:layout_constraintVertical_bias="0.172" />
 
     <TextView
         android:id="@+id/ptosPersonales"
@@ -301,14 +302,15 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tMPuntos"
         app:layout_constraintTop_toTopOf="@+id/tMPuntos"
-        app:layout_constraintVertical_bias="0.028" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="222dp"
-        android:layout_height="47dp"
+        android:layout_width="211dp"
+        android:layout_height="39dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.732"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
@@ -320,10 +322,10 @@
         android:layout_height="90dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.182"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.067"
+        app:layout_constraintVertical_bias="0.267"
         app:srcCompat="@drawable/logo" />
 
     <androidx.constraintlayout.widget.Guideline
