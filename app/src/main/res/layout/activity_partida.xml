@@ -140,8 +140,8 @@
 
     <TextView
         android:id="@+id/tEventos"
-        android:layout_width="288dp"
-        android:layout_height="37dp"
+        android:layout_width="359dp"
+        android:layout_height="49dp"
         android:fontFamily="@font/khand_light"
         android:gravity="center"
         android:text="¡Bienvenidos jugadores!"
@@ -691,69 +691,62 @@
         android:layout_width="50dp"
         android:layout_height="300dp"
         android:layout_marginStart="6dp"
-        android:layout_marginTop="205dp"
         android:backgroundTint="#00FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/i16" />
 
     <Button
         android:id="@+id/b2"
         android:layout_width="50dp"
         android:layout_height="300dp"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="205dp"
         android:backgroundTint="#00FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/i26" />
 
     <Button
         android:id="@+id/b3"
         android:layout_width="50dp"
         android:layout_height="300dp"
         android:layout_marginStart="106dp"
-        android:layout_marginTop="205dp"
         android:backgroundTint="#00FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/i36" />
 
     <Button
         android:id="@+id/b4"
         android:layout_width="50dp"
         android:layout_height="300dp"
         android:layout_marginStart="156dp"
-        android:layout_marginTop="205dp"
         android:backgroundTint="#00FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/i46" />
 
     <Button
         android:id="@+id/b5"
         android:layout_width="50dp"
         android:layout_height="300dp"
         android:layout_marginStart="206dp"
-        android:layout_marginTop="205dp"
         android:backgroundTint="#00FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/i56" />
 
     <Button
         android:id="@+id/b6"
         android:layout_width="50dp"
         android:layout_height="300dp"
         android:layout_marginStart="256dp"
-        android:layout_marginTop="205dp"
         android:backgroundTint="#00FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/i66" />
 
     <Button
         android:id="@+id/b7"
         android:layout_width="50dp"
         android:layout_height="300dp"
         android:layout_marginStart="306dp"
-        android:layout_marginTop="205dp"
         android:backgroundTint="#00FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/i76" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
