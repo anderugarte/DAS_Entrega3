@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -28,6 +29,9 @@ public class MenuPrincipal extends AppCompatActivity {
     private Boolean estadoF, estadoD = false;
     private Context context;
     private String user;
+
+    private TextView j1;
+    private EditText j2;
 
     private RadioButton facil, dificil;
 
@@ -124,16 +128,9 @@ public class MenuPrincipal extends AppCompatActivity {
         View v = inflater.inflate(R.layout.dialogo_jugador2, null);
         builder.setView(v);
         builder.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
-
-        TextView j1 = (TextView) v.findViewById(R.id.tJugadorUno);
-        EditText j2 = (EditText) v.findViewById(R.id.etJugadorDos);
-        Button bJugar = (Button) v.findViewById(R.id.bJugar);
-
-        j1.setText(user.toString());
-
-        bJugar.setOnClickListener(new View.OnClickListener() {
+        builder.setPositiveButton("Jugar", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(DialogInterface dialog, int which) {
                 if (j2.getText().toString().length() == 0) {
                     String text = "Debes introducir un nombre para el Jugador 2";
                     Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
@@ -150,6 +147,11 @@ public class MenuPrincipal extends AppCompatActivity {
                 }
             }
         });
+
+        j1 = (TextView) v.findViewById(R.id.tJugadorUno);
+        j2 = (EditText) v.findViewById(R.id.etJugadorDos);
+
+        j1.setText(user.toString());
 
         return builder.create();
 
