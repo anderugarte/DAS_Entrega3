@@ -247,7 +247,7 @@ public class PartidaV extends AppCompatActivity {
             }
         });
 
-        //
+        // Boton que gestiona el uso de un comeplomo
         Button bCmplm = (Button) findViewById(R.id.bComeplomo);
         bCmplm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -261,11 +261,11 @@ public class PartidaV extends AppCompatActivity {
         TextView numC = (TextView) findViewById(R.id.numComeplomos);
 
         // Gestion del turno
-//        if () {
-//            turno.setText("¡Es tu turno " + j1.getText().toString());
-//        } else {
-//            turno.setText("¡Es tu turno " + j2.getText().toString());
-//        }
+        if (numTurno == 1) {
+            turno.setText("¡Es tu turno " + j1.getText().toString() + "!");
+        } else {
+            turno.setText("¡Es tu turno " + j2.getText().toString() + "!");
+        }
 
         // Gestion de eventos
 //        if () {
@@ -278,11 +278,12 @@ public class PartidaV extends AppCompatActivity {
 //            evento.setTextSize(24);
 //            evento.setText("Para vosotros jugadores. Una ficha comeplomo para los dos.");
 //        }
-        if(modoJuego){
+
+        // Establecer el modo de juego
+        if (modoJuego){
             Partida.getPartida().inicializarJugadorYMaq(jugador1,dificultad);
             jugarIA();
-        }
-        else{
+        } else {
             Partida.getPartida().inicializarJugadores(jugador1,jugador2);
             jugar();
         }
@@ -307,7 +308,7 @@ public class PartidaV extends AppCompatActivity {
                         Jugador j = ListaJugadores.getListaJugadores().obtenerJugador(numTurno);
                         if (j.colocarFicha(1)) {
                             actualizarCasillas();
-                        }else{
+                        } else {
                             String text = "Columna llena!";
                             Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
                             toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
