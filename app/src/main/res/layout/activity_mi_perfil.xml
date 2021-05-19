@@ -7,6 +7,20 @@
     android:background="@drawable/fondomiperfil"
     tools:context=".Complementos.MiPerfil">
 
+    <ImageButton
+        android:id="@+id/iEliminarFoto"
+        android:layout_width="39dp"
+        android:layout_height="41dp"
+        android:backgroundTint="#000000"
+        android:tint="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/iCambiarFoto"
+        app:layout_constraintEnd_toStartOf="@+id/iCambiarFoto"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iFotoDePerfil"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
+
     <TextView
         android:id="@+id/tvCambiarContrasena"
         android:layout_width="wrap_content"
