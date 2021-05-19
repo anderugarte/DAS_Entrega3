@@ -156,6 +156,17 @@ public class RegistroFoto extends AppCompatActivity {
     // Este metodo gestionara el registro de un nuevo usuario
     private void gestionarRegistroFoto() {
 
+        BitmapDrawable bitmapDrawablefto = (BitmapDrawable) fp.getDrawable();
+        Bitmap bitmapFto = bitmapDrawablefto.getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmapFto.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] fototransformada = stream.toByteArray();
+        String fotoen64 = Base64.encodeToString(fototransformada,Base64.DEFAULT);
+
+        Uri.Builder builder = new Uri.Builder().appendQueryParameter("foto", fotoen64);
+        String parametrosURL = builder.build().getEncodedQuery();
+
+        //////////////////////////////////////////////
 //        BitmapDrawable bitmapDrawablefto = (BitmapDrawable) fp.getDrawable();
 //        Bitmap bitmapFto = bitmapDrawablefto.getBitmap();
 //        ByteArrayOutputStream stream = new ByteArrayOutputStream();

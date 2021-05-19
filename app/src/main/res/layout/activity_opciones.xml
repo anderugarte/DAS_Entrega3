@@ -7,36 +7,6 @@
     android:background="@drawable/fondoopciones"
     tools:context=".Complementos.Opciones">
 
-    <Button
-        android:id="@+id/bMPuntuaciones"
-        android:layout_width="207dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#000000"
-        android:fontFamily="@font/khand_light"
-        android:text="@string/mis_puntuaciones"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bPerfil"
-        app:layout_constraintVertical_bias="0.076" />
-
-    <Button
-        android:id="@+id/bPersonalizacion"
-        android:layout_width="207dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#000000"
-        android:fontFamily="@font/khand_light"
-        android:text="@string/personalizacion"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bMPuntuaciones"
-        app:layout_constraintVertical_bias="0.112" />
-
     <ImageView
         android:id="@+id/ivLogoOpciones"
         android:layout_width="192dp"
@@ -46,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.124"
+        app:layout_constraintVertical_bias="0.154"
         app:srcCompat="@drawable/logoext" />
 
     <Button
@@ -62,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bPersonalizacion"
-        app:layout_constraintVertical_bias="0.134" />
+        app:layout_constraintVertical_bias="0.129" />
 
     <Button
         android:id="@+id/bPerfil"
@@ -77,6 +47,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivLogoOpciones"
-        app:layout_constraintVertical_bias="0.098" />
+        app:layout_constraintVertical_bias="0.1" />
+
+    <Button
+        android:id="@+id/bPersonalizacion"
+        android:layout_width="207dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/khand_light"
+        android:text="@string/personalizacion"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bMPuntuaciones"
+        app:layout_constraintVertical_bias="0.106" />
+
+    <Button
+        android:id="@+id/bMPuntuaciones"
+        android:layout_width="207dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/khand_light"
+        android:text="@string/mis_puntuaciones"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bPerfil"
+        app:layout_constraintVertical_bias="0.072" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

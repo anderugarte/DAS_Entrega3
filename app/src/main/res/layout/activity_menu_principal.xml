@@ -7,81 +7,13 @@
     android:background="@drawable/fondomenuprincipal"
     tools:context=".Principal.MenuPrincipal">
 
-    <Button
-        android:id="@+id/bJIA"
-        android:layout_width="207dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#000000"
-        android:fontFamily="@font/khand_light"
-        android:text="@string/jugar_contra_la_ia"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/ivSlogan"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivLogo"
-        app:layout_constraintVertical_bias="0.054" />
-
-    <Button
-        android:id="@+id/bO"
-        android:layout_width="207dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#000000"
-        android:fontFamily="@font/khand_light"
-        android:text="@string/opciones"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/ivSlogan"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bJO"
-        app:layout_constraintVertical_bias="0.218" />
-
-    <ImageButton
-        android:id="@+id/iAyuda"
-        android:layout_width="49dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="4dp"
-        android:background="@drawable/round_button"
-        android:backgroundTint="#000000"
-        android:textColor="#FFFFFF"
-        android:tint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/ivSlogan"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bO"
-        app:layout_constraintVertical_bias="0.275"
-        app:srcCompat="@android:drawable/ic_menu_help" />
-
-    <Button
-        android:id="@+id/bJO"
-        android:layout_width="207dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#000000"
-        android:fontFamily="@font/khand_light"
-        android:text="@string/jugar_online"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/ivSlogan"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bJ2J"
-        app:layout_constraintVertical_bias="0.163" />
-
-    <Button
-        android:id="@+id/bJ2J"
-        android:layout_width="207dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#000000"
-        android:fontFamily="@font/khand_light"
-        android:text="@string/jugar_2_jugadores"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/ivSlogan"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bJIA"
-        app:layout_constraintVertical_bias="0.115" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/labarraOpciones"
+        android:layout_width="410dp"
+        android:layout_height="45dp"
+        android:background="#CDCDCD"
+        android:elevation="4dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/ivSlogan"
@@ -103,7 +35,83 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025"
+        app:layout_constraintVertical_bias="0.105"
         app:srcCompat="@drawable/logo" />
+
+    <ImageButton
+        android:id="@+id/iAyuda"
+        android:layout_width="49dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/round_button"
+        android:backgroundTint="#000000"
+        android:textColor="#FFFFFF"
+        android:tint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/ivSlogan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bO"
+        app:layout_constraintVertical_bias="0.429"
+        app:srcCompat="@android:drawable/ic_menu_help" />
+
+    <Button
+        android:id="@+id/bO"
+        android:layout_width="207dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/khand_light"
+        android:text="@string/opciones"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/ivSlogan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bJO"
+        app:layout_constraintVertical_bias="0.091" />
+
+    <Button
+        android:id="@+id/bJO"
+        android:layout_width="207dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/khand_light"
+        android:text="@string/jugar_online"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/ivSlogan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bJ2J"
+        app:layout_constraintVertical_bias="0.061" />
+
+    <Button
+        android:id="@+id/bJIA"
+        android:layout_width="207dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/khand_light"
+        android:text="@string/jugar_contra_la_ia"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/ivSlogan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo"
+        app:layout_constraintVertical_bias="0.061" />
+
+    <Button
+        android:id="@+id/bJ2J"
+        android:layout_width="207dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/khand_light"
+        android:text="@string/jugar_2_jugadores"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/ivSlogan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bJIA"
+        app:layout_constraintVertical_bias="0.054" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

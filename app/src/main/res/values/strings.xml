@@ -35,4 +35,5 @@
     <string name="ayuda_puntuaciones"><![CDATA[Ayuda:\nEn la parte superior se puede observar la puntuación general que tienes.\nEn la parte inferior, aparece el ranking de los 5 jugadores con mayor puntuaje en el juego.]]></string>
     <string name="introduzca_su_nueva_contrasena">Introduzca su nueva contraseña</string>
     <string name="repita_la_contrasena">Repita la contraseña</string>
+    <string name="cerrar_sesion">Cerrar Sesión</string>
 </resources>

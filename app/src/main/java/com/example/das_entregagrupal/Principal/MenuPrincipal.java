@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,6 +35,8 @@ public class MenuPrincipal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
+
+        setSupportActionBar(findViewById(R.id.labarraOpciones));
 
         context = this;
 
@@ -187,4 +191,31 @@ public class MenuPrincipal extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menuiniciosesion,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id=item.getItemId();
+        switch (id){
+            case R.id.cs:{
+                alertDialogBuilder = new AlertDialog.Builder(this);
+                alertDialogBuilder.setTitle("Bichötes: Conecta 4");
+                alertDialogBuilder.setMessage("¿Desea cerrar la sesión?")
+                        .setCancelable(false)
+                        .setPositiveButton("Aceptar", (dialog, which) -> {
+                            // Cerrar sesión
+                            Intent ma = new Intent(context, MainActivity.class);
+                            ma.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(ma);
+                            finish();
+                        })
+                        .setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel()).create().show();
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
