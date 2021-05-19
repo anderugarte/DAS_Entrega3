@@ -280,14 +280,16 @@ public class PartidaV extends AppCompatActivity {
 //        }
 
         // Establecer el modo de juego
+        Tablero.getTablero().inicializarTablero();
         if (modoJuego){
             Partida.getPartida().inicializarJugadorYMaq(jugador1,dificultad);
             jugarIA();
+            Log.i("aaa","dentroIA");
         } else {
             Partida.getPartida().inicializarJugadores(jugador1,jugador2);
             jugar();
+            Log.i("aaa","dentro");
         }
-        Tablero.getTablero().inicializarTablero();
     }
 
     private void jugar() {

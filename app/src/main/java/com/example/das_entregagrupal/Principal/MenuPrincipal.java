@@ -154,8 +154,8 @@ public class MenuPrincipal extends AppCompatActivity {
                     Intent p = new Intent(getBaseContext(), PartidaV.class);
                     p.putExtra("jugador1", user.toString());
                     p.putExtra("jugador2", j2.getText().toString());
-                    p.putExtra("dificultad","null");
-                    p.putExtra("modoJuego",true);
+                    p.putExtra("dificultad",0);
+                    p.putExtra("modoJuego",false);
                     startActivity(p);
                     finish();
                 }
