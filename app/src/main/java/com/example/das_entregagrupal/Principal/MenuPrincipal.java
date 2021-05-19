@@ -168,7 +168,7 @@ public class MenuPrincipal extends AppCompatActivity {
                 Intent p = new Intent(getBaseContext(), PartidaV.class);
                 p.putExtra("jugador1", user.toString());
                 p.putExtra("jugador2", "Ordenador");
-                p.putExtra("dificultad","facil");
+                p.putExtra("dificultad",0);
                 p.putExtra("modoJuego",true);
                 startActivity(p);
                 finish();
@@ -176,7 +176,7 @@ public class MenuPrincipal extends AppCompatActivity {
                 Intent p = new Intent(getBaseContext(), PartidaV.class);
                 p.putExtra("jugador1", user.toString());
                 p.putExtra("jugador2", "Ordenador");
-                p.putExtra("dificultad","dificil");
+                p.putExtra("dificultad",1);
                 p.putExtra("modoJuego",true);
                 startActivity(p);
                 finish();

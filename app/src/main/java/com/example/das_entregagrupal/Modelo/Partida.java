@@ -22,7 +22,7 @@ public class Partida {
         return mPartida;
     }
 
-    private boolean partidaAcabada() {
+    public boolean partidaAcabada() {
         if (Tablero.getTablero().comprobarCuatro(this.turnoJugador) || Tablero.getTablero().noHayHueco()) {
             return true;
         }

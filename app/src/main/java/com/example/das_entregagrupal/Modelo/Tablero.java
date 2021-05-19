@@ -200,7 +200,7 @@ public class Tablero {
         this.matriz.get(pColumna).resetear();
     }
 
-    public void piquete(String idioma) {
+    public void piquete() {
         ArrayList<Integer> columnasDisp = new ArrayList<Integer>();
         for (int i = 0; i < 7; i++) {
             columnasDisp.add(i);
@@ -224,13 +224,13 @@ public class Tablero {
             aleat = rand.nextInt(desde);
         }
         this.matriz.get(i).buscarCasilla(aleat).cambiarEstado('P');
-        if (idioma == "Espanol") {
-//            JOptionPane.showMessageDialog(null, "¡Vaya! Alguien ha bloqueado la casilla (" + (7 - (aleat + 1)) + ", "
-//                    + (i + 1) + " ). Espero que no os haya molestado.");
-        } else {
-//            JOptionPane.showMessageDialog(null, "¡Damn! Someone has blocked the (" + (7 - (aleat + 1)) + ", " + (i + 1)
-//                    + " ) square. Hope it hasn't bothered you.");
-        }
+//        if (idioma == "Espanol") {
+////            JOptionPane.showMessageDialog(null, "¡Vaya! Alguien ha bloqueado la casilla (" + (7 - (aleat + 1)) + ", "
+////                    + (i + 1) + " ). Espero que no os haya molestado.");
+//        } else {
+////            JOptionPane.showMessageDialog(null, "¡Damn! Someone has blocked the (" + (7 - (aleat + 1)) + ", " + (i + 1)
+////                    + " ) square. Hope it hasn't bothered you.");
+//        }
 
     }
 
