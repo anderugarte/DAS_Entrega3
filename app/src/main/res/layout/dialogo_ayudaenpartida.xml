@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/txtAyuda"
-        android:layout_width="244dp"
-        android:layout_height="162dp"
+        android:layout_width="214dp"
+        android:layout_height="161dp"
         android:fontFamily="@font/khand_light"
         android:scrollbars="vertical"
         android:text="@string/ayuda_en_partida"

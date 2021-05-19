@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -223,6 +224,10 @@ public class PartidaV extends AppCompatActivity {
         builder.setView(v);
         builder.setCancelable(false);
         builder.setPositiveButton("Aceptar", (dialog, which) -> dialog.cancel());
+
+        TextView texto = (TextView) v.findViewById(R.id.txtAyuda);
+        texto.setMovementMethod(new ScrollingMovementMethod());
+
         return builder.create();
 
     }
