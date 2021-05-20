@@ -523,7 +523,7 @@ public class PartidaV extends AppCompatActivity {
                         salir = true;
                     }
                 } else {
-                    generateDialogoDerrota(jugador1);
+                    generateDialogoDerrota(jugador1).show();
                     salir = true;
                 }
 //                ListaJugadores.getListaJugadores().obtenerJugador(1).getFichas().resetear();
@@ -535,7 +535,7 @@ public class PartidaV extends AppCompatActivity {
                     sumarPuntos("25");
                     salir = true;
                 } else {
-                    generateDialogoVictoria(jugador2,0);
+                    generateDialogoVictoria(jugador2,0).show();
                     salir = true;
                 }
             }
