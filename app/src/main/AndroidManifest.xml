@@ -18,7 +18,7 @@
         <activity android:name=".Complementos.Puntuaciones"></activity>
         <activity android:name=".Complementos.MiPerfil" />
         <activity android:name=".Principal.PartidaV" />
-        <activity android:name=".Complementos.Personalizacion" />
+        <activity android:name=".Complementos.Amigos" />
         <activity android:name=".Complementos.Ayuda" />
         <activity android:name=".Complementos.Opciones" />
         <activity android:name=".Principal.MenuPrincipal" />

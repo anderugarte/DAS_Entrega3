@@ -693,7 +693,7 @@ public class PartidaV extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
-        View v = inflater.inflate(R.layout.dialogo_victoria, null);
+        View v = inflater.inflate(R.layout.dialogo_derrota, null);
         builder.setView(v);
         builder.setNegativeButton("Salir",new DialogInterface.OnClickListener() {
             @Override
@@ -714,13 +714,13 @@ public class PartidaV extends AppCompatActivity {
             }
         });
 
-        // Mostramos quien ha ganado
-        ganador = (TextView) v.findViewById(R.id.tGanador);
+        // Mostramos quien ha perdido
+        ganador = (TextView) v.findViewById(R.id.tDerrota);
         ganador.setText("Lo sentimos " + jugador + ", has perdido :(");
 
-        // Mostramos cuantos puntos ha ganado
-        puntaje = (TextView) v.findViewById(R.id.tPuntos);
-        puntaje.setText("Esta vez no has ganado ningún punto.");
+        // Mostramos que no ha ganado puntos
+        puntaje = (TextView) v.findViewById(R.id.tSubDerrota);
+        puntaje.setText("No has ganado ningún punto.");
 
         return builder.create();
 

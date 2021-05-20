@@ -38,4 +38,7 @@
     <string name="cerrar_sesion">Cerrar Sesión</string>
     <string name="proximamente">¡Próximamente!</string>
     <string name="seguimos_trabajando_en_ello_disculpen_las_molestias">Seguimos trabajando en ello... disculpen las molestias</string>
+    <string name="mis_amigos">Mis Amigos</string>
+    <string name="enviar_solicitud">Enviar Solicitud</string>
+    <string name="buscar_amigos">Buscar amigos</string>
 </resources>

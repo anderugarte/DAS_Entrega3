@@ -52,12 +52,12 @@
         app:layout_constraintVertical_bias="0.149" />
 
     <Button
-        android:id="@+id/bPersonalizacion"
+        android:id="@+id/bAmigos"
         android:layout_width="207dp"
         android:layout_height="50dp"
         android:backgroundTint="#000000"
         android:fontFamily="@font/khand_light"
-        android:text="@string/personalizacion"
+        android:text="@string/mis_amigos"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -80,7 +80,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.772"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bPersonalizacion"
+        app:layout_constraintTop_toBottomOf="@+id/bAmigos"
         app:layout_constraintVertical_bias="0.206" />
 
     <Button

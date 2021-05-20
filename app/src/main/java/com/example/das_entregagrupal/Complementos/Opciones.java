@@ -14,7 +14,7 @@ import com.example.das_entregagrupal.R;
 public class Opciones extends AppCompatActivity {
 
     // Desde aquí se podrá acceder al perfil del usuario, al ranking de puntuaciones, a la
-    // pantalla de personalización y a la ayuda.
+    // pantalla de amigos y a la ayuda.
 
     private String user;
 
@@ -25,7 +25,7 @@ public class Opciones extends AppCompatActivity {
 
         Button bMiPerfil = (Button) findViewById(R.id.bPerfil);
         Button bMPunt = (Button) findViewById(R.id.bMPuntuaciones);
-        Button bPers = (Button) findViewById(R.id.bPersonalizacion);
+        Button bAmigos = (Button) findViewById(R.id.bAmigos);
         Button bAyuda = (Button) findViewById(R.id.bAyuda);
         ImageButton ibVolver = (ImageButton) findViewById(R.id.iVolver);
 
@@ -53,11 +53,12 @@ public class Opciones extends AppCompatActivity {
             }
         });
 
-        bPers.setOnClickListener(new View.OnClickListener() {
+        bAmigos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent p = new Intent (getBaseContext(), Personalizacion.class);
-                startActivity(p);
+                Intent a = new Intent (getBaseContext(), Amigos.class);
+                a.putExtra("username",user);
+                startActivity(a);
             }
         });
 
