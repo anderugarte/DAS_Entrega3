@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.das_entregagrupal.Complementos.Puntuaciones;
 import com.example.das_entregagrupal.Modelo.Evento;
 import com.example.das_entregagrupal.Modelo.Jugador;
 import com.example.das_entregagrupal.Modelo.ListaJugadores;
@@ -31,6 +33,7 @@ public class PartidaV extends AppCompatActivity {
     private String jugador1, jugador2;
     private int dificultad;
     private Boolean modoJuego;
+    private Boolean salir;
     private Context context;
     private boolean comeplomoOn=false;
     private int numTurno = 1;
@@ -38,7 +41,7 @@ public class PartidaV extends AppCompatActivity {
     private ImageView[][] casillas = new ImageView[6][7];
     private Button b1, b2, b3, b4, b5, b6, b7;
     private Button bCmplm;
-    private TextView j1,j2,evento,turno,numComeplomo;
+    private TextView j1,j2,evento,turno,numComeplomo,ganador,puntaje;
     private ImageView iComeplomo;
 
     @Override
@@ -210,6 +213,7 @@ public class PartidaV extends AppCompatActivity {
         if (extras != null) {
             jugador1 = extras.getString("jugador1");
             jugador2 = extras.getString("jugador2");
+            // 0 modo facil y 1 modo dificil
             dificultad = extras.getInt("dificultad");
             // Si el modo juego es True, la partida será contra la IA
             modoJuego = extras.getBoolean("modoJuego");
@@ -224,21 +228,21 @@ public class PartidaV extends AppCompatActivity {
         bRendir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                alertDialogBuilder = new AlertDialog.Builder(context);
-                alertDialogBuilder.setTitle("Bichötes: Conecta 4");
-                alertDialogBuilder.setMessage("¿Estás seguro que deseas abandonar la partida?")
-                        .setCancelable(false)
-                        .setPositiveButton("Rendirse", (dialog, which) -> {
-                            // Abandonar partida
-                            Tablero.getTablero().resetear();
-                            ListaJugadores.getListaJugadores().borrarComeplomos();
-                            Intent mp = new Intent(context, MenuPrincipal.class);
-                            mp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            mp.putExtra("username",jugador1);
-                            startActivity(mp);
-                            finish();
-                        })
-                        .setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel()).create().show();
+                generateDialogoVictoria(jugador1,10).show();
+//                alertDialogBuilder = new AlertDialog.Builder(context);
+//                alertDialogBuilder.setTitle("Bichötes: Conecta 4");
+//                alertDialogBuilder.setMessage("¿Estás seguro que deseas abandonar la partida?")
+//                        .setCancelable(false)
+//                        .setPositiveButton("Rendirse", (dialog, which) -> {
+//                            // Abandonar partida
+//                            Tablero.getTablero().resetear();
+//                            Intent mp = new Intent(context, MenuPrincipal.class);
+//                            mp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                            mp.putExtra("username",jugador1);
+//                            startActivity(mp);
+//                            finish();
+//                        })
+//                        .setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel()).create().show();
             }
         });
 
@@ -263,7 +267,7 @@ public class PartidaV extends AppCompatActivity {
                 if(ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos() != 0) {
                     if (comeplomoOn) {
                         comeplomoOn = false;
-                        bCmplm.
+ //                       bCmplm.
                     } else {
                         comeplomoOn = true;
                         bCmplm.setHighlightColor(0);
@@ -469,18 +473,29 @@ public class PartidaV extends AppCompatActivity {
 
     // Metodo para comprobar si alguien ha ganado
     private void comprobarSiGanado() {
-        boolean salir = false;
+        salir = false;
         if (modoJuego) {
             if (Tablero.getTablero().comprobarCuatro(numTurno)) {
                 if (numTurno == 1) {
-                    generateDialogoVictoria().show();
-//
-//                } else {
-//                    Victoria1Vs1 window = new Victoria1Vs1(idioma, modo, nombre1, nombre);
-//                    window.setVisible(true);
-//                    numTurno = 1;
-//                    IU_Partida.dispose();
-//                    salir = true;
+                    if (dificultad == 0) {
+                        generateDialogoVictoria(jugador1, 10).show();
+                        // php que actualiza los puntos del jugador
+                        salir = true;
+                    } else if (dificultad == 1) {
+                        generateDialogoVictoria(jugador1, 50).show();
+                        // php que actualiza los puntos del jugador
+                        salir = true;
+                    }
+                } else {
+                    if (dificultad == 0) {
+                        generateDialogoVictoria(jugador2, 10).show();
+                        // php que actualiza los puntos del jugador
+                        salir = true;
+                    } else if (dificultad == 1) {
+                        generateDialogoVictoria(jugador2, 50).show();
+                        // php que actualiza los puntos del jugador
+                        salir = true;
+                    }
                 }
 //                ListaJugadores.getListaJugadores().obtenerJugador(1).getFichas().resetear();
 //                ListaJugadores.getListaJugadores().obtenerJugador(2).getFichas().resetear();
@@ -507,20 +522,9 @@ public class PartidaV extends AppCompatActivity {
 //                salir = true;
 //            }
         }
-//        if (salir) {
+        if (salir) {
 //            Tablero.getTablero().resetear();
-//        }
-    }
-
-    // Generar dialogo de victoria
-    private AlertDialog generateDialogoVictoria() {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = this.getLayoutInflater();
-        View v = inflater.inflate(R.layout.dialogo_victoria, null);
-        builder.setView(v);
-        return builder.create();
-
+        }
     }
 
     // Se actualizan las casillas tras suceder un evento
@@ -576,6 +580,18 @@ public class PartidaV extends AppCompatActivity {
             }
             actualizarCasillasEvento();
         } else {evento.setText("");}
+
+        // Establece el numero de fichas comeplomo que disponga el usuario
+        numComeplomo.setText(""+ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos());
+
+        // Se ilumina o desilumina la ficha comeplomo dependiendo si el usuario posee o no una de ellas
+        if (ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos() != 0) {
+            iComeplomo.setImageResource(R.drawable.iconocomeplomoactivo);
+        } else {
+            iComeplomo.setImageResource(R.drawable.iconocomeplomo);
+        }
+
+
     }
 
     // Se cambia el texto que advierte de a quien le toca colocar una ficha
@@ -605,6 +621,8 @@ public class PartidaV extends AppCompatActivity {
         }
     }
 
+    ///////////////////////////////// DIÁLOGOS /////////////////////////////////
+
     // Genera un dialogo que ofrece una ayuda en partida al usuario
     private AlertDialog createDialogoAyudaEnPartida() {
 
@@ -617,6 +635,56 @@ public class PartidaV extends AppCompatActivity {
 
         TextView texto = (TextView) v.findViewById(R.id.txtAyuda);
         texto.setMovementMethod(new ScrollingMovementMethod());
+
+        return builder.create();
+
+    }
+
+    // Generar dialogo de victoria
+    private AlertDialog generateDialogoVictoria(String jugador, int puntos) {
+
+        Log.i("AAA",jugador);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View v = inflater.inflate(R.layout.dialogo_victoria, null);
+        builder.setView(v);
+        builder.setNeutralButton("Consultar puntuaciones",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Redirigimos al jugador a la interfaz de puntuaciones
+                Intent p = new Intent(context, Puntuaciones.class);
+                p.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                p.putExtra("username",jugador1);
+                startActivity(p);
+                finish();
+            }
+        });
+        builder.setNegativeButton("Salir",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Finalizar la partida
+                Intent mp = new Intent(context, MenuPrincipal.class);
+                mp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                mp.putExtra("username",jugador1);
+                startActivity(mp);
+                finish();
+            }
+        });
+        builder.setPositiveButton("Volver a jugar",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Reiniciar la partida
+
+            }
+        });
+
+        // Mostramos quien ha ganado
+        ganador = (TextView) v.findViewById(R.id.tGanador);
+        ganador.setText("¡Enhorabuena " + jugador + "! ¡Eres el ganador!");
+
+        // Mostramos cuantos puntos ha ganado
+        puntaje = (TextView) v.findViewById(R.id.tPuntos);
+        puntaje.setText("Has gando " + puntos + " puntos.");
 
         return builder.create();
 

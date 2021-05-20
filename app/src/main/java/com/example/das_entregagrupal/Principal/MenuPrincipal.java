@@ -235,23 +235,4 @@ public class MenuPrincipal extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private AlertDialog createDialogoVictoria() {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = this.getLayoutInflater();
-        View v = inflater.inflate(R.layout.dialogo_victoria, null);
-        builder.setView(v);
-        builder.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
-        builder.setPositiveButton("Jugar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-
-        //gV = v.findViewById(R.id.iVictory);
-
-        return builder.create();
-
-    }
 }
