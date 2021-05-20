@@ -283,13 +283,10 @@ public class PartidaV extends AppCompatActivity {
         Tablero.getTablero().inicializarTablero();
         if (modoJuego){
             Partida.getPartida().inicializarJugadorYMaq(jugador1,dificultad);
-            jugarIA();
-            Log.i("aaa","dentroIA");
         } else {
             Partida.getPartida().inicializarJugadores(jugador1,jugador2);
-            jugar();
-            Log.i("aaa","dentro");
         }
+        jugar();
     }
 
     private void jugar() {
@@ -466,9 +463,6 @@ public class PartidaV extends AppCompatActivity {
         }
     }
 
-    private void jugarIA() {
-    }
-
     private void actualizarCasillas(){
         for (int fila = 0; fila < 7; fila++) {
             for (int columna = 0; columna < 6; columna++) {
@@ -503,7 +497,7 @@ public class PartidaV extends AppCompatActivity {
     }
 
     private void comprobarSiGanado() {
-//        boolean salir = false;
+        boolean salir = false;
 //        if (modoJuego) {
 //            if (Tablero.getTablero().comprobarCuatro(numTurno)) {
 //                if (numTurno == 1) {
@@ -546,7 +540,6 @@ public class PartidaV extends AppCompatActivity {
 //        }
 //        if (salir) {
 //            Tablero.getTablero().resetear();
-//            Sesion.getSesion().terminar();
 //        }
     }
 
