@@ -599,6 +599,7 @@ public class PartidaV extends AppCompatActivity {
                     Tablero.getTablero().resetear();
                     Intent mp = new Intent(context, MenuPrincipal.class);
                     mp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    mp.putExtra("username",jugador1);
                     startActivity(mp);
                     finish();
                 })
