@@ -116,7 +116,6 @@ public class InicioSesion extends AppCompatActivity {
                     @Override
                     public void onChanged(WorkInfo workInfo) {
                         if (workInfo != null && workInfo.getState().isFinished()) {
-                            Log.i("hola", workInfo.getOutputData().getString("result"));
                             if (workInfo.getOutputData().getString("result").equals("logOK")) {
                                 // El inicio de sesion se ha realizado correctamente
                                 // Intent MenuPrincipal

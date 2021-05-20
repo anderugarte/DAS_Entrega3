@@ -515,11 +515,11 @@ public class PartidaV extends AppCompatActivity {
                 if (numTurno == 1) {
                     if (dificultad == 0) { // El jugador gana en modo facil
                         // php que actualiza los puntos del jugador
-                        sumarPuntos(10);
+                        sumarPuntos("10");
                         salir = true;
                     } else if (dificultad == 1) { // El jugador gana en modo dificil
                         // php que actualiza los puntos del jugador
-                        sumarPuntos(50);
+                        sumarPuntos("50");
                         salir = true;
                     }
                 } else {
@@ -532,7 +532,7 @@ public class PartidaV extends AppCompatActivity {
         } else if (!modoJuego) {
             if (Tablero.getTablero().comprobarCuatro(numTurno)) {
                 if (numTurno == 1) {
-                    generateDialogoVictoria(jugador1,25);
+                    sumarPuntos("25");
                     salir = true;
                 } else {
                     generateDialogoVictoria(jugador2,0);
@@ -556,11 +556,11 @@ public class PartidaV extends AppCompatActivity {
     }
 
     // Método para sumarle los puntos correspondientes al jugador cuando gane
-    private void sumarPuntos(int puntos) {
+    private void sumarPuntos(String puntos) {
 
         Data datos = new Data.Builder()
                 .putString("username", jugador1)
-                .putInt("puntos", puntos)
+                .putString("puntos", puntos)
                 .build();
 
         OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionSumarPuntos.class)
@@ -573,8 +573,8 @@ public class PartidaV extends AppCompatActivity {
                 public void onChanged(WorkInfo workInfo) {
                     if (workInfo != null && workInfo.getState().isFinished()) {
                         Log.i("hola", workInfo.getOutputData().getString("result"));
-                        if (!workInfo.getOutputData().getString("result").equals("error")) {
-                            generateDialogoVictoria(jugador1, puntos).show();
+                        if (workInfo.getOutputData().getString("result").equals("done")) {
+                            generateDialogoVictoria(jugador1, Integer.valueOf(puntos)).show();
                         }
                     }
                 }
