@@ -23,6 +23,8 @@ import android.widget.Toast;
 
 import com.example.das_entregagrupal.Complementos.Ayuda;
 import com.example.das_entregagrupal.Complementos.Opciones;
+import com.example.das_entregagrupal.Modelo.ListaJugadores;
+import com.example.das_entregagrupal.Modelo.Partida;
 import com.example.das_entregagrupal.R;
 
 public class MenuPrincipal extends AppCompatActivity {
@@ -156,6 +158,8 @@ public class MenuPrincipal extends AppCompatActivity {
                     p.putExtra("jugador2", j2.getText().toString());
                     p.putExtra("dificultad",0);
                     p.putExtra("modoJuego",false);
+                    ListaJugadores.getListaJugadores().borrarJugadores();
+                    Partida.getPartida().inicializarJugadores(user.toString(),j2.getText().toString());
                     startActivity(p);
                     finish();
                 }
@@ -186,6 +190,8 @@ public class MenuPrincipal extends AppCompatActivity {
                 p.putExtra("jugador2", "Ordenador");
                 p.putExtra("dificultad",0);
                 p.putExtra("modoJuego",true);
+                ListaJugadores.getListaJugadores().borrarJugadores();
+                Partida.getPartida().inicializarJugadorYMaq(user.toString(),0);
                 startActivity(p);
                 finish();
             } else if (dificil.isChecked()) {
@@ -194,6 +200,8 @@ public class MenuPrincipal extends AppCompatActivity {
                 p.putExtra("jugador2", "Ordenador");
                 p.putExtra("dificultad",1);
                 p.putExtra("modoJuego",true);
+                ListaJugadores.getListaJugadores().borrarJugadores();
+                Partida.getPartida().inicializarJugadorYMaq(user.toString(),1);
                 startActivity(p);
                 finish();
             }

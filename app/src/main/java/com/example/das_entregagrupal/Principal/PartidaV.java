@@ -235,7 +235,6 @@ public class PartidaV extends AppCompatActivity {
                         .setPositiveButton("Rendirse", (dialog, which) -> {
                             // Abandonar partida
                             Tablero.getTablero().resetear();
-                            ListaJugadores.getListaJugadores().borrarComeplomos();
                             Intent mp = new Intent(context, MenuPrincipal.class);
                             mp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             mp.putExtra("username",jugador1);
@@ -288,11 +287,11 @@ public class PartidaV extends AppCompatActivity {
 
         // Establecer el modo de juego
         Tablero.getTablero().inicializarTablero();
-        if (modoJuego){
-            Partida.getPartida().inicializarJugadorYMaq(jugador1,dificultad);
-        } else {
-            Partida.getPartida().inicializarJugadores(jugador1,jugador2);
-        }
+//        if (modoJuego){
+//            Partida.getPartida().inicializarJugadorYMaq(jugador1,dificultad);
+//        } else {
+//            Partida.getPartida().inicializarJugadores(jugador1,jugador2);
+//        }
 
         //jugar();
         // Boton correspondiente a la columna 1 del tablero
@@ -524,7 +523,6 @@ public class PartidaV extends AppCompatActivity {
         }
         if (salir) {
             Tablero.getTablero().resetear();
-            ListaJugadores.getListaJugadores().borrarComeplomos();
         }
     }
 
@@ -738,7 +736,6 @@ public class PartidaV extends AppCompatActivity {
                 .setPositiveButton("Rendirse", (dialog, which) -> {
                     // Abandonar partida
                     Tablero.getTablero().resetear();
-                    ListaJugadores.getListaJugadores().borrarComeplomos();
                     Intent mp = new Intent(context, MenuPrincipal.class);
                     mp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     mp.putExtra("username",jugador1);

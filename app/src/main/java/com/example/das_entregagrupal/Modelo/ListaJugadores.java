@@ -45,9 +45,7 @@ public class ListaJugadores {
         }
     }
 
-    // Este mÃ©todo solo lo hemos utilizado para el Test, por lo que no constarÃ¡ en
-    // nuestro Diagrama de Clases
-    public void resetear() {
+    public void borrarJugadores() {
         this.lista.clear();
     }
 
