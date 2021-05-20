@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
+import com.example.das_entregagrupal.Principal.MenuPrincipal;
 import com.example.das_entregagrupal.R;
 
 public class Opciones extends AppCompatActivity {
@@ -25,6 +27,7 @@ public class Opciones extends AppCompatActivity {
         Button bMPunt = (Button) findViewById(R.id.bMPuntuaciones);
         Button bPers = (Button) findViewById(R.id.bPersonalizacion);
         Button bAyuda = (Button) findViewById(R.id.bAyuda);
+        ImageButton ibVolver = (ImageButton) findViewById(R.id.iVolver);
 
         // Recibimos el nombre de usuario del usuario que se ha registrado al igual que el resto de sus datos
         Bundle extras = getIntent().getExtras();
@@ -63,6 +66,16 @@ public class Opciones extends AppCompatActivity {
             public void onClick(View v) {
                 Intent a = new Intent (getBaseContext(), Ayuda.class);
                 startActivity(a);
+            }
+        });
+
+        ibVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mp = new Intent (getBaseContext(), MenuPrincipal.class);
+                mp.putExtra("username",user);
+                startActivity(mp);
+                finish();
             }
         });
 
