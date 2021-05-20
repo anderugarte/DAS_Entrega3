@@ -249,7 +249,7 @@ public class MenuPrincipal extends AppCompatActivity {
             }
         });
 
-        gV = v.findViewById(R.id.iVictory);
+        //gV = v.findViewById(R.id.iVictory);
 
         return builder.create();
 

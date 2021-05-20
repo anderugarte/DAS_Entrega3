@@ -36,6 +36,7 @@ public class PartidaV extends AppCompatActivity {
     private int numTotal = 1;
     private ImageView[][] casillas = new ImageView[6][7];
     private Button b1, b2, b3, b4, b5, b6, b7;
+    private Button bCmplm;
     private TextView j1,j2,evento,turno,numComeplomo;
     private ImageView iComeplomo;
 
@@ -45,9 +46,6 @@ public class PartidaV extends AppCompatActivity {
         setContentView(R.layout.activity_partida);
 
         context = this;
-
-//        ImageView i8 = findViewById(R.id.imageView8);
-//        i8.setImageResource(R.drawable.perfil);
 
         // Inicializar los selectores de columnas
         b1 = findViewById(R.id.b1);
@@ -256,7 +254,7 @@ public class PartidaV extends AppCompatActivity {
         TextView numC = (TextView) findViewById(R.id.numComeplomos);
 
         // Boton que gestiona el uso de un comeplomo
-        Button bCmplm = (Button) findViewById(R.id.bComeplomo);
+        bCmplm = (Button) findViewById(R.id.bComeplomo);
         bCmplm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -289,7 +287,9 @@ public class PartidaV extends AppCompatActivity {
         } else {
             Partida.getPartida().inicializarJugadores(jugador1,jugador2);
         }
+
         //jugar();
+        // Boton correspondiente a la columna 1 del tablero
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -303,9 +303,8 @@ public class PartidaV extends AppCompatActivity {
                     numTotal++;
                 } else {
                     Jugador j = ListaJugadores.getListaJugadores().obtenerJugador(numTurno);
-                    if (j.colocarFicha(1)) {
-                        actualizarCasillas();
-                    } else {
+                    if (j.colocarFicha(1)) {actualizarCasillas();}
+                    else {
                         String text = "Columna llena!";
                         Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
@@ -314,6 +313,8 @@ public class PartidaV extends AppCompatActivity {
                 }
             }
         });
+
+        // Boton correspondiente a la columna 2 del tablero
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -327,9 +328,8 @@ public class PartidaV extends AppCompatActivity {
                     numTotal++;
                 } else {
                     Jugador j = ListaJugadores.getListaJugadores().obtenerJugador(numTurno);
-                    if (j.colocarFicha(2)) {
-                        actualizarCasillas();
-                    }else{
+                    if (j.colocarFicha(2)) {actualizarCasillas();}
+                    else {
                         String text = "Columna llena!";
                         Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
@@ -338,6 +338,8 @@ public class PartidaV extends AppCompatActivity {
                 }
             }
         });
+
+        // Boton correspondiente a la columna 3 del tablero
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -351,9 +353,8 @@ public class PartidaV extends AppCompatActivity {
                     numTotal++;
                 } else {
                     Jugador j = ListaJugadores.getListaJugadores().obtenerJugador(numTurno);
-                    if (j.colocarFicha(3)) {
-                        actualizarCasillas();
-                    }else{
+                    if (j.colocarFicha(3)) {actualizarCasillas();}
+                    else {
                         String text = "Columna llena!";
                         Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
@@ -362,6 +363,8 @@ public class PartidaV extends AppCompatActivity {
                 }
             }
         });
+
+        // Boton correspondiente a la columna 4 del tablero
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -375,9 +378,8 @@ public class PartidaV extends AppCompatActivity {
                     numTotal++;
                 } else {
                     Jugador j = ListaJugadores.getListaJugadores().obtenerJugador(numTurno);
-                    if (j.colocarFicha(4)) {
-                        actualizarCasillas();
-                    }else{
+                    if (j.colocarFicha(4)) {actualizarCasillas();}
+                    else {
                         String text = "Columna llena!";
                         Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
@@ -386,6 +388,8 @@ public class PartidaV extends AppCompatActivity {
                 }
             }
         });
+
+        // Boton correspondiente a la columna 5 del tablero
         b5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -399,9 +403,8 @@ public class PartidaV extends AppCompatActivity {
                     numTotal++;
                 } else {
                     Jugador j = ListaJugadores.getListaJugadores().obtenerJugador(numTurno);
-                    if (j.colocarFicha(5)) {
-                        actualizarCasillas();
-                    }else{
+                    if (j.colocarFicha(5)) {actualizarCasillas();}
+                    else{
                         String text = "Columna llena!";
                         Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
@@ -410,6 +413,8 @@ public class PartidaV extends AppCompatActivity {
                 }
             }
         });
+
+        // Boton correspondiente a la columna 6 del tablero
         b6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -423,9 +428,8 @@ public class PartidaV extends AppCompatActivity {
                     numTotal++;
                 } else {
                     Jugador j = ListaJugadores.getListaJugadores().obtenerJugador(numTurno);
-                    if (j.colocarFicha(6)) {
-                        actualizarCasillas();
-                    }else{
+                    if (j.colocarFicha(6)) {actualizarCasillas();}
+                    else {
                         String text = "Columna llena!";
                         Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
@@ -434,6 +438,8 @@ public class PartidaV extends AppCompatActivity {
                 }
             }
         });
+
+        // Boton correspondiente a la columna 7 del tablero
         b7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -447,9 +453,8 @@ public class PartidaV extends AppCompatActivity {
                     numTotal++;
                 } else {
                     Jugador j = ListaJugadores.getListaJugadores().obtenerJugador(numTurno);
-                    if (j.colocarFicha(7)) {
-                        actualizarCasillas();
-                    }else{
+                    if (j.colocarFicha(7)) {actualizarCasillas();}
+                    else {
                         String text = "Columna llena!";
                         Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
@@ -460,15 +465,13 @@ public class PartidaV extends AppCompatActivity {
         });
     }
 
+    // Metodo para comprobar si alguien ha ganado
     private void comprobarSiGanado() {
         boolean salir = false;
-//        if (modoJuego) {
-//            if (Tablero.getTablero().comprobarCuatro(numTurno)) {
-//                if (numTurno == 1) {
-//                    Victoria1Vs1 window = new Victoria1Vs1(idioma, modo, nombre, nombre1);
-//                    window.setVisible(true);
-//                    IU_Partida.dispose();
-//                    salir = true;
+        if (modoJuego) {
+            if (Tablero.getTablero().comprobarCuatro(numTurno)) {
+                if (numTurno == 1) {
+                    generateDialogoVictoria().show();
 //
 //                } else {
 //                    Victoria1Vs1 window = new Victoria1Vs1(idioma, modo, nombre1, nombre);
@@ -476,12 +479,12 @@ public class PartidaV extends AppCompatActivity {
 //                    numTurno = 1;
 //                    IU_Partida.dispose();
 //                    salir = true;
-//                }
+                }
 //                ListaJugadores.getListaJugadores().obtenerJugador(1).getFichas().resetear();
 //                ListaJugadores.getListaJugadores().obtenerJugador(2).getFichas().resetear();
 //
-//            }
-//        } else if (!modoJuego && numTurno == 2) {
+            }
+        } else if (!modoJuego && numTurno == 2) {
 //            if (Tablero.getTablero().comprobarCuatro(numTurno)) {
 //                Derrota window = new Derrota(idioma, modo, nombre, dif);
 //                window.setVisible(true);
@@ -491,7 +494,7 @@ public class PartidaV extends AppCompatActivity {
 //                salir = true;
 //            }
 //
-//        } else {
+        } else {
 //            if (Tablero.getTablero().comprobarCuatro(numTurno)) {
 //                Victoria window = new Victoria(idioma, modo, nombre, Integer.toString(Sesion.getSesion().getTiempo()),
 //                        dif);
@@ -501,23 +504,35 @@ public class PartidaV extends AppCompatActivity {
 //                ListaJugadores.getListaJugadores().obtenerJugador(2).getFichas().resetear();
 //                salir = true;
 //            }
-//        }
+        }
 //        if (salir) {
 //            Tablero.getTablero().resetear();
 //        }
     }
 
+    // Generar dialogo de victoria
+    private AlertDialog generateDialogoVictoria() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View v = inflater.inflate(R.layout.dialogo_victoria, null);
+        builder.setView(v);
+        return builder.create();
+
+    }
+
+    // Se actualizan las casillas tras suceder un evento
     private void actualizarCasillasEvento(){
         for (int fila = 0; fila < 6; fila++) {
             for (int columna = 0; columna < 7; columna++) {
                 char estado = Tablero.getTablero().getEstado(fila, columna);
-                if (estado == '1') {
+                if (estado == '1') { // Ficha del jugador 1
                     casillas[fila][columna].setImageResource(R.drawable.casillarojo);
-                } else if (estado == '2') {
+                } else if (estado == '2') { // Ficha del jugador 2
                     casillas[fila][columna].setImageResource(R.drawable.casillaazul);
-                } else if (estado == 'P') {
+                } else if (estado == 'P') { // Ficha Piquete
                     casillas[fila][columna].setImageResource(R.drawable.casillapiquete);
-                } else {
+                } else { // Casilla normal
                     casillas[fila][columna].setImageResource(R.drawable.casilla);
                 }
             }
@@ -525,17 +540,18 @@ public class PartidaV extends AppCompatActivity {
         comprobarSiGanado();
     }
 
+    // Se actualizan las casillas
     private void actualizarCasillas(){
         for (int fila = 0; fila < 6; fila++) {
             for (int columna = 0; columna < 7; columna++) {
                 char estado = Tablero.getTablero().getEstado(fila, columna);
-                if (estado == '1') {
+                if (estado == '1') { // Ficha del jugador 1
                     casillas[fila][columna].setImageResource(R.drawable.casillarojo);
-                } else if (estado == '2') {
+                } else if (estado == '2') { // Ficha del jugador 2
                     casillas[fila][columna].setImageResource(R.drawable.casillaazul);
-                } else if (estado == 'P') {
+                } else if (estado == 'P') { // Ficha Piquete
                     casillas[fila][columna].setImageResource(R.drawable.casillapiquete);
-                } else {
+                } else { // Casilla normal
                     casillas[fila][columna].setImageResource(R.drawable.casilla);
                 }
             }
@@ -545,34 +561,30 @@ public class PartidaV extends AppCompatActivity {
         numTotal++;
         if (this.numTotal % 5 == 0) {
             int i = Evento.getEvento().generarEvento();
-            if (i==1) {
+            if (i == 1) { // Evento Viruseses
                 evento.setText("Achuuuusss! Ups, se me han volado las fichas. Vais a tener que volver a empezar...");
-            }
-            else if (i==2){
+            } else if (i == 2){ // Evento Rompecolumnas
                 evento.setText("Parece que alguien a eliminado una columna entera...");
-            }
-            else if (i==3){
+            } else if (i == 3){ // Evento Comeplomos
                 evento.setText("Para vosotros jugadores. Una ficha comeplomo para los dos.");
-            }
-            else if(i==4){
+            } else if(i == 4){ // Evento Piquete
                 evento.setText("¡Vaya! Alguien ha bloqueado una casilla. Espero que no os moleste...");
             }
             actualizarCasillasEvento();
-        }
-        else{
-            evento.setText("");
-        }
+        } else {evento.setText("");}
 
+        // Establece el numero de fichas comeplomo que disponga el usuario
         numComeplomo.setText(""+ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos());
 
+        // Se ilumina o desilumina la ficha comeplomo dependiendo si el usuario posee o no una de ellas
         if (ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos() != 0) {
             iComeplomo.setImageResource(R.drawable.iconocomeplomoactivo);
-        }
-        else{
+        } else {
             iComeplomo.setImageResource(R.drawable.iconocomeplomo);
         }
     }
 
+    // Se cambia el texto que advierte de a quien le toca colocar una ficha
     private void cambiarTurno(){
         if (numTurno == 1) {
             turno.setText("¡Es tu turno " + j2.getText().toString() + "!");
@@ -588,6 +600,7 @@ public class PartidaV extends AppCompatActivity {
         }
     }
 
+    // Genera un dialogo que ofrece una ayuda en partida al usuario
     private AlertDialog createDialogoAyudaEnPartida() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -604,6 +617,7 @@ public class PartidaV extends AppCompatActivity {
 
     }
 
+    // Gestiona el evento al pulsar el boton 'Atras' de nuestro dispositivo
     @Override
     public void onBackPressed(){
         alertDialogBuilder = new AlertDialog.Builder(this);
