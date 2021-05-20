@@ -36,7 +36,8 @@ public class PartidaV extends AppCompatActivity {
     private int numTotal = 1;
     private ImageView[][] casillas = new ImageView[6][7];
     private Button b1, b2, b3, b4, b5, b6, b7;
-    TextView j1,j2,evento,turno;
+    private TextView j1,j2,evento,turno,numComeplomo;
+    private ImageView iComeplomo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -203,6 +204,7 @@ public class PartidaV extends AppCompatActivity {
         j2 = (TextView) findViewById(R.id.tJugador2);
         evento = (TextView) findViewById(R.id.tEventos);
         turno = (TextView) findViewById(R.id.tTurno);
+        numComeplomo = (TextView) findViewById(R.id.numComeplomos);
 
         // Recibimos los nombres de los jugadores
         Bundle extras = getIntent().getExtras();
@@ -249,18 +251,26 @@ public class PartidaV extends AppCompatActivity {
             }
         });
 
+        // Gestion de comeplomos
+        iComeplomo = (ImageView) findViewById(R.id.iconCmplm);
+        TextView numC = (TextView) findViewById(R.id.numComeplomos);
+
         // Boton que gestiona el uso de un comeplomo
         Button bCmplm = (Button) findViewById(R.id.bComeplomo);
         bCmplm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos() != 0) {
+                    if (comeplomoOn) {
+                        comeplomoOn = false;
+                        bCmplm.setBackgroundColor(3);
+                    } else {
+                        comeplomoOn = true;
+                        bCmplm.setBackgroundColor(0);
+                    }
+                }
             }
         });
-
-        // Gestion de comeplomos
-        ImageView iComeplomo = (ImageView) findViewById(R.id.iconCmplm);
-        TextView numC = (TextView) findViewById(R.id.numComeplomos);
 
         // Gestion del turno
         if (numTurno == 1) {
@@ -552,15 +562,15 @@ public class PartidaV extends AppCompatActivity {
         else{
             evento.setText("");
         }
-//        if (ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos() != 0) {
-//            if (numTurno == 1) {
-//                btnUsarizq.setEnabled(true);
-//                btnUsarder.setEnabled(false);
-//            } else {
-//                btnUsarder.setEnabled(true);
-//                btnUsarizq.setEnabled(false);
-//            }
-//        }
+
+        numComeplomo.setText(""+ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos());
+
+        if (ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos() != 0) {
+            iComeplomo.setImageResource(R.drawable.iconocomeplomoactivo);
+        }
+        else{
+            iComeplomo.setImageResource(R.drawable.iconocomeplomo);
+        }
     }
 
     private void cambiarTurno(){
