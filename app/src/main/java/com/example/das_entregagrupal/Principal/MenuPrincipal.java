@@ -106,6 +106,7 @@ public class MenuPrincipal extends AppCompatActivity {
 
     }
 
+    // Se genera este dialogo porque aun no es posible jugar online
     private AlertDialog createDialogoOnline() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

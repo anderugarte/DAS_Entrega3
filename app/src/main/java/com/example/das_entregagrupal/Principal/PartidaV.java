@@ -37,17 +37,19 @@ import com.example.das_entregagrupal.R;
 public class PartidaV extends AppCompatActivity {
 
     private AlertDialog.Builder alertDialogBuilder;
+    private AlertDialog.Builder alertDialogBuilder2;
     private String jugador1, jugador2;
     private int dificultad;
     private Boolean modoJuego;
     private Boolean salir;
+    private boolean online;
     private Context context;
     private boolean comeplomoOn=false;
     private int numTurno = 1;
     private int numTotal = 1;
     private ImageView[][] casillas = new ImageView[6][7];
     private Button b1, b2, b3, b4, b5, b6, b7;
-    private Button bCmplm;
+    private Button bCmplm, bAmis;
     private TextView j1,j2,evento,turno,numComeplomo,ganador,puntaje;
     private ImageView iComeplomo;
 
@@ -57,6 +59,9 @@ public class PartidaV extends AppCompatActivity {
         setContentView(R.layout.activity_partida);
 
         context = this;
+
+        // El modo de juego online esta sin implementar
+        online = false;
 
         // Inicializar los selectores de columnas
         b1 = findViewById(R.id.b1);
@@ -229,6 +234,33 @@ public class PartidaV extends AppCompatActivity {
         // Escribimos los datos de los jugadores
         j1.setText(jugador1);
         j2.setText(jugador2);
+
+        // Pulsando este boton, cuando nos encontramos en una partida online,
+        // se envia una solicitud de amistad a nuestro rival
+        bAmis = (Button) findViewById(R.id.bAmistad);
+        bAmis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Enviar solicitud de amistad
+                if (modoJuego) {
+                    alertDialogBuilder2 = new AlertDialog.Builder(context);
+                    alertDialogBuilder2.setTitle("Bichötes: Conecta 4");
+                    alertDialogBuilder2.setMessage("No puedes enviar una solicitud de amistad a la IA")
+                            .setCancelable(false)
+                            .setNegativeButton("Aceptar", (dialog, which) -> dialog.cancel()).create().show();
+                } else {
+                    if (online) {
+                        createDialogoAmistad().show();
+                    } else {
+                        alertDialogBuilder2 = new AlertDialog.Builder(context);
+                        alertDialogBuilder2.setTitle("Bichötes: Conecta 4");
+                        alertDialogBuilder2.setMessage("No puedes enviar una solicitud a un jugador en local")
+                                .setCancelable(false)
+                                .setNegativeButton("Aceptar", (dialog, which) -> dialog.cancel()).create().show();
+                    }
+                }
+            }
+        });
 
         // Pulsando este boton se finalizara la partida
         Button bRendir = (Button) findViewById(R.id.bRendirse);
@@ -659,6 +691,19 @@ public class PartidaV extends AppCompatActivity {
         TextView texto = (TextView) v.findViewById(R.id.txtAyuda);
         texto.setMovementMethod(new ScrollingMovementMethod());
 
+        return builder.create();
+
+    }
+
+    // Se genera un dialogo porque esta funcionalidad esta enfocada en el modo de jugar online
+    private AlertDialog createDialogoAmistad() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View v = inflater.inflate(R.layout.dialogo_online, null);
+        builder.setView(v);
+        builder.setCancelable(false);
+        builder.setNegativeButton("Aceptar", (dialog, which) -> dialog.cancel());
         return builder.create();
 
     }
