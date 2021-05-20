@@ -34,8 +34,9 @@ public class PartidaV extends AppCompatActivity {
     private boolean comeplomoOn=false;
     private int numTurno = 1;
     private int numTotal = 1;
-    private ImageView[][] casillas = new ImageView[7][6];
+    private ImageView[][] casillas = new ImageView[6][7];
     private Button b1, b2, b3, b4, b5, b6, b7;
+    TextView j1,j2,evento,turno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,147 +62,147 @@ public class PartidaV extends AppCompatActivity {
         // Columna 1
         ImageView c11 = findViewById(R.id.i11);
         c11.setImageResource(R.drawable.casilla);
-        casillas[0][0]=c11;
+        casillas[5][0]=c11;
         ImageView c12 = findViewById(R.id.i12);
         c12.setImageResource(R.drawable.casilla);
-        casillas[0][1]=c12;
+        casillas[4][0]=c12;
         ImageView c13 = findViewById(R.id.i13);
         c13.setImageResource(R.drawable.casilla);
-        casillas[0][2]=c13;
+        casillas[3][0]=c13;
         ImageView c14 = findViewById(R.id.i14);
         c14.setImageResource(R.drawable.casilla);
-        casillas[0][3]=c14;
+        casillas[2][0]=c14;
         ImageView c15 = findViewById(R.id.i15);
         c15.setImageResource(R.drawable.casilla);
-        casillas[0][4]=c15;
+        casillas[1][0]=c15;
         ImageView c16 = findViewById(R.id.i16);
         c16.setImageResource(R.drawable.casilla);
-        casillas[0][5]=c16;
+        casillas[0][0]=c16;
 
         // Columna 2
         ImageView c21 = findViewById(R.id.i21);
         c21.setImageResource(R.drawable.casilla);
-        casillas[1][0]=c21;
+        casillas[5][1]=c21;
         ImageView c22 = findViewById(R.id.i22);
         c22.setImageResource(R.drawable.casilla);
-        casillas[1][1]=c22;
+        casillas[4][1]=c22;
         ImageView c23 = findViewById(R.id.i23);
         c23.setImageResource(R.drawable.casilla);
-        casillas[1][2]=c23;
+        casillas[3][1]=c23;
         ImageView c24 = findViewById(R.id.i24);
         c24.setImageResource(R.drawable.casilla);
-        casillas[1][3]=c24;
+        casillas[2][1]=c24;
         ImageView c25 = findViewById(R.id.i25);
         c25.setImageResource(R.drawable.casilla);
-        casillas[1][4]=c25;
+        casillas[1][1]=c25;
         ImageView c26 = findViewById(R.id.i26);
         c26.setImageResource(R.drawable.casilla);
-        casillas[1][5]=c26;
+        casillas[0][1]=c26;
 
         // Columna 3
         ImageView c31 = findViewById(R.id.i31);
         c31.setImageResource(R.drawable.casilla);
-        casillas[2][0]=c31;
+        casillas[5][2]=c31;
         ImageView c32 = findViewById(R.id.i32);
         c32.setImageResource(R.drawable.casilla);
-        casillas[2][1]=c32;
+        casillas[4][2]=c32;
         ImageView c33 = findViewById(R.id.i33);
         c33.setImageResource(R.drawable.casilla);
-        casillas[2][2]=c33;
+        casillas[3][2]=c33;
         ImageView c34 = findViewById(R.id.i34);
         c34.setImageResource(R.drawable.casilla);
-        casillas[2][3]=c34;
+        casillas[2][2]=c34;
         ImageView c35 = findViewById(R.id.i35);
         c35.setImageResource(R.drawable.casilla);
-        casillas[2][4]=c35;
+        casillas[1][2]=c35;
         ImageView c36 = findViewById(R.id.i36);
         c36.setImageResource(R.drawable.casilla);
-        casillas[2][5]=c36;
+        casillas[0][2]=c36;
 
         // Columna 4
         ImageView c41 = findViewById(R.id.i41);
         c41.setImageResource(R.drawable.casilla);
-        casillas[3][0]=c41;
+        casillas[5][3]=c41;
         ImageView c42 = findViewById(R.id.i42);
         c42.setImageResource(R.drawable.casilla);
-        casillas[3][1]=c42;
+        casillas[4][3]=c42;
         ImageView c43 = findViewById(R.id.i43);
         c43.setImageResource(R.drawable.casilla);
-        casillas[3][2]=c43;
+        casillas[3][3]=c43;
         ImageView c44 = findViewById(R.id.i44);
         c44.setImageResource(R.drawable.casilla);
-        casillas[3][3]=c44;
+        casillas[2][3]=c44;
         ImageView c45 = findViewById(R.id.i45);
         c45.setImageResource(R.drawable.casilla);
-        casillas[3][4]=c45;
+        casillas[1][3]=c45;
         ImageView c46 = findViewById(R.id.i46);
         c46.setImageResource(R.drawable.casilla);
-        casillas[3][5]=c46;
+        casillas[0][3]=c46;
 
         // Columna 5
         ImageView c51 = findViewById(R.id.i51);
         c51.setImageResource(R.drawable.casilla);
-        casillas[4][0]=c51;
+        casillas[5][4]=c51;
         ImageView c52 = findViewById(R.id.i52);
         c52.setImageResource(R.drawable.casilla);
-        casillas[4][1]=c52;
+        casillas[4][4]=c52;
         ImageView c53 = findViewById(R.id.i53);
         c53.setImageResource(R.drawable.casilla);
-        casillas[4][2]=c53;
+        casillas[3][4]=c53;
         ImageView c54 = findViewById(R.id.i54);
         c54.setImageResource(R.drawable.casilla);
-        casillas[4][3]=c54;
+        casillas[2][4]=c54;
         ImageView c55 = findViewById(R.id.i55);
         c55.setImageResource(R.drawable.casilla);
-        casillas[4][4]=c55;
+        casillas[1][4]=c55;
         ImageView c56 = findViewById(R.id.i56);
         c56.setImageResource(R.drawable.casilla);
-        casillas[4][5]=c56;
+        casillas[0][4]=c56;
 
         // Columna 6
         ImageView c61 = findViewById(R.id.i61);
         c61.setImageResource(R.drawable.casilla);
-        casillas[5][0]=c61;
+        casillas[5][5]=c61;
         ImageView c62 = findViewById(R.id.i62);
         c62.setImageResource(R.drawable.casilla);
-        casillas[5][1]=c62;
+        casillas[4][5]=c62;
         ImageView c63 = findViewById(R.id.i63);
         c63.setImageResource(R.drawable.casilla);
-        casillas[5][2]=c63;
+        casillas[3][5]=c63;
         ImageView c64 = findViewById(R.id.i64);
         c64.setImageResource(R.drawable.casilla);
-        casillas[5][3]=c64;
+        casillas[2][5]=c64;
         ImageView c65 = findViewById(R.id.i65);
         c65.setImageResource(R.drawable.casilla);
-        casillas[5][4]=c65;
+        casillas[1][5]=c65;
         ImageView c66 = findViewById(R.id.i66);
         c66.setImageResource(R.drawable.casilla);
-        casillas[5][5]=c66;
+        casillas[0][5]=c66;
 
         // Columna 7
         ImageView c71 = findViewById(R.id.i71);
         c71.setImageResource(R.drawable.casilla);
-        casillas[6][0]=c71;
+        casillas[5][6]=c71;
         ImageView c72 = findViewById(R.id.i72);
         c72.setImageResource(R.drawable.casilla);
-        casillas[6][1]=c72;
+        casillas[4][6]=c72;
         ImageView c73 = findViewById(R.id.i73);
         c73.setImageResource(R.drawable.casilla);
-        casillas[6][2]=c73;
+        casillas[3][6]=c73;
         ImageView c74 = findViewById(R.id.i74);
         c74.setImageResource(R.drawable.casilla);
-        casillas[6][3]=c74;
+        casillas[2][6]=c74;
         ImageView c75 = findViewById(R.id.i75);
         c75.setImageResource(R.drawable.casilla);
-        casillas[6][4]=c75;
+        casillas[1][6]=c75;
         ImageView c76 = findViewById(R.id.i76);
         c76.setImageResource(R.drawable.casilla);
-        casillas[6][5]=c76;
+        casillas[0][6]=c76;
 
-        TextView j1 = (TextView) findViewById(R.id.tJugador1);
-        TextView j2 = (TextView) findViewById(R.id.tJugador2);
-        TextView evento = (TextView) findViewById(R.id.tEventos);
-        TextView turno = (TextView) findViewById(R.id.tTurno);
+        j1 = (TextView) findViewById(R.id.tJugador1);
+        j2 = (TextView) findViewById(R.id.tJugador2);
+        evento = (TextView) findViewById(R.id.tEventos);
+        turno = (TextView) findViewById(R.id.tTurno);
 
         // Recibimos los nombres de los jugadores
         Bundle extras = getIntent().getExtras();
@@ -632,39 +633,6 @@ public class PartidaV extends AppCompatActivity {
         }
     }
 
-    private void actualizarCasillas(){
-        for (int fila = 0; fila < 7; fila++) {
-            for (int columna = 0; columna < 6; columna++) {
-                char estado = Tablero.getTablero().getEstado(columna, fila);
-                if (estado == '1') {
-                    casillas[fila][columna].setImageResource(R.drawable.casillarojo);
-                } else if (estado == '2') {
-                    casillas[fila][columna].setImageResource(R.drawable.casillaazul);
-                } else if (estado == 'P') {
-                    casillas[fila][columna].setImageResource(R.drawable.casillapiquete);
-                } else {
-                    casillas[fila][columna].setImageResource(R.drawable.casilla);
-                }
-            }
-        }
-        comprobarSiGanado();
-        cambiarTurno();
-        numTotal++;
-        if (this.numTotal % 5 == 0) {
-            Evento.getEvento().generarEvento();
-            actualizarCasillasEvento();
-        }
-//        if (ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos() != 0) {
-//            if (numTurno == 1) {
-//                btnUsarizq.setEnabled(true);
-//                btnUsarder.setEnabled(false);
-//            } else {
-//                btnUsarder.setEnabled(true);
-//                btnUsarizq.setEnabled(false);
-//            }
-//        }
-    }
-
     private void comprobarSiGanado() {
         boolean salir = false;
 //        if (modoJuego) {
@@ -730,8 +698,42 @@ public class PartidaV extends AppCompatActivity {
         comprobarSiGanado();
     }
 
+    private void actualizarCasillas(){
+        for (int fila = 0; fila < 6; fila++) {
+            for (int columna = 0; columna < 7; columna++) {
+                char estado = Tablero.getTablero().getEstado(fila, columna);
+                if (estado == '1') {
+                    casillas[fila][columna].setImageResource(R.drawable.casillarojo);
+                } else if (estado == '2') {
+                    casillas[fila][columna].setImageResource(R.drawable.casillaazul);
+                } else if (estado == 'P') {
+                    casillas[fila][columna].setImageResource(R.drawable.casillapiquete);
+                } else {
+                    casillas[fila][columna].setImageResource(R.drawable.casilla);
+                }
+            }
+        }
+        comprobarSiGanado();
+        cambiarTurno();
+        numTotal++;
+        if (this.numTotal % 5 == 0) {
+            Evento.getEvento().generarEvento();
+            actualizarCasillasEvento();
+        }
+//        if (ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos() != 0) {
+//            if (numTurno == 1) {
+//                btnUsarizq.setEnabled(true);
+//                btnUsarder.setEnabled(false);
+//            } else {
+//                btnUsarder.setEnabled(true);
+//                btnUsarizq.setEnabled(false);
+//            }
+//        }
+    }
+
     private void cambiarTurno(){
         if (numTurno == 1) {
+            turno.setText("¡Es tu turno " + j2.getText().toString() + "!");
             numTurno = 2;
             if (modoJuego) {
                 actualizarCasillasEvento();
@@ -740,6 +742,7 @@ public class PartidaV extends AppCompatActivity {
             }
         } else {
             numTurno = 1;
+            turno.setText("¡Es tu turno " + j1.getText().toString() + "!");
         }
     }
 
