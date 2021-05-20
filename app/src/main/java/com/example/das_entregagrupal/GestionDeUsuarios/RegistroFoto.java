@@ -119,7 +119,7 @@ public class RegistroFoto extends AppCompatActivity {
                     String txt1 = "Aceptar";
                     String txt2 = "Cancelar";
                     builder.setTitle("Añadir foto de perfil");
-                    builder.setMessage("¿Está seguro de no añadir ninguna foto de perfil?");
+                    builder.setMessage("¿Estás seguro de no añadir ninguna foto de perfil?");
                     builder.setCancelable(true);
 
                     builder.setPositiveButton(txt1, new DialogInterface.OnClickListener() {

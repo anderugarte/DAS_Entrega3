@@ -65,9 +65,7 @@ public class InicioSesion extends AppCompatActivity {
                     // Si existe se hara el inicio de sesión
                     // Si no aparecerá un Toast
                     comprobarSiExisteUsuario();
-                    iniciarSesion();
                 }
-
 
             }
         });

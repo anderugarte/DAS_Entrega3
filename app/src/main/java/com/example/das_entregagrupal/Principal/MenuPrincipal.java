@@ -122,7 +122,7 @@ public class MenuPrincipal extends AppCompatActivity {
     public void onBackPressed(){
         alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("Bichötes: Conecta 4");
-        alertDialogBuilder.setMessage("¿Desea cerrar la sesión?")
+        alertDialogBuilder.setMessage("¿Deseas cerrar la sesión?")
                 .setCancelable(false)
                 .setPositiveButton("Aceptar", (dialog, which) -> {
                     // Cerrar sesión
@@ -220,7 +220,7 @@ public class MenuPrincipal extends AppCompatActivity {
             case R.id.cs:{
                 alertDialogBuilder = new AlertDialog.Builder(this);
                 alertDialogBuilder.setTitle("Bichötes: Conecta 4");
-                alertDialogBuilder.setMessage("¿Desea cerrar la sesión?")
+                alertDialogBuilder.setMessage("¿Deseas cerrar la sesión?")
                         .setCancelable(false)
                         .setPositiveButton("Aceptar", (dialog, which) -> {
                             // Cerrar sesión

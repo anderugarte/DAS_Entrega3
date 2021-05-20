@@ -8,5 +8,9 @@
         android:id="@+id/cs"
         android:title="@string/cerrar_sesion"
         app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/txt"
+        android:title=" "
+        app:showAsAction="ifRoom|withText" />
 
 </menu>
