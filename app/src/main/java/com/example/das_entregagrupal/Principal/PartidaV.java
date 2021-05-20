@@ -746,7 +746,11 @@ public class PartidaV extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // Reiniciar la partida
-
+                ListaJugadores.getListaJugadores().borrarComeplomos();
+                Tablero.getTablero().resetear();
+                numTurno=1;
+                numTotal=1;
+                actualizarCasillasEvento();
             }
         });
 
