@@ -30,7 +30,7 @@ public class ConexionExisteUsuario extends Worker {
     public Result doWork() {
         String username = getInputData().getString("username");
 
-        String direccion = "http://ec2-54-167-31-169.compute-1.amazonaws.com/igonzalez274/WEB/Entrega3/existeUsernameE3.php";
+        String direccion = "http://ec2-54-242-79-204.compute-1.amazonaws.com/igonzalez274/WEB/Entrega3/existeUsernameE3.php";
         String result = "";
         Data resultados = null;
         HttpURLConnection urlConnection = null;

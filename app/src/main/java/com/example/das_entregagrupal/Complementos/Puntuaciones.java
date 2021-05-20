@@ -35,7 +35,6 @@ import java.util.SplittableRandom;
 
 public class Puntuaciones extends AppCompatActivity {
 
-    private int ptosUser;
     private String user;
 
     List<JSONObject> lpuntos = new ArrayList<>();

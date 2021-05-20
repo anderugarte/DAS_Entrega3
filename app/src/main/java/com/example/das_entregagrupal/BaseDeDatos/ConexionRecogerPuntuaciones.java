@@ -32,7 +32,7 @@ public class ConexionRecogerPuntuaciones extends Worker {
     @Override
     public Result doWork() {
 
-        String direccion = "http://ec2-54-167-31-169.compute-1.amazonaws.com/igonzalez274/WEB/Entrega3/recogerPuntuacionesE3.php";
+        String direccion = "http://ec2-54-242-79-204.compute-1.amazonaws.com/igonzalez274/WEB/Entrega3/recogerPuntuacionesE3.php";
         String[] result = new String[2];
         Data resultados = null;
         HttpURLConnection urlConnection = null;
