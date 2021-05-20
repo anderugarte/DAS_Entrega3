@@ -235,6 +235,7 @@ public class PartidaV extends AppCompatActivity {
                         .setPositiveButton("Rendirse", (dialog, which) -> {
                             // Abandonar partida
                             Tablero.getTablero().resetear();
+                            ListaJugadores.getListaJugadores().borrarComeplomos();
                             Intent mp = new Intent(context, MenuPrincipal.class);
                             mp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             mp.putExtra("username",jugador1);
