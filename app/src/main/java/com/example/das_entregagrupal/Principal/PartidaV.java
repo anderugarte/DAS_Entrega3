@@ -478,7 +478,7 @@ public class PartidaV extends AppCompatActivity {
     // Metodo para comprobar si alguien ha ganado
     // En el modo de 2 juagores, solo se suman los puntos al primer jugador, ya que el segundo
     //      no está en la base de datos
-    // En el modo de IA,
+    // En el modo de IA, se le sumarán puntos si gana el usuario
     private void comprobarSiGanado() {
         salir = false;
         if (modoJuego) { // Partida contra la IA
@@ -546,17 +546,7 @@ public class PartidaV extends AppCompatActivity {
                 .setInputData(datos)
                 .build();
 
-        WorkManager.getInstance(getApplicationContext()).getWorkInfoByIdLiveData(otwr.getId())
-                .observe(this, new Observer<WorkInfo>() {
-                    @Override
-                    public void onChanged(WorkInfo workInfo) {
-                        if (workInfo != null && workInfo.getState().isFinished()) {
-                            if (workInfo.getOutputData().getString("result").equals("done")) {
-
-                            }
-                        }
-                    }
-                });
+        WorkManager.getInstance(getApplicationContext()).getWorkInfoByIdLiveData(otwr.getId());
         WorkManager.getInstance(getBaseContext()).enqueue(otwr);
     }
 
