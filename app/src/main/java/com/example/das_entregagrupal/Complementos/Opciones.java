@@ -80,4 +80,14 @@ public class Opciones extends AppCompatActivity {
         });
 
     }
+
+    // El usuario pulse el boton "Atras" de su dispositivo
+    @Override
+    public void onBackPressed(){
+        Intent mp = new Intent (getBaseContext(), MenuPrincipal.class);
+        mp.putExtra("username", user);
+        startActivity(mp);
+        finish();
+    }
+
 }

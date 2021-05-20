@@ -523,7 +523,8 @@ public class PartidaV extends AppCompatActivity {
 //            }
         }
         if (salir) {
-//            Tablero.getTablero().resetear();
+            Tablero.getTablero().resetear();
+            ListaJugadores.getListaJugadores().borrarComeplomos();
         }
     }
 
@@ -643,7 +644,6 @@ public class PartidaV extends AppCompatActivity {
     // Generar dialogo de victoria
     private AlertDialog generateDialogoVictoria(String jugador, int puntos) {
 
-        Log.i("AAA",jugador);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
         View v = inflater.inflate(R.layout.dialogo_victoria, null);
@@ -684,7 +684,45 @@ public class PartidaV extends AppCompatActivity {
 
         // Mostramos cuantos puntos ha ganado
         puntaje = (TextView) v.findViewById(R.id.tPuntos);
-        puntaje.setText("Has gando " + puntos + " puntos.");
+        puntaje.setText("Has ganado " + puntos + " puntos.");
+
+        return builder.create();
+
+    }
+
+    // Generar dialogo de derrota
+    private AlertDialog generateDialogoDerrota(String jugador) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View v = inflater.inflate(R.layout.dialogo_victoria, null);
+        builder.setView(v);
+        builder.setNegativeButton("Salir",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Finalizar la partida
+                Intent mp = new Intent(context, MenuPrincipal.class);
+                mp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                mp.putExtra("username",jugador1);
+                startActivity(mp);
+                finish();
+            }
+        });
+        builder.setPositiveButton("Volver a jugar",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Reiniciar la partida
+
+            }
+        });
+
+        // Mostramos quien ha ganado
+        ganador = (TextView) v.findViewById(R.id.tGanador);
+        ganador.setText("Lo sentimos " + jugador + ", has perdido :(");
+
+        // Mostramos cuantos puntos ha ganado
+        puntaje = (TextView) v.findViewById(R.id.tPuntos);
+        puntaje.setText("Esta vez no has ganado ningún punto.");
 
         return builder.create();
 

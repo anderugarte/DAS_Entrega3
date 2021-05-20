@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.das_entregagrupal.BaseDeDatos.ConexionRecogerPuntuaciones;
+import com.example.das_entregagrupal.Principal.MainActivity;
 import com.example.das_entregagrupal.R;
 
 import org.json.JSONArray;
@@ -50,7 +51,6 @@ public class Puntuaciones extends AppCompatActivity {
     TextView ptos3;
     TextView ptos4;
     TextView ptos5;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +91,6 @@ public class Puntuaciones extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
         // Volver atras
         bAtras.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,6 +110,7 @@ public class Puntuaciones extends AppCompatActivity {
 
     }
 
+    // Recogemos la informacion de las puntuaciones del jugador y mejores puntuaciones
     private void recogerDatos() throws JSONException {
 
         OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionRecogerPuntuaciones.class).build();
@@ -212,6 +212,7 @@ public class Puntuaciones extends AppCompatActivity {
         WorkManager.getInstance(getBaseContext()).enqueue(otwr);
     }
 
+    // Genera el dialogo de Ayuda
     private AlertDialog createDialogoAyuda() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -222,5 +223,14 @@ public class Puntuaciones extends AppCompatActivity {
 
         return builder.create();
 
+    }
+
+    // El usuario pulse el boton "Atras" de su dispositivo
+    @Override
+    public void onBackPressed(){
+        Intent o = new Intent (getBaseContext(), Opciones.class);
+        o.putExtra("username", user);
+        startActivity(o);
+        finish();
     }
 }
