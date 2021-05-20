@@ -157,7 +157,7 @@ public class MiPerfil extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
-                    case R.id.etCumpleanos:
+                    case R.id.etCumpleanosMP:
                         showDatePickerDialog(cumpleanosMP);
                         break;
                 }
@@ -232,12 +232,20 @@ public class MiPerfil extends AppCompatActivity {
                         if (workInfo != null && workInfo.getState().isFinished()) {
                             if (workInfo.getOutputData().getString("result").equals("done")) {
                                 // Se ha actualizado la contraseña en la base de datos
+                                String text = "Contraseña cambiada";
+                                Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
+                                toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
+                                toast.show();
                                 Intent o = new Intent (getBaseContext(), Opciones.class);
                                 o.putExtra("username",user);
                                 startActivity(o);
                                 finish();
+                            } else {
+                                String text = "Ha ocurrido un error";
+                                Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
+                                toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
+                                toast.show();
                             }
-
                         }
                     }
                 });
