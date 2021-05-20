@@ -14,7 +14,7 @@
         android:backgroundTint="#00FFFFFF"
         android:fontFamily="@font/khand_light"
         android:gravity="center"
-        android:text="Enviar Solicitud"
+        android:text="Agregar Amigo"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -533,7 +533,6 @@ public class PartidaV extends AppCompatActivity {
                 }
 //                ListaJugadores.getListaJugadores().obtenerJugador(1).getFichas().resetear();
 //                ListaJugadores.getListaJugadores().obtenerJugador(2).getFichas().resetear();
-//
             }
         } else if (!modoJuego && numTurno == 2) {
 //            if (Tablero.getTablero().comprobarCuatro(numTurno)) {
