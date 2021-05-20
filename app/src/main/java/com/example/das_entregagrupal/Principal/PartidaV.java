@@ -1,19 +1,9 @@
 package com.example.das_entregagrupal.Principal;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.work.Data;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.WorkInfo;
-import androidx.work.WorkManager;
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.method.DateTimeKeyListener;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
@@ -25,12 +15,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkInfo;
+import androidx.work.WorkManager;
+
 import com.example.das_entregagrupal.BaseDeDatos.ConexionSumarPuntos;
 import com.example.das_entregagrupal.Complementos.Puntuaciones;
 import com.example.das_entregagrupal.Modelo.Evento;
 import com.example.das_entregagrupal.Modelo.Jugador;
 import com.example.das_entregagrupal.Modelo.ListaJugadores;
-import com.example.das_entregagrupal.Modelo.Partida;
 import com.example.das_entregagrupal.Modelo.Tablero;
 import com.example.das_entregagrupal.R;
 
@@ -485,12 +482,10 @@ public class PartidaV extends AppCompatActivity {
             if (Tablero.getTablero().comprobarCuatro(numTurno)) {
                 if (numTurno == 1) {
                     if (dificultad == 0) {
-                        generateDialogoVictoria(jugador1, 10).show();
                         // php que actualiza los puntos del jugador
                         sumarPuntos(10);
                         salir = true;
                     } else if (dificultad == 1) {
-                        generateDialogoVictoria(jugador1, 50).show();
                         // php que actualiza los puntos del jugador
                         sumarPuntos(50);
                         salir = true;
@@ -546,7 +541,18 @@ public class PartidaV extends AppCompatActivity {
                 .setInputData(datos)
                 .build();
 
-        WorkManager.getInstance(getApplicationContext()).getWorkInfoByIdLiveData(otwr.getId());
+        WorkManager.getInstance(getApplicationContext()).getWorkInfoByIdLiveData(otwr.getId())
+            .observe(this, new Observer<WorkInfo>() {
+                @Override
+                public void onChanged(WorkInfo workInfo) {
+                    if (workInfo != null && workInfo.getState().isFinished()) {
+                        Log.i("hola", workInfo.getOutputData().getString("result"));
+                        if (!workInfo.getOutputData().getString("result").equals("error")) {
+                            generateDialogoVictoria(jugador1, puntos).show();
+                        }
+                    }
+                }
+            });
         WorkManager.getInstance(getBaseContext()).enqueue(otwr);
     }
 
