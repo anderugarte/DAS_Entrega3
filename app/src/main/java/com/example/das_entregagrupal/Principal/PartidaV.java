@@ -229,6 +229,7 @@ public class PartidaV extends AppCompatActivity {
                         .setCancelable(false)
                         .setPositiveButton("Rendirse", (dialog, which) -> {
                             // Abandonar partida
+                            Tablero.getTablero().resetear();
                             Intent mp = new Intent(context, MenuPrincipal.class);
                             mp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             mp.putExtra("username",jugador1);
@@ -458,181 +459,6 @@ public class PartidaV extends AppCompatActivity {
         });
     }
 
-    private void jugar() {
-        Log.i("aaa","0");
-        while(!Partida.getPartida().partidaAcabada()){
-        Log.i("aaa","1");
-            b1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (comeplomoOn) {
-                        Tablero.getTablero().colocarComeplomo(1);
-                        comeplomoOn = false;
-                        ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().eliminarComeplomo();
-
-                        actualizarCasillasEvento();
-                        cambiarTurno();
-                        numTotal++;
-                    } else {
-                        Jugador j = ListaJugadores.getListaJugadores().obtenerJugador(numTurno);
-                        if (j.colocarFicha(1)) {
-                            actualizarCasillas();
-                        } else {
-                            String text = "Columna llena!";
-                            Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
-                            toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
-                            toast.show();
-                        }
-                    }
-                }
-            });
-            b2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (comeplomoOn) {
-                        Tablero.getTablero().colocarComeplomo(2);
-                        comeplomoOn = false;
-                        ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().eliminarComeplomo();
-
-                        actualizarCasillasEvento();
-                        cambiarTurno();
-                        numTotal++;
-                    } else {
-                        Jugador j = ListaJugadores.getListaJugadores().obtenerJugador(numTurno);
-                        if (j.colocarFicha(2)) {
-                            actualizarCasillas();
-                        }else{
-                            String text = "Columna llena!";
-                            Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
-                            toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
-                            toast.show();
-                        }
-                    }
-                }
-            });
-            b3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (comeplomoOn) {
-                        Tablero.getTablero().colocarComeplomo(3);
-                        comeplomoOn = false;
-                        ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().eliminarComeplomo();
-
-                        actualizarCasillasEvento();
-                        cambiarTurno();
-                        numTotal++;
-                    } else {
-                        Jugador j = ListaJugadores.getListaJugadores().obtenerJugador(numTurno);
-                        if (j.colocarFicha(3)) {
-                            actualizarCasillas();
-                        }else{
-                            String text = "Columna llena!";
-                            Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
-                            toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
-                            toast.show();
-                        }
-                    }
-                }
-            });
-            b4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (comeplomoOn) {
-                        Tablero.getTablero().colocarComeplomo(4);
-                        comeplomoOn = false;
-                        ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().eliminarComeplomo();
-
-                        actualizarCasillasEvento();
-                        cambiarTurno();
-                        numTotal++;
-                    } else {
-                        Jugador j = ListaJugadores.getListaJugadores().obtenerJugador(numTurno);
-                        if (j.colocarFicha(4)) {
-                            actualizarCasillas();
-                        }else{
-                            String text = "Columna llena!";
-                            Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
-                            toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
-                            toast.show();
-                        }
-                    }
-                }
-            });
-            b5.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (comeplomoOn) {
-                        Tablero.getTablero().colocarComeplomo(5);
-                        comeplomoOn = false;
-                        ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().eliminarComeplomo();
-
-                        actualizarCasillasEvento();
-                        cambiarTurno();
-                        numTotal++;
-                    } else {
-                        Jugador j = ListaJugadores.getListaJugadores().obtenerJugador(numTurno);
-                        if (j.colocarFicha(5)) {
-                            actualizarCasillas();
-                        }else{
-                            String text = "Columna llena!";
-                            Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
-                            toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
-                            toast.show();
-                        }
-                    }
-                }
-            });
-            b6.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (comeplomoOn) {
-                        Tablero.getTablero().colocarComeplomo(6);
-                        comeplomoOn = false;
-                        ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().eliminarComeplomo();
-
-                        actualizarCasillasEvento();
-                        cambiarTurno();
-                        numTotal++;
-                    } else {
-                        Jugador j = ListaJugadores.getListaJugadores().obtenerJugador(numTurno);
-                        if (j.colocarFicha(6)) {
-                            actualizarCasillas();
-                        }else{
-                            String text = "Columna llena!";
-                            Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
-                            toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
-                            toast.show();
-                        }
-                    }
-                }
-            });
-            b7.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (comeplomoOn) {
-                        Tablero.getTablero().colocarComeplomo(7);
-                        comeplomoOn = false;
-                        ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().eliminarComeplomo();
-
-                        actualizarCasillasEvento();
-                        cambiarTurno();
-                        numTotal++;
-                    } else {
-                        Jugador j = ListaJugadores.getListaJugadores().obtenerJugador(numTurno);
-                        if (j.colocarFicha(7)) {
-                            actualizarCasillas();
-                        }else{
-                            String text = "Columna llena!";
-                            Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
-                            toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
-                            toast.show();
-                        }
-                    }
-                }
-            });
-        }
-    }
-
     private void comprobarSiGanado() {
         boolean salir = false;
 //        if (modoJuego) {
@@ -770,6 +596,7 @@ public class PartidaV extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton("Rendirse", (dialog, which) -> {
                     // Abandonar partida
+                    Tablero.getTablero().resetear();
                     Intent mp = new Intent(context, MenuPrincipal.class);
                     mp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(mp);
