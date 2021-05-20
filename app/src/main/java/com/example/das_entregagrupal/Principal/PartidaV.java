@@ -513,37 +513,32 @@ public class PartidaV extends AppCompatActivity {
         if (modoJuego) { // Partida contra la IA
             if (Tablero.getTablero().comprobarCuatro(numTurno)) {
                 if (numTurno == 1) {
-                    if (dificultad == 0) {
+                    if (dificultad == 0) { // El jugador gana en modo facil
                         // php que actualiza los puntos del jugador
                         sumarPuntos(10);
                         salir = true;
-                    } else if (dificultad == 1) {
+                    } else if (dificultad == 1) { // El jugador gana en modo dificil
                         // php que actualiza los puntos del jugador
                         sumarPuntos(50);
                         salir = true;
                     }
                 } else {
-                    if (dificultad == 0) {
-                        generateDialogoVictoria(jugador2, 10).show(); // Generar derrota juagdor1
-                        salir = true;
-                    } else if (dificultad == 1) {
-                        generateDialogoVictoria(jugador2, 50).show(); // Generar derrota juagdor1
-                        salir = true;
-                    }
+                    generateDialogoDerrota(jugador1);
+                    salir = true;
                 }
 //                ListaJugadores.getListaJugadores().obtenerJugador(1).getFichas().resetear();
 //                ListaJugadores.getListaJugadores().obtenerJugador(2).getFichas().resetear();
             }
-        } else if (!modoJuego && numTurno == 2) {
-//            if (Tablero.getTablero().comprobarCuatro(numTurno)) {
-//                Derrota window = new Derrota(idioma, modo, nombre, dif);
-//                window.setVisible(true);
-//                IU_Partida.dispose();
-//                ListaJugadores.getListaJugadores().obtenerJugador(1).getFichas().resetear();
-//                ListaJugadores.getListaJugadores().obtenerJugador(2).getFichas().resetear();
-//                salir = true;
-//            }
-//
+        } else if (!modoJuego) {
+            if (Tablero.getTablero().comprobarCuatro(numTurno)) {
+                if (numTurno == 1) {
+                    generateDialogoVictoria(jugador1,25);
+                    salir = true;
+                } else {
+                    generateDialogoVictoria(jugador2,0);
+                    salir = true;
+                }
+            }
         } else {
 //            if (Tablero.getTablero().comprobarCuatro(numTurno)) {
 //                Victoria window = new Victoria(idioma, modo, nombre, Integer.toString(Sesion.getSesion().getTiempo()),
@@ -756,7 +751,8 @@ public class PartidaV extends AppCompatActivity {
 
         // Mostramos cuantos puntos ha ganado
         puntaje = (TextView) v.findViewById(R.id.tPuntos);
-        puntaje.setText("Has ganado " + puntos + " puntos.");
+        if (puntos > 0) {puntaje.setText("Has ganado " + puntos + " puntos.");}
+        else {puntaje.setText("El segundo jugador no puede ganar puntos.");}
 
         return builder.create();
 
