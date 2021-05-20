@@ -152,6 +152,25 @@ public class MiPerfil extends AppCompatActivity {
             }
         });
 
+        // Al pulsar este EditText, desplegaremos un dialogo donde se podra modificar la fecha de nacimientop del usuario
+        cumpleanosMP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.etCumpleanos:
+                        showDatePickerDialog(cumpleanosMP);
+                        break;
+                }
+            }
+        });
+
+    }
+
+    // Este metodo nos ayuda a desplegar el dialogo para la seleccion de la fecha de nacimiento y nos permite enviar
+    // el EditText por parametro para una vez obtenida la fecha poder realizar un .setText("fecha") en el
+    private void showDatePickerDialog(final EditText editText) {
+        ClaseDialogoFecha dialogoCumpleanos = new ClaseDialogoFecha(editText);
+        dialogoCumpleanos.show(getSupportFragmentManager(),"cumple");
     }
 
     // Se genara un dialogo para modificar la contraseña del usuario
