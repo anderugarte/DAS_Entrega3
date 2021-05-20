@@ -10,6 +10,7 @@ import androidx.work.WorkManager;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -134,36 +135,81 @@ public class Puntuaciones extends AppCompatActivity {
                                 }
                                 lpuntos.add(json);
                             }
+
+                            Collections.sort(lpuntos, (o1, o2) -> {
+                                String s1 = new String();
+                                int n1 = 0;
+                                String s2 = new String();
+                                int n2 = 0;
+
+                                try {
+                                    s1 = (String) o1.get("puntos");
+                                    n1 = Integer.valueOf(s1);
+                                    s2 = (String) o2.get("puntos");
+                                    n2 = Integer.valueOf(s2);
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                return n2 - n1;
+                            });
+
+                            int length = lpuntos.size();
+                            try {
+                                if (length == 1) {
+                                    num1.setText(lpuntos.get(0).get("nombre").toString());
+                                    ptos1.setText(lpuntos.get(0).get("puntos").toString());
+                                    num2.setText("No existe");
+                                    num3.setText("No existe");
+                                    num4.setText("No existe");
+                                    num5.setText("No existe");
+                                } else if (length == 2) {
+                                    num1.setText(lpuntos.get(0).get("nombre").toString());
+                                    ptos1.setText(lpuntos.get(0).get("puntos").toString());
+                                    num2.setText(lpuntos.get(1).get("nombre").toString());
+                                    ptos2.setText(lpuntos.get(1).get("puntos").toString());
+                                    num3.setText("No existe");
+                                    num4.setText("No existe");
+                                    num5.setText("No existe");
+                                } else if (length == 3) {
+                                    num1.setText(lpuntos.get(0).get("nombre").toString());
+                                    ptos1.setText(lpuntos.get(0).get("puntos").toString());
+                                    num2.setText(lpuntos.get(1).get("nombre").toString());
+                                    ptos2.setText(lpuntos.get(1).get("puntos").toString());
+                                    num3.setText(lpuntos.get(2).get("nombre").toString());
+                                    ptos3.setText(lpuntos.get(2).get("puntos").toString());
+                                    num4.setText("No existe");
+                                    num5.setText("No existe");
+                                } else if (length == 4) {
+                                    num1.setText(lpuntos.get(0).get("nombre").toString());
+                                    ptos1.setText(lpuntos.get(0).get("puntos").toString());
+                                    num2.setText(lpuntos.get(1).get("nombre").toString());
+                                    ptos2.setText(lpuntos.get(1).get("puntos").toString());
+                                    num3.setText(lpuntos.get(2).get("nombre").toString());
+                                    ptos3.setText(lpuntos.get(2).get("puntos").toString());
+                                    num4.setText(lpuntos.get(3).get("nombre").toString());
+                                    ptos4.setText(lpuntos.get(3).get("puntos").toString());
+                                    num5.setText("No existe");
+                                } else if (length == 5) {
+                                    num1.setText(lpuntos.get(0).get("nombre").toString());
+                                    ptos1.setText(lpuntos.get(0).get("puntos").toString());
+                                    num2.setText(lpuntos.get(1).get("nombre").toString());
+                                    ptos2.setText(lpuntos.get(1).get("puntos").toString());
+                                    num3.setText(lpuntos.get(2).get("nombre").toString());
+                                    ptos3.setText(lpuntos.get(2).get("puntos").toString());
+                                    num4.setText(lpuntos.get(3).get("nombre").toString());
+                                    ptos4.setText(lpuntos.get(3).get("puntos").toString());
+                                    num5.setText(lpuntos.get(4).get("nombre").toString());
+                                    ptos5.setText(lpuntos.get(4).get("puntos").toString());
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
+
                 });
         WorkManager.getInstance(getBaseContext()).enqueue(otwr);
-        Collections.sort(lpuntos, new Comparator<JSONObject>() {
-            @Override
-            public int compare(JSONObject o1, JSONObject o2) {
-                String p1 = new String();
-                String p2 = new String();
-
-                try {
-                    p1 = (String) o1.get("puntos");
-                    p2 = (String) o2.get("puntos");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                return p1.compareTo(p2);
-            }
-        });
-
-        num1.setText(lpuntos.get(0).get("nombre").toString());
-        ptos1.setText(lpuntos.get(0).get("puntos").toString());
-        num2.setText(lpuntos.get(1).get("nombre").toString());
-        ptos2.setText(lpuntos.get(1).get("puntos").toString());
-        num3.setText(lpuntos.get(2).get("nombre").toString());
-        ptos3.setText(lpuntos.get(2).get("puntos").toString());
-        num4.setText(lpuntos.get(3).get("nombre").toString());
-        ptos4.setText(lpuntos.get(3).get("puntos").toString());
-        num5.setText(lpuntos.get(4).get("nombre").toString());
-        ptos5.setText(lpuntos.get(4).get("puntos").toString());
     }
 
     private AlertDialog createDialogoAyuda() {

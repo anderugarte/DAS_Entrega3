@@ -96,8 +96,6 @@ public class MiPerfil extends AppCompatActivity {
         // Recoger los datos de la BD
         recogerDatos();
 
-        // Configuracion de los botones
-        Button bModificar = (Button) findViewById(R.id.bModificar);
 
         // Cambiar la contraseña del usuario
         contrasenaMP.setOnClickListener(new View.OnClickListener() {
@@ -105,11 +103,12 @@ public class MiPerfil extends AppCompatActivity {
             public void onClick(View v) { createDialogoCC().show(); }
         });
 
-        // Modificar los datos del usuario
+
+        // Boton para modificar los datos del usuario
+        Button bModificar = (Button) findViewById(R.id.bModificar);
         bModificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 // Se realizan las comprobaciones
                 comprobarSiExiste();
 
@@ -293,12 +292,15 @@ public class MiPerfil extends AppCompatActivity {
 
     // Se empleara este metodo para actualizar las credenciales del usuario
     private void updateUser() {
+        // Modificar el campo de la fecha para introducirla en la base de datos
+        String[] d = cumpleanosMP.getText().toString().split(" / ");
+        String c = d[2] + "-" + d[1] + "-" + d[0];
         Data datos = new Data.Builder()
                 .putString("username", nombreUsuarioMP.getText().toString())
                 .putString("nombre", nombreMP.getText().toString())
                 .putString("password", contrasenaMP.getText().toString())
-                .putString("cumple", cumpleanosMP.getText().toString())
-//                .putString("foto", )
+                .putString("cumple", c)
+                .putString("foto", foto.toString())
                 .build();
 
         OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionUpdateUser.class)
@@ -312,8 +314,12 @@ public class MiPerfil extends AppCompatActivity {
                             if (workInfo.getOutputData().getString("result").equals("done")) {
                                 // Se han actualizado los datos del usuario en la BD
                                 // Intent Opciones
+                                String text = "Datos actualizados";
+                                Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
+                                toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
+                                toast.show();
                                 Intent o1 = new Intent(getBaseContext(), Opciones.class);
-                                o1.putExtra("username", nombreUsuarioMP.getText());
+                                o1.putExtra("username", nombreUsuarioMP.getText().toString());
                                 startActivity(o1);
                                 finish();
                             } else {
