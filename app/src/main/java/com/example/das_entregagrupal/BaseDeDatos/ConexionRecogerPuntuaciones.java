@@ -1,6 +1,7 @@
 package com.example.das_entregagrupal.BaseDeDatos;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.work.Data;
@@ -33,7 +34,7 @@ public class ConexionRecogerPuntuaciones extends Worker {
     public Result doWork() {
 
         String direccion = "http://ec2-54-242-79-204.compute-1.amazonaws.com/igonzalez274/WEB/Entrega3/recogerPuntuacionesE3.php";
-        String[] result = new String[2];
+        ArrayList<String> result = new ArrayList<>();
         Data resultados = null;
         HttpURLConnection urlConnection = null;
 
@@ -49,15 +50,14 @@ public class ConexionRecogerPuntuaciones extends Worker {
                 BufferedInputStream inputStream = new BufferedInputStream(urlConnection.getInputStream());
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
                 String line = "";
-                int i = 0;
                 while ((line = bufferedReader.readLine()) != null) {
-                    result[i] = line;
-                    i++;
+                    result.add(line);
                 }
                 inputStream.close();
 
+                String[] r = result.toArray(new String[0]);
                 resultados = new Data.Builder()
-                        .putStringArray("result", result)
+                        .putStringArray("result", r)
                         .build();
 
             }
