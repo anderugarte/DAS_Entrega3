@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
@@ -230,6 +231,7 @@ public class PartidaV extends AppCompatActivity {
                         .setPositiveButton("Rendirse", (dialog, which) -> {
                             // Abandonar partida
                             Tablero.getTablero().resetear();
+                            ListaJugadores.getListaJugadores().borrarComeplomos();
                             Intent mp = new Intent(context, MenuPrincipal.class);
                             mp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             mp.putExtra("username",jugador1);
@@ -261,10 +263,10 @@ public class PartidaV extends AppCompatActivity {
                 if(ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos() != 0) {
                     if (comeplomoOn) {
                         comeplomoOn = false;
-                        bCmplm.setBackgroundColor(3);
+                        bCmplm.
                     } else {
                         comeplomoOn = true;
-                        bCmplm.setBackgroundColor(0);
+                        bCmplm.setHighlightColor(0);
                     }
                 }
             }
@@ -567,25 +569,18 @@ public class PartidaV extends AppCompatActivity {
                 evento.setText("Parece que alguien a eliminado una columna entera...");
             } else if (i == 3){ // Evento Comeplomos
                 evento.setText("Para vosotros jugadores. Una ficha comeplomo para los dos.");
+                numComeplomo.setText(""+ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos());
+                iComeplomo.setImageResource(R.drawable.iconocomeplomoactivo);
             } else if(i == 4){ // Evento Piquete
                 evento.setText("¡Vaya! Alguien ha bloqueado una casilla. Espero que no os moleste...");
             }
             actualizarCasillasEvento();
         } else {evento.setText("");}
-
-        // Establece el numero de fichas comeplomo que disponga el usuario
-        numComeplomo.setText(""+ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos());
-
-        // Se ilumina o desilumina la ficha comeplomo dependiendo si el usuario posee o no una de ellas
-        if (ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos() != 0) {
-            iComeplomo.setImageResource(R.drawable.iconocomeplomoactivo);
-        } else {
-            iComeplomo.setImageResource(R.drawable.iconocomeplomo);
-        }
     }
 
     // Se cambia el texto que advierte de a quien le toca colocar una ficha
     private void cambiarTurno(){
+
         if (numTurno == 1) {
             turno.setText("¡Es tu turno " + j2.getText().toString() + "!");
             numTurno = 2;
@@ -597,6 +592,16 @@ public class PartidaV extends AppCompatActivity {
         } else {
             numTurno = 1;
             turno.setText("¡Es tu turno " + j1.getText().toString() + "!");
+        }
+        // Establece el numero de fichas comeplomo que disponga el usuario
+        numComeplomo.setText(""+ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos());
+
+        // Se ilumina o desilumina la ficha comeplomo dependiendo si el usuario posee o no una de ellas
+        if (ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos() != 0) {
+            iComeplomo.setImageResource(R.drawable.iconocomeplomoactivo);
+        }
+        else{
+            iComeplomo.setImageResource(R.drawable.iconocomeplomo);
         }
     }
 
@@ -627,6 +632,7 @@ public class PartidaV extends AppCompatActivity {
                 .setPositiveButton("Rendirse", (dialog, which) -> {
                     // Abandonar partida
                     Tablero.getTablero().resetear();
+                    ListaJugadores.getListaJugadores().borrarComeplomos();
                     Intent mp = new Intent(context, MenuPrincipal.class);
                     mp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     mp.putExtra("username",jugador1);
