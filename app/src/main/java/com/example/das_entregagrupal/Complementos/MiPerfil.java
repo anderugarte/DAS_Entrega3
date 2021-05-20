@@ -152,10 +152,7 @@ public class MiPerfil extends AppCompatActivity {
                             if (nuevaP.getText().toString().equals(repetirP.getText().toString())) {
                                 // Se modifica la contrasena
                                 cambiarContraseña();
-//                                Intent o = new Intent (getBaseContext(), Opciones.class);
-//                                o.putExtra("username",user);
-//                                startActivity(o);
-//                                finish();
+
                             } else {
                                 String text = "Las contraseñas no coinciden";
                                 Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
@@ -172,6 +169,7 @@ public class MiPerfil extends AppCompatActivity {
 
     }
 
+    // Realizar el cambio de contraseña en la base de datos
     private void cambiarContraseña() {
 
         Data datos = new Data.Builder()
@@ -191,12 +189,16 @@ public class MiPerfil extends AppCompatActivity {
                         if (workInfo != null && workInfo.getState().isFinished()) {
                             if (workInfo.getOutputData().getString("result").equals("done")) {
                                 // Se ha actualizado la contraseña en la base de datos
-
+                                Intent o = new Intent (getBaseContext(), Opciones.class);
+                                o.putExtra("username",user);
+                                startActivity(o);
+                                finish();
                             }
 
                         }
                     }
                 });
+        WorkManager.getInstance(getBaseContext()).enqueue(otwr);
     }
 
     // Se genara un dialogo para modificar la foto de perfil del usuario

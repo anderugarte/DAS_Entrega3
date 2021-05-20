@@ -43,7 +43,7 @@ public class ConexionExisteUsuario extends Worker {
             urlConnection.setRequestMethod("POST");
             urlConnection.setDoOutput(true);
 
-            JSONObject parametrosJSON = new JSONObject();
+            JSCONObject parametrosJSON = new JSONObject();
             parametrosJSON.put("username", username);
 
             urlConnection.setRequestProperty("Content-Type","application/json");

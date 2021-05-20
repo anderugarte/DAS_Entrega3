@@ -12,6 +12,8 @@ import com.example.das_entregagrupal.R;
 
 public class Personalizacion extends AppCompatActivity {
 
+    // Se podrán personalizar varios aspectos del juego
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

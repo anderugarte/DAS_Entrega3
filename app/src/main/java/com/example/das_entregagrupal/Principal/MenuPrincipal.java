@@ -165,7 +165,7 @@ public class MenuPrincipal extends AppCompatActivity {
         j1 = (TextView) v.findViewById(R.id.tJugadorUno);
         j2 = (EditText) v.findViewById(R.id.etJugadorDos);
 
-        j1.setText(user.toString());
+        j1.setText(user);
 
         return builder.create();
 

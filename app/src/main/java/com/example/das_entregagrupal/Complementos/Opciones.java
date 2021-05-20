@@ -11,6 +11,9 @@ import com.example.das_entregagrupal.R;
 
 public class Opciones extends AppCompatActivity {
 
+    // Desde aquí se podrá acceder al perfil del usuario, al ranking de puntuaciones, a la
+    // pantalla de personalización y a la ayuda.
+
     private String user;
 
     @Override

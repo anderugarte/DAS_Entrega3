@@ -16,6 +16,8 @@ import com.example.das_entregagrupal.R;
 
 public class Ayuda extends AppCompatActivity {
 
+    // Activity donde se mostrarán las instrucciones y
+    // las pautas para jugar a nuestro juego
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
