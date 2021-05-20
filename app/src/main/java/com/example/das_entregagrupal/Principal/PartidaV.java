@@ -228,21 +228,20 @@ public class PartidaV extends AppCompatActivity {
         bRendir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                generateDialogoVictoria(jugador1,10).show();
-//                alertDialogBuilder = new AlertDialog.Builder(context);
-//                alertDialogBuilder.setTitle("Bichötes: Conecta 4");
-//                alertDialogBuilder.setMessage("¿Estás seguro que deseas abandonar la partida?")
-//                        .setCancelable(false)
-//                        .setPositiveButton("Rendirse", (dialog, which) -> {
-//                            // Abandonar partida
-//                            Tablero.getTablero().resetear();
-//                            Intent mp = new Intent(context, MenuPrincipal.class);
-//                            mp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                            mp.putExtra("username",jugador1);
-//                            startActivity(mp);
-//                            finish();
-//                        })
-//                        .setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel()).create().show();
+                alertDialogBuilder = new AlertDialog.Builder(context);
+                alertDialogBuilder.setTitle("Bichötes: Conecta 4");
+                alertDialogBuilder.setMessage("¿Estás seguro que deseas abandonar la partida?")
+                        .setCancelable(false)
+                        .setPositiveButton("Rendirse", (dialog, which) -> {
+                            // Abandonar partida
+                            Tablero.getTablero().resetear();
+                            Intent mp = new Intent(context, MenuPrincipal.class);
+                            mp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            mp.putExtra("username",jugador1);
+                            startActivity(mp);
+                            finish();
+                        })
+                        .setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel()).create().show();
             }
         });
 

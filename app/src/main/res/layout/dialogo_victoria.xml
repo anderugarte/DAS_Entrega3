@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/fondodialogovictoria">
 
     <TextView
         android:id="@+id/tPuntos"
@@ -38,20 +39,19 @@
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="166dp"
-        android:layout_height="123dp"
+        android:layout_width="145dp"
+        android:layout_height="95dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.187"
+        app:layout_constraintVertical_bias="0.268"
         app:srcCompat="@drawable/logo" />
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="268dp"
-        android:layout_height="64dp"
+        android:layout_width="193dp"
+        android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
