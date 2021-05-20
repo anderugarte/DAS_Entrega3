@@ -2,12 +2,18 @@ package com.example.das_entregagrupal.Principal;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkInfo;
+import androidx.work.WorkManager;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.method.DateTimeKeyListener;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
@@ -19,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.das_entregagrupal.BaseDeDatos.ConexionSumarPuntos;
 import com.example.das_entregagrupal.Complementos.Puntuaciones;
 import com.example.das_entregagrupal.Modelo.Evento;
 import com.example.das_entregagrupal.Modelo.Jugador;
@@ -264,12 +271,10 @@ public class PartidaV extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos() != 0) {
-                    if (comeplomoOn) {
+                    if (comeplomoOn) { // Desactivar comeplomo
                         comeplomoOn = false;
- //                       bCmplm.
-                    } else {
+                    } else { // Activar comeplomo
                         comeplomoOn = true;
-                        bCmplm.setHighlightColor(0);
                     }
                 }
             }
@@ -471,28 +476,31 @@ public class PartidaV extends AppCompatActivity {
     }
 
     // Metodo para comprobar si alguien ha ganado
+    // En el modo de 2 juagores, solo se suman los puntos al primer jugador, ya que el segundo
+    //      no está en la base de datos
+    // En el modo de IA,
     private void comprobarSiGanado() {
         salir = false;
-        if (modoJuego) {
+        if (modoJuego) { // Partida contra la IA
             if (Tablero.getTablero().comprobarCuatro(numTurno)) {
                 if (numTurno == 1) {
                     if (dificultad == 0) {
                         generateDialogoVictoria(jugador1, 10).show();
                         // php que actualiza los puntos del jugador
+                        sumarPuntos(10);
                         salir = true;
                     } else if (dificultad == 1) {
                         generateDialogoVictoria(jugador1, 50).show();
                         // php que actualiza los puntos del jugador
+                        sumarPuntos(50);
                         salir = true;
                     }
                 } else {
                     if (dificultad == 0) {
-                        generateDialogoVictoria(jugador2, 10).show();
-                        // php que actualiza los puntos del jugador
+                        generateDialogoVictoria(jugador2, 10).show(); // Generar derrota juagdor1
                         salir = true;
                     } else if (dificultad == 1) {
-                        generateDialogoVictoria(jugador2, 50).show();
-                        // php que actualiza los puntos del jugador
+                        generateDialogoVictoria(jugador2, 50).show(); // Generar derrota juagdor1
                         salir = true;
                     }
                 }
@@ -524,6 +532,32 @@ public class PartidaV extends AppCompatActivity {
         if (salir) {
             Tablero.getTablero().resetear();
         }
+    }
+
+    // Método para sumarle los puntos correspondientes al jugador cuando gane
+    private void sumarPuntos(int puntos) {
+
+        Data datos = new Data.Builder()
+                .putString("username", jugador1)
+                .putInt("puntos", puntos)
+                .build();
+
+        OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionSumarPuntos.class)
+                .setInputData(datos)
+                .build();
+
+        WorkManager.getInstance(getApplicationContext()).getWorkInfoByIdLiveData(otwr.getId())
+                .observe(this, new Observer<WorkInfo>() {
+                    @Override
+                    public void onChanged(WorkInfo workInfo) {
+                        if (workInfo != null && workInfo.getState().isFinished()) {
+                            if (workInfo.getOutputData().getString("result").equals("done")) {
+
+                            }
+                        }
+                    }
+                });
+        WorkManager.getInstance(getBaseContext()).enqueue(otwr);
     }
 
     // Se actualizan las casillas tras suceder un evento
