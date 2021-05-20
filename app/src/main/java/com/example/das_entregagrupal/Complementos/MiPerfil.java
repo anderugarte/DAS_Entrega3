@@ -11,6 +11,7 @@ import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -35,6 +36,7 @@ import com.example.das_entregagrupal.BaseDeDatos.ConexionRecogerDatosUser;
 import com.example.das_entregagrupal.BaseDeDatos.ConexionRegistro;
 import com.example.das_entregagrupal.BaseDeDatos.ConexionUpdateUser;
 import com.example.das_entregagrupal.GestionDeUsuarios.Registro;
+import com.example.das_entregagrupal.Principal.MainActivity;
 import com.example.das_entregagrupal.R;
 
 import java.io.ByteArrayOutputStream;
@@ -49,6 +51,9 @@ import java.util.Locale;
 public class MiPerfil extends AppCompatActivity {
 
     private String user;
+
+    private AlertDialog.Builder alertDialogBuilder;
+    private Context context;
 
     private static final int CODIGO_PERMISOS_CAMERA = 1;
     private static final int CODIGO_PERMISOS_GALERIA = 2;
@@ -69,6 +74,8 @@ public class MiPerfil extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mi_perfil);
+
+        context = this;
 
         nombreUsuarioMP = (EditText) findViewById(R.id.etNombreUsuarioMP);
         nombreMP = (EditText) findViewById(R.id.etNombreMP);
@@ -126,6 +133,23 @@ public class MiPerfil extends AppCompatActivity {
         iCF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { createDialogoCF().show(); }
+        });
+
+        // Eliminar foto de perfil
+        ImageButton iEF = (ImageButton) findViewById(R.id.iEliminarFoto);
+        iEF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialogBuilder = new AlertDialog.Builder(context);
+                alertDialogBuilder.setTitle("Bichötes: Conecta 4");
+                alertDialogBuilder.setMessage("¿Deseas eliminar tu foto de perfil?")
+                        .setCancelable(false)
+                        .setPositiveButton("Aceptar", (dialog, which) -> {
+                            // Ponemos la foto de perfil por defecto
+                            foto.setImageResource(R.drawable.perfil);
+                        })
+                        .setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel()).create().show();
+            }
         });
 
     }
