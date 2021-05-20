@@ -200,7 +200,7 @@ public class Tablero {
         this.matriz.get(pColumna).resetear();
     }
 
-    public void piquete() {
+    public int piquete() {
         ArrayList<Integer> columnasDisp = new ArrayList<Integer>();
         for (int i = 0; i < 7; i++) {
             columnasDisp.add(i);
@@ -231,7 +231,7 @@ public class Tablero {
 ////            JOptionPane.showMessageDialog(null, "¡Damn! Someone has blocked the (" + (7 - (aleat + 1)) + ", " + (i + 1)
 ////                    + " ) square. Hope it hasn't bothered you.");
 //        }
-
+        return 4;
     }
 
     private int[] probabilidadDeFichaEnColumnas(char jugador) {

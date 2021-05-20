@@ -270,16 +270,7 @@ public class PartidaV extends AppCompatActivity {
         }
 
         // Gestion de eventos
-//        if () {
-//            evento.setTextSize(24);
-//            evento.setText("Achuuuusss! Ups, se me han volado las fichas. Vais a tener que volver a empezar...");
-//        } else if () {
-//            evento.setTextSize(24);
-//            evento.setText("Parece que alguien a abducido la comuna " + (num+1) + " entera...");
-//        } else if () {
-//            evento.setTextSize(24);
-//            evento.setText("Para vosotros jugadores. Una ficha comeplomo para los dos.");
-//        }
+        evento.setTextSize(18);
 
         // Establecer el modo de juego
         Tablero.getTablero().inicializarTablero();
@@ -543,8 +534,23 @@ public class PartidaV extends AppCompatActivity {
         cambiarTurno();
         numTotal++;
         if (this.numTotal % 5 == 0) {
-            Evento.getEvento().generarEvento();
+            int i = Evento.getEvento().generarEvento();
+            if (i==1) {
+                evento.setText("Achuuuusss! Ups, se me han volado las fichas. Vais a tener que volver a empezar...");
+            }
+            else if (i==2){
+                evento.setText("Parece que alguien a eliminado la comuna una entera...");
+            }
+            else if (i==3){
+                evento.setText("Para vosotros jugadores. Una ficha comeplomo para los dos.");
+            }
+            else if(i==4){
+                evento.setText("¡Vaya! Alguien ha bloqueado una casilla. Espero que no os moleste.");
+            }
             actualizarCasillasEvento();
+        }
+        else{
+            evento.setText("");
         }
 //        if (ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos() != 0) {
 //            if (numTurno == 1) {

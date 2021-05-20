@@ -33,25 +33,27 @@ public class Evento {
         return mEvento;
     }
 
-    public void generarEvento(){
+    public int generarEvento(){
         Collections.shuffle(this.probabilidades);
         int i = this.probabilidades.get(0);
         if (i == 1){
-            this.viruseses();
+            return this.viruseses();
         }
         if (i == 3){
-            this.rompecolumnas();
+            return this.rompecolumnas();
         }
         if (i == 4){
-            Tablero.getTablero().piquete();
+            return Tablero.getTablero().piquete();
         }
         if(i == 7){
-            this.comeplomo();
+            return this.comeplomo();
         }
+        return -1;
     }
 
-    private void viruseses(){
+    private int viruseses(){
         Tablero.getTablero().resetear();
+        return 1;
 //        if (idioma == "Espanol") {
 //            //JOptionPane.showMessageDialog(null, "Achuuuusss! Ups se me han volado las fichas, vais a tener que volver a empezar...");
 //        }
@@ -60,10 +62,11 @@ public class Evento {
 //        }
     }
 
-    private void rompecolumnas(){
+    private int rompecolumnas(){
         Random rand = new Random();
         int num = rand.nextInt(6);
         Tablero.getTablero().romperColumna(num);
+        return 2;
 //        if (idioma == "Espanol") {
 //            //JOptionPane.showMessageDialog(null, "Parece que alguien a abducido la comuna " + (num+1) + " entera...");
 //        } else {
@@ -71,10 +74,11 @@ public class Evento {
 //        }
     }
 
-    private void comeplomo() {
+    private int comeplomo() {
         Ficha p = new Ficha('C');// de comeplomo
         ListaJugadores.getListaJugadores().obtenerJugador(1).getFichas().anadirFicha(p);
         ListaJugadores.getListaJugadores().obtenerJugador(2).getFichas().anadirFicha(p);
+        return 3;
 //        if (idioma == "Espanol") {
 //            //JOptionPane.showMessageDialog(null, "Para vosotros, jugadores. Una ficha comeplomo pa' los dos.");
 //        } else {
