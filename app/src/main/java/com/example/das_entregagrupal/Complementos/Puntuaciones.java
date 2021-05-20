@@ -190,7 +190,7 @@ public class Puntuaciones extends AppCompatActivity {
                                     num4.setText(lpuntos.get(3).get("nombre").toString());
                                     ptos4.setText(lpuntos.get(3).get("puntos").toString());
                                     num5.setText("No existe");
-                                } else if (length == 5) {
+                                } else if (length >= 5) {
                                     num1.setText(lpuntos.get(0).get("nombre").toString());
                                     ptos1.setText(lpuntos.get(0).get("puntos").toString());
                                     num2.setText(lpuntos.get(1).get("nombre").toString());
