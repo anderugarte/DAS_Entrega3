@@ -539,13 +539,13 @@ public class PartidaV extends AppCompatActivity {
                 evento.setText("Achuuuusss! Ups, se me han volado las fichas. Vais a tener que volver a empezar...");
             }
             else if (i==2){
-                evento.setText("Parece que alguien a eliminado la comuna una entera...");
+                evento.setText("Parece que alguien a eliminado una columna entera...");
             }
             else if (i==3){
                 evento.setText("Para vosotros jugadores. Una ficha comeplomo para los dos.");
             }
             else if(i==4){
-                evento.setText("¡Vaya! Alguien ha bloqueado una casilla. Espero que no os moleste.");
+                evento.setText("¡Vaya! Alguien ha bloqueado una casilla. Espero que no os moleste...");
             }
             actualizarCasillasEvento();
         }
