@@ -69,11 +69,11 @@ public class MiPerfil extends AppCompatActivity {
     private static final String[] CAMERA_PERMISO = {Manifest.permission.CAMERA};
     private static final String[] GALERIA_PERMISO = {Manifest.permission.READ_EXTERNAL_STORAGE};
 
-    EditText nombreUsuarioMP;
     EditText nombreMP;
     EditText cumpleanosMP;
     ImageView foto;
 
+    TextView nombreUsuarioMP;
     TextView contrasenaMP;
 
     EditText nuevaP;
@@ -86,7 +86,7 @@ public class MiPerfil extends AppCompatActivity {
 
         context = this;
 
-        nombreUsuarioMP = (EditText) findViewById(R.id.etNombreUsuarioMP);
+        nombreUsuarioMP = (TextView) findViewById(R.id.tvNombreUsuarioMP2);
         nombreMP = (EditText) findViewById(R.id.etNombreMP);
         cumpleanosMP = (EditText) findViewById(R.id.etCumpleanosMP);
         foto = (ImageView) findViewById(R.id.iFotoDePerfil);
