@@ -51,6 +51,8 @@ import java.util.Locale;
 
 public class RegistroFoto extends AppCompatActivity {
 
+    // Activity que emplearemos para establecer una foto de perfil
+
     ImageView fp;
     Boolean cambiado = false;
     String username,nomb,pass,date;

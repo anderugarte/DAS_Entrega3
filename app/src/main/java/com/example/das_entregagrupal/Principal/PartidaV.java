@@ -321,13 +321,7 @@ public class PartidaV extends AppCompatActivity {
 
         // Establecer el modo de juego
         Tablero.getTablero().inicializarTablero();
-//        if (modoJuego){
-//            Partida.getPartida().inicializarJugadorYMaq(jugador1,dificultad);
-//        } else {
-//            Partida.getPartida().inicializarJugadores(jugador1,jugador2);
-//        }
 
-        //jugar();
         // Boton correspondiente a la columna 1 del tablero
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -522,37 +516,23 @@ public class PartidaV extends AppCompatActivity {
                         sumarPuntos("50");
                         salir = true;
                     }
-                } else {
+                } else { // El jugador pierde
                     generateDialogoDerrota(jugador1).show();
                     salir = true;
                 }
-//                ListaJugadores.getListaJugadores().obtenerJugador(1).getFichas().resetear();
-//                ListaJugadores.getListaJugadores().obtenerJugador(2).getFichas().resetear();
             }
-        } else if (!modoJuego) {
+        } else if (!modoJuego) { // Partida 2 jugadores
             if (Tablero.getTablero().comprobarCuatro(numTurno)) {
-                if (numTurno == 1) {
+                if (numTurno == 1) { // Gana el jugador 1
                     sumarPuntos("25");
                     salir = true;
-                } else {
+                } else { // Gana el jugador 2
                     generateDialogoVictoria(jugador2,0).show();
                     salir = true;
                 }
             }
-        } else {
-//            if (Tablero.getTablero().comprobarCuatro(numTurno)) {
-//                Victoria window = new Victoria(idioma, modo, nombre, Integer.toString(Sesion.getSesion().getTiempo()),
-//                        dif);
-//                window.setVisible(true);
-//                IU_Partida.dispose();
-//                ListaJugadores.getListaJugadores().obtenerJugador(1).getFichas().resetear();
-//                ListaJugadores.getListaJugadores().obtenerJugador(2).getFichas().resetear();
-//                salir = true;
-//            }
         }
-        if (salir) {
-            Tablero.getTablero().resetear();
-        }
+        if (salir) {Tablero.getTablero().resetear();}
     }
 
     // Método para sumarle los puntos correspondientes al jugador cuando gane
@@ -642,10 +622,7 @@ public class PartidaV extends AppCompatActivity {
         // Se ilumina o desilumina la ficha comeplomo dependiendo si el usuario posee o no una de ellas
         if (ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos() != 0) {
             iComeplomo.setImageResource(R.drawable.iconocomeplomoactivo);
-        } else {
-            iComeplomo.setImageResource(R.drawable.iconocomeplomo);
-        }
-
+        } else {iComeplomo.setImageResource(R.drawable.iconocomeplomo);}
 
     }
 
@@ -670,10 +647,7 @@ public class PartidaV extends AppCompatActivity {
         // Se ilumina o desilumina la ficha comeplomo dependiendo si el usuario posee o no una de ellas
         if (ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos() != 0) {
             iComeplomo.setImageResource(R.drawable.iconocomeplomoactivo);
-        }
-        else{
-            iComeplomo.setImageResource(R.drawable.iconocomeplomo);
-        }
+        } else {iComeplomo.setImageResource(R.drawable.iconocomeplomo);}
     }
 
     ///////////////////////////////// DIÁLOGOS /////////////////////////////////

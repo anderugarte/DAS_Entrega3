@@ -50,6 +50,8 @@ import java.util.Locale;
 
 public class MiPerfil extends AppCompatActivity {
 
+    // En esta clase podremos consultar y modificar los datos de nuestro perfil
+
     private String user;
 
     private AlertDialog.Builder alertDialogBuilder;
@@ -96,13 +98,11 @@ public class MiPerfil extends AppCompatActivity {
         // Recoger los datos de la BD
         recogerDatos();
 
-
         // Cambiar la contraseña del usuario
         contrasenaMP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { createDialogoCC().show(); }
         });
-
 
         // Boton para modificar los datos del usuario
         Button bModificar = (Button) findViewById(R.id.bModificar);
@@ -186,6 +186,7 @@ public class MiPerfil extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (nuevaP.getText().toString().length() < 5) {
+                            // Contrasena con menos de 5 carcateres
                             String text = "Contraseña demasiado corta";
                             Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
                             toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
@@ -194,8 +195,8 @@ public class MiPerfil extends AppCompatActivity {
                             if (nuevaP.getText().toString().equals(repetirP.getText().toString())) {
                                 // Se modifica la contrasena
                                 cambiarContraseña();
-
                             } else {
+                                // Las contrasenas introducidas por el usuario no coincidedn
                                 String text = "Las contraseñas no coinciden";
                                 Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
                                 toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
@@ -205,7 +206,6 @@ public class MiPerfil extends AppCompatActivity {
                     }
                 });
         builder.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
-
 
         return builder.create();
 
@@ -240,6 +240,7 @@ public class MiPerfil extends AppCompatActivity {
                                 startActivity(o);
                                 finish();
                             } else {
+                                // Ha sucedido un eror
                                 String text = "Ha ocurrido un error";
                                 Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
                                 toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
@@ -430,9 +431,7 @@ public class MiPerfil extends AppCompatActivity {
                 laminiatura.compress(Bitmap.CompressFormat.JPEG, 100, os);
                 os.flush();
                 os.close();
-            } catch (Exception e) {
-
-            }
+            } catch (Exception e) { }
         }
 
         // Imagen de la galeria
@@ -461,9 +460,7 @@ public class MiPerfil extends AppCompatActivity {
                 // El usuario ya ha concedido los permisos
                 return true;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (Exception e) {e.printStackTrace();}
         return false;
     }
 
@@ -478,9 +475,7 @@ public class MiPerfil extends AppCompatActivity {
                 // El usuario ya ha concedido los permisos
                 return true;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (Exception e) {e.printStackTrace();}
         return false;
     }
 

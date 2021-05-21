@@ -28,6 +28,7 @@ public class Ayuda extends AppCompatActivity {
 
         ImageButton bAtras = (ImageButton) findViewById(R.id.bAtras);
 
+        // Volver atras
         bAtras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

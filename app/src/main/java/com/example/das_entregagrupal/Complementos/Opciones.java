@@ -13,8 +13,8 @@ import com.example.das_entregagrupal.R;
 
 public class Opciones extends AppCompatActivity {
 
-    // Desde aquí se podrá acceder al perfil del usuario, al ranking de puntuaciones, a la
-    // pantalla de amigos y a la ayuda.
+    // Desde aquí se podrá acceder al perfil del usuario, al ranking
+    // de puntuaciones, a la pantalla de amigos y a la ayuda.
 
     private String user;
 
@@ -35,6 +35,7 @@ public class Opciones extends AppCompatActivity {
             user = extras.getString("username");
         }
 
+        // Accedemos a la interfaz de Mi Perfil
         bMiPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,6 +45,7 @@ public class Opciones extends AppCompatActivity {
             }
         });
 
+        // Accedemos a la interfaz de Puntuaciones
         bMPunt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +55,7 @@ public class Opciones extends AppCompatActivity {
             }
         });
 
+        // Accedemos a la interfaz de Mis Amigos
         bAmigos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +65,7 @@ public class Opciones extends AppCompatActivity {
             }
         });
 
+        // Accedemos a la interfaz de Ayuda
         bAyuda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +74,7 @@ public class Opciones extends AppCompatActivity {
             }
         });
 
+        // Volvemos atras
         ibVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

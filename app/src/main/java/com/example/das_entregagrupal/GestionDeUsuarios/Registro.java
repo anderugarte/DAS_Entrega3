@@ -21,6 +21,8 @@ import com.example.das_entregagrupal.R;
 
 public class Registro extends AppCompatActivity {
 
+    // Registramos un nuevo usuario en la BD
+
     EditText etNombre;
     EditText etUsuario;
     EditText etContrasena;
@@ -47,6 +49,7 @@ public class Registro extends AppCompatActivity {
             }
         });
 
+        // Redireccion a la interfaz de inicio de sesion
         bInicSes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,23 +65,24 @@ public class Registro extends AppCompatActivity {
 
         Button bRegistro = (Button) findViewById(R.id.bRegistro);
 
+        // Registramos el usuario
         bRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { // Se realizaran las comprobaciones
                 if (etNombre.getText().toString().equals("") ||
                     etUsuario.getText().toString().equals("") ||
                     etContrasena.getText().toString().equals("") ||
-                    etCumple.getText().toString().equals("")) {
+                    etCumple.getText().toString().equals("")) { // Campos vacios
                     String text = "Rellena todos los campos";
                     Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
                     toast.show();
-                } else if (etContrasena.getText().toString().length() < 5) {
+                } else if (etContrasena.getText().toString().length() < 5) { // Contrasena con menos de 5 caracteres
                     String text = "Contraseña demasiado corta";
                     Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
                     toast.show();
-                } else {
+                } else { // Comprobamos si existe algun usuario
                     comprobarSiExiste();
                 }
 
@@ -93,6 +97,7 @@ public class Registro extends AppCompatActivity {
         dialogoCumpleanos.show(getSupportFragmentManager(),"cumple");
     }
 
+    // Comprobamos si existe algun usuario con ese nombre de usuario
     private void comprobarSiExiste() {
         Data datos = new Data.Builder().putString("username", etUsuario.getText().toString()).build();
         OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionExisteUsuario.class)

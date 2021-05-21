@@ -23,6 +23,8 @@ import com.example.das_entregagrupal.R;
 
 public class InicioSesion extends AppCompatActivity {
 
+    // Emplearemos esta activity para iniciar sesion en nuestro juego
+
     EditText username;
     EditText password;
 
@@ -31,6 +33,7 @@ public class InicioSesion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio_sesion);
 
+        // Redireccion al registro de usuarios
         Button bNTCA = (Button) findViewById(R.id.bNTCA);
         bNTCA.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,9 +48,10 @@ public class InicioSesion extends AppCompatActivity {
         username = (EditText) findViewById(R.id.etNU);
         password = (EditText) findViewById(R.id.etC);
 
+        // Boton para iniciar sesion
         bIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { // Se realizaran las comprobaciones
                 if (username.getText().toString().equals("")) {
                     // Si el campo del usuario está vacio aparecerá un Toast avisando
                     String text = "Nombre de usuario vacío";
@@ -66,12 +70,11 @@ public class InicioSesion extends AppCompatActivity {
                     // Si no aparecerá un Toast
                     comprobarSiExisteUsuario();
                 }
-
             }
         });
-
     }
 
+    // Comprobaremos en la BD si existe un usuario con ese username
     private void comprobarSiExisteUsuario() {
         Data datos = new Data.Builder()
                 .putString("username", username.getText().toString())
@@ -102,6 +105,7 @@ public class InicioSesion extends AppCompatActivity {
 
     }
 
+    // Iniciamos sesion en la BD
     private void iniciarSesion() {
         Data datos = new Data.Builder()
                 .putString("username", username.getText().toString())

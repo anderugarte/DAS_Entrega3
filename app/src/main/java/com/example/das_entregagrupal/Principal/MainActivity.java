@@ -14,6 +14,8 @@ import com.example.das_entregagrupal.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Activity Principal. Primera interfaz
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         Button bIS = (Button) findViewById(R.id.bIS);
         Button bR = (Button) findViewById(R.id.bR);
 
+        // Deseamos iniciar sesion
         bIS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Deseamos registrarnos
         bR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

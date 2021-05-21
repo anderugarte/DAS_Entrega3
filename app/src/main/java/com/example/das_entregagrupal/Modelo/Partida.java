@@ -3,16 +3,10 @@ package com.example.das_entregagrupal.Modelo;
 public class Partida {
 
     private int numTurno;
-    private int turnoJugador;
-    private int marcadorJ1;
-    private int marcadorJ2;
     private static Partida mPartida;
 
     private Partida() {
         this.numTurno = 0;
-        this.turnoJugador = 1;
-        this.marcadorJ1 = 0;
-        this.marcadorJ2 = 0;
     }
 
     public static Partida getPartida() {
@@ -20,17 +14,6 @@ public class Partida {
             mPartida = new Partida();
         }
         return mPartida;
-    }
-
-    public boolean partidaAcabada() {
-        if (Tablero.getTablero().comprobarCuatro(this.turnoJugador) || Tablero.getTablero().noHayHueco()) {
-            return true;
-        }
-        return false;
-    }
-
-    public void inicializarTablero() {
-        Tablero.getTablero().inicializarTablero();
     }
 
     public void inicializarJugadores(String nombre1, String nombre2) {
@@ -62,16 +45,6 @@ public class Partida {
 
     public void resetearNumTurno() {
         this.numTurno = 0;
-    }
-
-    // Estos 2 mÃ©todos solo se utilizarÃ¡n para las pruebas por lo que no
-    // aparecerÃ¡n en nuestro Diagrama de Clases.
-    public int getNumTurno() {
-        return this.numTurno;
-    }
-
-    public void aumentarNumTurno() {
-        this.numTurno++;
     }
 
 }

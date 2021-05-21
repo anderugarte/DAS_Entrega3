@@ -27,24 +27,17 @@ public class Tablero {
         int fila = matriz.get(pColumna - 1).buscarHueco();
         if (fila != -1) {
             Casilla c = matriz.get(pColumna - 1).buscarCasilla(fila);
-            if (pIdJugador == 1) {
-                c.cambiarEstado('1');
-            } else {
-                c.cambiarEstado('2');
-            }
+            if (pIdJugador == 1) {c.cambiarEstado('1');}
+            else {c.cambiarEstado('2');}
             return true;
-        } else {
-//            JOptionPane.showMessageDialog(null, "Columna llena.");
-            return false;
-        }
+        } else {return false;}
     }
 
     public void colocarComeplomo(int pColumna) {
         int fila = matriz.get(pColumna - 1).buscarHueco();
         if (fila == 5) {
-        } else if (fila == 4) {
-            matriz.get(pColumna - 1).buscarCasilla(fila + 1).cambiarEstado('V');
-        } else {
+        } else if (fila == 4) {matriz.get(pColumna - 1).buscarCasilla(fila + 1).cambiarEstado('V');}
+        else {
             matriz.get(pColumna - 1).buscarCasilla(fila + 1).cambiarEstado('V');
             matriz.get(pColumna - 1).buscarCasilla(fila + 2).cambiarEstado('V');
         }
@@ -54,35 +47,27 @@ public class Tablero {
         ListaCasillas l;
         for (int i = 0; i < 7; i++) {
             l = new ListaCasillas();
-            for (int j = 0; j < 6; j++) {
-                l.anadirCasilla();
-            }
+            for (int j = 0; j < 6; j++) {l.anadirCasilla();}
             l.revertir();
             this.matriz.add(l);
         }
     }
 
     public boolean hayHuecoEn(int i) {
-        if (matriz.get(i - 1).buscarHueco() != -1) {
-            return false;
-        }
+        if (matriz.get(i - 1).buscarHueco() != -1) {return false;}
         return true;
     }
 
     public boolean noHayHueco() {
         boolean nohueco = true;
         for (int i = 0; i <= 6; i++) {
-            if (this.matriz.get(i).buscarHueco() != -1) {
-                nohueco = false;
-            }
+            if (this.matriz.get(i).buscarHueco() != -1) {nohueco = false;}
         }
         return nohueco;
     }
 
     public void resetear() {
-        for (ListaCasillas l : this.matriz) {
-            l.resetear();
-        }
+        for (ListaCasillas l : this.matriz) {l.resetear();}
         Partida.getPartida().resetearNumTurno();
     }
 
@@ -224,13 +209,6 @@ public class Tablero {
             aleat = rand.nextInt(desde);
         }
         this.matriz.get(i).buscarCasilla(aleat).cambiarEstado('P');
-//        if (idioma == "Espanol") {
-////            JOptionPane.showMessageDialog(null, "¡Vaya! Alguien ha bloqueado la casilla (" + (7 - (aleat + 1)) + ", "
-////                    + (i + 1) + " ). Espero que no os haya molestado.");
-//        } else {
-////            JOptionPane.showMessageDialog(null, "¡Damn! Someone has blocked the (" + (7 - (aleat + 1)) + ", " + (i + 1)
-////                    + " ) square. Hope it hasn't bothered you.");
-//        }
         return 4;
     }
 

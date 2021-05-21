@@ -37,6 +37,9 @@ import java.util.SplittableRandom;
 
 public class Puntuaciones extends AppCompatActivity {
 
+    // En esta interfaz podremos comprobar nuestra puntuacion
+    // total asi como el ranking blobal del juego
+
     private String user;
 
     List<JSONObject> lpuntos = new ArrayList<>();
@@ -85,11 +88,8 @@ public class Puntuaciones extends AppCompatActivity {
         // Recoger los datos de la BD de las mejores puntuaciones y
         // mostrarlas en los campos
         // En el mismo método se muestran los puntos del user en la interfaz
-        try {
-            recogerDatos();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        try {recogerDatos();}
+        catch (JSONException e) {e.printStackTrace();}
 
         // Volver atras
         bAtras.setOnClickListener(new View.OnClickListener() {
@@ -124,7 +124,7 @@ public class Puntuaciones extends AppCompatActivity {
                             for (int i = 0; i < r.length; i++) {
                                 String[] l = r[i].split(",");
                                 JSONObject json = new JSONObject();
-                                try {
+                                try { // Recogemos el nombre y sus puntos
                                     json.put("nombre", l[0]);
                                     json.put("puntos", l[1]);
                                 } catch (JSONException e) {
@@ -156,7 +156,7 @@ public class Puntuaciones extends AppCompatActivity {
 
                             int length = lpuntos.size();
                             try {
-                                if (length == 1) {
+                                if (length == 1) { // Establecemos el ranking
                                     num1.setText(lpuntos.get(0).get("nombre").toString());
                                     ptos1.setText(lpuntos.get(0).get("puntos").toString());
                                     num2.setText("No existe");

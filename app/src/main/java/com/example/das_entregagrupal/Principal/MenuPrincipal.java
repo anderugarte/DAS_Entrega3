@@ -29,6 +29,8 @@ import com.example.das_entregagrupal.R;
 
 public class MenuPrincipal extends AppCompatActivity {
 
+    // Menu Principal de nuestro juego con sus diversos modos de juego y opciones
+
     private AlertDialog.Builder alertDialogBuilder;
     private Boolean estadoF, estadoD = false;
     private Context context;
@@ -58,9 +60,7 @@ public class MenuPrincipal extends AppCompatActivity {
 
         // Recibimos el nombre de usuario del usuario que se ha registrado al igual que el resto de sus datos
         Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            user = extras.getString("username");
-        }
+        if (extras != null) {user = extras.getString("username");}
 
         // Jugar contra la IA
         bJContraIA.setOnClickListener(new View.OnClickListener() {
@@ -148,12 +148,12 @@ public class MenuPrincipal extends AppCompatActivity {
         builder.setPositiveButton("Jugar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (j2.getText().toString().length() == 0) {
+                if (j2.getText().toString().length() == 0) { // Nombre del jugador 2 vacio
                     String text = "Debes introducir un nombre para el Jugador 2";
                     Toast toast = Toast.makeText(getBaseContext(), text, Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
                     toast.show();
-                } else {
+                } else { // Iniciamos la partida con 2 jugadores
                     Intent p = new Intent(getBaseContext(), PartidaV.class);
                     p.putExtra("jugador1", user.toString());
                     p.putExtra("jugador2", j2.getText().toString());
@@ -185,7 +185,7 @@ public class MenuPrincipal extends AppCompatActivity {
         builder.setView(v);
         builder.setPositiveButton("Jugar", (dialog, which) -> {
             // Comprobamos la dificultad seleccionada
-            if (facil.isChecked()){
+            if (facil.isChecked()){ // Iniciamos la partida contra la IA en modo facil
                 Intent p = new Intent(getBaseContext(), PartidaV.class);
                 p.putExtra("jugador1", user.toString());
                 p.putExtra("jugador2", "Ordenador");
@@ -195,7 +195,7 @@ public class MenuPrincipal extends AppCompatActivity {
                 Partida.getPartida().inicializarJugadorYMaq(user.toString(),0);
                 startActivity(p);
                 finish();
-            } else if (dificil.isChecked()) {
+            } else if (dificil.isChecked()) { // Iniciamos la partida contra la IA en modo dificil
                 Intent p = new Intent(getBaseContext(), PartidaV.class);
                 p.putExtra("jugador1", user.toString());
                 p.putExtra("jugador2", "Ordenador");
@@ -216,6 +216,7 @@ public class MenuPrincipal extends AppCompatActivity {
 
     }
 
+    // ToolBox | Menu de herramientas
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menuiniciosesion,menu);
@@ -226,7 +227,7 @@ public class MenuPrincipal extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id=item.getItemId();
         switch (id){
-            case R.id.cs:{
+            case R.id.cs:{ // Se desea cerrar sesion
                 alertDialogBuilder = new AlertDialog.Builder(this);
                 alertDialogBuilder.setTitle("Bichötes: Conecta 4");
                 alertDialogBuilder.setMessage("¿Deseas cerrar la sesión?")
