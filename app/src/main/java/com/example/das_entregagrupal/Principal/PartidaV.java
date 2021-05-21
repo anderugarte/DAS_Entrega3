@@ -614,7 +614,7 @@ public class PartidaV extends AppCompatActivity {
                 evento.setText("¡Vaya! Alguien ha bloqueado una casilla. Espero que no os moleste...");
             }
             actualizarCasillasEvento();
-        } else {evento.setText("");}
+        } else if (!modoJuego || (modoJuego && numTurno==2)) {evento.setText("");}
 
         // Establece el numero de fichas comeplomo que disponga el usuario
         numComeplomo.setText(""+ListaJugadores.getListaJugadores().obtenerJugador(numTurno).getFichas().obtenerTotalComeplomos());
@@ -720,6 +720,8 @@ public class PartidaV extends AppCompatActivity {
                 numTurno=1;
                 numTotal=1;
                 actualizarCasillasEvento();
+                iComeplomo.setImageResource(R.drawable.iconocomeplomo);
+                numComeplomo.setText(""+0);
             }
         });
 
@@ -763,6 +765,8 @@ public class PartidaV extends AppCompatActivity {
                 numTurno=1;
                 numTotal=1;
                 actualizarCasillasEvento();
+                iComeplomo.setImageResource(R.drawable.iconocomeplomo);
+                numComeplomo.setText(""+0);
             }
         });
 
