@@ -16,6 +16,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -38,6 +40,11 @@ import com.example.das_entregagrupal.BaseDeDatos.ConexionUpdateUser;
 import com.example.das_entregagrupal.GestionDeUsuarios.Registro;
 import com.example.das_entregagrupal.Principal.MainActivity;
 import com.example.das_entregagrupal.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -293,6 +300,35 @@ public class MiPerfil extends AppCompatActivity {
 
     // Se empleara este metodo para actualizar las credenciales del usuario
     private void updateUser() {
+
+        //Instancia de FireBase
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        // Crear una storage reference de nuestra app
+        StorageReference storageRef = storage.getReference();
+        // Crear una referencia a "fotoUser.jpg" siendo User el nombre de usuario
+        String ref = "FotosPerfil/foto" + user + ".jpg";
+        StorageReference fotoRef = storageRef.child(ref);
+
+        //Transformar el ImageView a bytes
+        BitmapDrawable bitmapDrawablefto = (BitmapDrawable) foto.getDrawable();
+        Bitmap bitmapFto = bitmapDrawablefto.getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmapFto.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] data = stream.toByteArray();
+
+        UploadTask uploadTask = fotoRef.putBytes(data);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                // Hacer algo cuando ocurra un error en la subida
+                int tiempo= Toast.LENGTH_SHORT;
+                String texto = "Ha ocurrido un error al guardar la foto de perfil";
+                Toast aviso = Toast.makeText(getApplicationContext(), texto, tiempo);
+                aviso.setGravity(Gravity.BOTTOM| Gravity.CENTER, 0, 0);
+                aviso.show();
+            }
+        });
+
         // Modificar el campo de la fecha para introducirla en la base de datos
         String[] d = cumpleanosMP.getText().toString().split(" / ");
         String c = d[2] + "-" + d[1] + "-" + d[0];
@@ -301,7 +337,6 @@ public class MiPerfil extends AppCompatActivity {
                 .putString("nombre", nombreMP.getText().toString())
                 .putString("password", contrasenaMP.getText().toString())
                 .putString("cumple", c)
-                .putString("foto", foto.toString())
                 .build();
 
         OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionUpdateUser.class)
@@ -377,6 +412,34 @@ public class MiPerfil extends AppCompatActivity {
 
     private void recogerDatos() {
 
+        //Instancia de FireBase
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        // Crear una storage reference de nuestra app
+        StorageReference storageRef = storage.getReference();
+        // Crear una referencia a "fotoUser.jpg" siendo User el nombre de usuario
+        String ref = "FotosPerfil/foto" + user + ".jpg";
+        StorageReference fotoRef = storageRef.child(ref);
+
+        final long ONE_MEGABYBTE = 1024 * 1024;
+        fotoRef.getBytes(ONE_MEGABYBTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                //Se ha devuelto la foto
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                foto.setImageBitmap(bitmap);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                // Ha ocurrido un error
+                int tiempo= Toast.LENGTH_SHORT;
+                String texto = "No se ha podido cargar la foto de perfil";
+                Toast aviso = Toast.makeText(getApplicationContext(), texto, tiempo);
+                aviso.setGravity(Gravity.BOTTOM| Gravity.CENTER, 0, 0);
+                aviso.show();
+            }
+        });
+
         Data datos = new Data.Builder()
                 .putString("username", nombreUsuarioMP.getText().toString())
                 .build();
@@ -391,11 +454,9 @@ public class MiPerfil extends AppCompatActivity {
                         if (workInfo != null && workInfo.getState().isFinished()) {
                             if (workInfo.getOutputData().getString("username").equals(user)) {
                                 // Se han recogido correctamente los datos
-                                // -> Asignamos los valores a los EditText e ImageView
+                                // -> Asignamos los valores a los EditText
                                 nombreMP.setText(workInfo.getOutputData().getString("nombre"));
                                 cumpleanosMP.setText(workInfo.getOutputData().getString("cumple"));
-                                String fp = workInfo.getOutputData().getString("foto");
-                                foto.setImageURI(Uri.parse(workInfo.getOutputData().getString("foto")));
                             }
                         }
                     }

@@ -22,6 +22,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +32,11 @@ import android.widget.Toast;
 import com.example.das_entregagrupal.BaseDeDatos.ConexionRegistro;
 import com.example.das_entregagrupal.Principal.MenuPrincipal;
 import com.example.das_entregagrupal.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import org.json.simple.JSONObject;
 
@@ -158,80 +164,40 @@ public class RegistroFoto extends AppCompatActivity {
     // Este metodo gestionara el registro de un nuevo usuario
     private void gestionarRegistroFoto() {
 
-//        BitmapDrawable bitmapDrawablefto = (BitmapDrawable) fp.getDrawable();
-//        Bitmap bitmapFto = bitmapDrawablefto.getBitmap();
-//        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//        bitmapFto.compress(Bitmap.CompressFormat.PNG, 100, stream);
-//        byte[] fototransformada = stream.toByteArray();
-//        String fotoen64 = Base64.encodeToString(fototransformada,Base64.DEFAULT);
-//
-//        Uri.Builder builder = new Uri.Builder().appendQueryParameter("foto", fotoen64);
-//        String parametrosURL = builder.build().getEncodedQuery();
+        //Instancia de FireBase
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        // Crear una storage reference de nuestra app
+        StorageReference storageRef = storage.getReference();
+        // Crear una referencia a "fotoUser.jpg" siendo User el nombre de usuario
+        String ref = "FotosPerfil/foto" + username + ".jpg";
+        StorageReference fotoRef = storageRef.child(ref);
 
-        //////////////////////////////////////////////
-//        BitmapDrawable bitmapDrawablefto = (BitmapDrawable) fp.getDrawable();
-//        Bitmap bitmapFto = bitmapDrawablefto.getBitmap();
-//        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//        bitmapFto.compress(Bitmap.CompressFormat.PNG, 40, stream);
-//        byte[] fototransformada = stream.toByteArray();
-//        String fotoen64 = Base64.encodeToString(fototransformada, Base64.DEFAULT);
-//
-//        String direccion = "http://ec2-54-167-31-169.compute-1.amazonaws.com/igonzalez274/WEB/Entrega3/registroUserE3.php";
-//        String result = "";
-//        HttpURLConnection urlConnection = null;
-//        try {
-//            URL destino = new URL(direccion);
-//            urlConnection = (HttpURLConnection) destino.openConnection();
-//            urlConnection.setConnectTimeout(5000);
-//            urlConnection.setReadTimeout(5000);
-//            urlConnection.setRequestMethod("POST");
-//            urlConnection.setDoOutput(true);
-//            JSONObject parametrosJSON = new JSONObject();
-//            parametrosJSON.put("username", username);
-//            parametrosJSON.put("nombre", nomb);
-//            parametrosJSON.put("password", pass);
-//            parametrosJSON.put("cumple", date);
-//            parametrosJSON.put("foto", fotoen64);
-//            urlConnection.setRequestProperty("Content-Type", "application/json");
-//            hola(urlConnection.getOutputStream(), parametrosJSON);
-//
-//
-//            int statusCode = urlConnection.getResponseCode();
-//
-//            if (statusCode == 200) {
-//                BufferedInputStream inputStream = new BufferedInputStream(urlConnection.getInputStream());
-//                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
-//                String line = "";
-//                while ((line = bufferedReader.readLine()) != null) {
-//                    result += line;
-//                }
-//                inputStream.close();
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        //////////////////////////////////////////////
-//
-//        if (result.equals("true")) {
-//            // Registro correcto
-//            Intent mp = new Intent(getBaseContext(), MenuPrincipal.class);
-//            mp.putExtra("username", username);
-//            startActivity(mp);
-//            finish();
-//        } else {
-//            // Registro incorrecto
-//            int tiempo = Toast.LENGTH_SHORT;
-//            Toast aviso = Toast.makeText(getApplicationContext(), "Error", tiempo);
-//            aviso.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
-//            aviso.show();
+        //Transformar el ImageView a bytes
+        BitmapDrawable bitmapDrawablefto = (BitmapDrawable) fp.getDrawable();
+        Bitmap bitmapFto = bitmapDrawablefto.getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmapFto.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] data = stream.toByteArray();
 
+        UploadTask uploadTask = fotoRef.putBytes(data);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                // Hacer algo cuando ocurra un error en la subida
+                int tiempo= Toast.LENGTH_SHORT;
+                String texto = "Ha ocurrido un error al guardar la foto de perfil";
+                Toast aviso = Toast.makeText(getApplicationContext(), texto, tiempo);
+                aviso.setGravity(Gravity.BOTTOM| Gravity.CENTER, 0, 0);
+                aviso.show();
+            }
+        });
 
+                ///////////////////////////////////////////////////////////////
         Data datos = new Data.Builder()
                 .putString("username",username)
                 .putString("nombre",nomb)
                 .putString("password",pass)
                 .putString("cumpleanos",date)
-                .putString("fotoperfil",fp.toString()) //parametrosURL
                 .build();
 
         OneTimeWorkRequest otwr = new OneTimeWorkRequest.Builder(ConexionRegistro.class)
@@ -263,11 +229,6 @@ public class RegistroFoto extends AppCompatActivity {
 
     }
 
-//    private void hola(OutputStream outputStream, JSONObject parametrosJSON) {
-//        PrintWriter out = new PrintWriter(outputStream);
-//        out.print(parametrosJSON.toJSONString());
-//        out.close();
-//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

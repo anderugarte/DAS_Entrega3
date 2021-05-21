@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "842603181035",
+    "project_id": "entrega-grupal",
+    "storage_bucket": "entrega-grupal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842603181035:android:e55f199f189c6339ab1fae",
+        "android_client_info": {
+          "package_name": "com.example.das_entregagrupal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "842603181035-0abra2q4lvke40ukp41qr2vpifugu8td.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcPDuPIDO8n9BVMg06X4lRi3YnXitxKOc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "842603181035-0abra2q4lvke40ukp41qr2vpifugu8td.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

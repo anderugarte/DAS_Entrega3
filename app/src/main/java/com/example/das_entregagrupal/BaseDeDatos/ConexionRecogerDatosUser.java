@@ -60,18 +60,15 @@ public class ConexionRecogerDatosUser extends Worker {
                 String line = "";
                 while ((line = bufferedReader.readLine()) != null) {
                     result += line;
-                    Log.i("hola", line);
                 }
                 inputStream.close();
 
                 JSONParser parser = new JSONParser();
                 JSONObject json = (JSONObject) parser.parse(result);
-                Log.i("hola", json.toJSONString());
 
                 String userDB = (String) json.get("username");
                 String nombre = (String) json.get("nombre");
                 String cumple = (String) json.get("cumple");
-                String foto = (String) json.get("foto");
 
                 String[] c = cumple.split("-");
                 cumple = c[2] + " / " + c[1] + " / " + c[0];
@@ -80,7 +77,6 @@ public class ConexionRecogerDatosUser extends Worker {
                         .putString("username", userDB)
                         .putString("nombre", nombre)
                         .putString("cumple", cumple)
-                        .putString("foto", foto)
                         .build();
 
             }

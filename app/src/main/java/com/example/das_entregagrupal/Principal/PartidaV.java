@@ -525,11 +525,10 @@ public class PartidaV extends AppCompatActivity {
             if (Tablero.getTablero().comprobarCuatro(numTurno)) {
                 if (numTurno == 1) { // Gana el jugador 1
                     sumarPuntos("25");
-                    salir = true;
                 } else { // Gana el jugador 2
                     generateDialogoVictoria(jugador2,0).show();
-                    salir = true;
                 }
+                salir = true;
             }
         }
         if (salir) {Tablero.getTablero().resetear();}

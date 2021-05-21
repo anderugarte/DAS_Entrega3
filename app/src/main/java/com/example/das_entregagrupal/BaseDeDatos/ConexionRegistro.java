@@ -33,7 +33,6 @@ public class ConexionRegistro extends Worker {
         String nombre = getInputData().getString("nombre");
         String password = getInputData().getString("password");
         String cumple = getInputData().getString("cumpleanos");
-        String foto = getInputData().getString("fotoperfil");
 
 
         String direccion = "http://ec2-54-242-79-204.compute-1.amazonaws.com/igonzalez274/WEB/Entrega3/registroUserE3.php";
@@ -52,7 +51,6 @@ public class ConexionRegistro extends Worker {
             parametrosJSON.put("nombre", nombre);
             parametrosJSON.put("password",password);
             parametrosJSON.put("cumple", cumple);
-            parametrosJSON.put("foto", foto);
             urlConnection.setRequestProperty("Content-Type","application/json");
             PrintWriter out = new PrintWriter(urlConnection.getOutputStream());
             out.print(parametrosJSON.toJSONString());

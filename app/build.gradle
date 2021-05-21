@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
 }
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 30
@@ -36,8 +37,14 @@ dependencies {
     implementation 'androidx.work:work-runtime:2.5.0'
     implementation ('com.googlecode.json-simple:json-simple:1.1.1')
             { exclude group: 'junit', module: 'junit'}
+    implementation 'com.google.firebase:firebase-storage:20.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation platform('com.google.firebase:firebase-bom:27.1.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-storage'
+
 
 }
